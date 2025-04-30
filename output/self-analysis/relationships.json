@@ -1,0 +1,4569 @@
+[
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "*"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "*"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "*"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "SCHEMA_VERSION",
+      "SCHEMA_METADATA"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "TSCodeGraph",
+      "Config"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "TSParser"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "GraphTransformer"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "Neo4jImporter"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/index.ts->File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "QueryExecutor"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Package:path",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Package:path",
+    "imports": [
+      "path"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": false,
+    "hasNamespaceImport": true,
+    "isTypeOnly": false,
+    "importPath": "path",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "path"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Package:fs",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Package:fs",
+    "imports": [
+      "fs"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": false,
+    "hasNamespaceImport": true,
+    "isTypeOnly": false,
+    "importPath": "fs",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "fs"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "imports": [
+      "TSCodeGraph"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./index.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/index.ts"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:args",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:args"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:command",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:command"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Function:src/cli.ts:main",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Function:src/cli.ts:main"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Function:src/cli.ts:printUsage",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Function:src/cli.ts:printUsage"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Function:src/cli.ts:analyzeProject",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Function:src/cli.ts:analyzeProject"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/cli.ts:analyzeProject->Parameter:src/cli.ts:analyzeProject:args",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/cli.ts:analyzeProject",
+    "endNodeId": "Parameter:src/cli.ts:analyzeProject:args",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:projectPath",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:projectPath"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:outputDir",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:outputDir"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:codebaseId",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:codebaseId"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:neo4jConfig",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:neo4jConfig"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:config",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:config"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:codeGraph",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:codeGraph"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Function:src/cli.ts:queryGraph",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Function:src/cli.ts:queryGraph"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/cli.ts:queryGraph->Parameter:src/cli.ts:queryGraph:args",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/cli.ts:queryGraph",
+    "endNodeId": "Parameter:src/cli.ts:queryGraph:args",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:cypherQuery",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:cypherQuery"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/cli.ts->Variable:src/cli.ts:result",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/cli.ts",
+    "endNodeId": "Variable:src/cli.ts:result"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Package:path",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Package:path",
+    "imports": [
+      "path"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": false,
+    "hasNamespaceImport": true,
+    "isTypeOnly": false,
+    "importPath": "path",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "path"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "imports": [
+      "TSCodeGraph"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "../index.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/index.ts"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Function:src/examples/analyze-project.ts:main",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Function:src/examples/analyze-project.ts:main"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:args",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:args"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:projectPath",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:projectPath"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:outputDir",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:outputDir"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:codebaseId",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:codebaseId"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:neo4jConfig",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:neo4jConfig"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:config",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:config"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:codeGraph",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:codeGraph"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:nodeCountsResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:nodeCountsResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:relCountsResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:relCountsResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:complexClassesResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:complexClassesResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:circularDepsResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:circularDepsResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts->Variable:src/examples/analyze-project.ts:unusedExportsResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/examples/analyze-project.ts",
+    "endNodeId": "Variable:src/examples/analyze-project.ts:unusedExportsResult"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Package:path",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Package:path",
+    "imports": [
+      "path"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": false,
+    "hasNamespaceImport": true,
+    "isTypeOnly": false,
+    "importPath": "path",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "path"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Package:fs",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Package:fs",
+    "imports": [
+      "fs"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": false,
+    "hasNamespaceImport": true,
+    "isTypeOnly": false,
+    "importPath": "fs",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "fs"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/index.ts->File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "imports": [
+      "TSParser"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./parser/ts-parser.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/index.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "imports": [
+      "SCHEMA_VERSION",
+      "SCHEMA_METADATA"
+    ],
+    "importCount": 2,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./schema/index.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/schema/index.ts"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/index.ts->File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "imports": [
+      "Neo4jImporter"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./neo4j/importer.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/index.ts->File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "imports": [
+      "GraphTransformer"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./transformer/graph-transformer.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/index.ts->File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "imports": [
+      "QueryExecutor"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./neo4j/query-executor.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Interface:src/index.ts:Config",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Interface:src/index.ts:Config"
+  },
+  {
+    "nodeId": "DEFINES_CLASS:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Class:src/index.ts:TSCodeGraph",
+    "codebaseId": "self",
+    "type": "DEFINES_CLASS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Class:src/index.ts:TSCodeGraph"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/index.ts:TSCodeGraph->Property:src/index.ts:TSCodeGraph.config",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Property:src/index.ts:TSCodeGraph.config"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/index.ts:TSCodeGraph->Property:src/index.ts:TSCodeGraph.parser",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Property:src/index.ts:TSCodeGraph.parser"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/index.ts:TSCodeGraph->Property:src/index.ts:TSCodeGraph.transformer",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Property:src/index.ts:TSCodeGraph.transformer"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/index.ts:TSCodeGraph->Property:src/index.ts:TSCodeGraph.queryExecutor",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Property:src/index.ts:TSCodeGraph.queryExecutor"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/index.ts:TSCodeGraph->Method:src/index.ts:TSCodeGraph.process",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Method:src/index.ts:TSCodeGraph.process"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:tsFiles",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:tsFiles"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:parseResults",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:parseResults"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:parseStart",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:parseStart"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:result",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:result"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:transformStart",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:transformStart"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:transformResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:transformResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:isValid",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:isValid"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:{ nodes, relationships }",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:{ nodes, relationships }"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/index.ts:TSCodeGraph->Method:src/index.ts:TSCodeGraph.findTypeScriptFiles",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Method:src/index.ts:TSCodeGraph.findTypeScriptFiles"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/index.ts:TSCodeGraph.findTypeScriptFiles->Parameter:src/index.ts:findTypeScriptFiles:dir",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/index.ts:TSCodeGraph.findTypeScriptFiles",
+    "endNodeId": "Parameter:src/index.ts:findTypeScriptFiles:dir",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:files",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:files"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:walk",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:walk"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:entries",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:entries"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:fullPath",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:fullPath"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/index.ts:TSCodeGraph->Method:src/index.ts:TSCodeGraph.saveResults",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Method:src/index.ts:TSCodeGraph.saveResults"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/index.ts:TSCodeGraph.saveResults->Parameter:src/index.ts:saveResults:nodes",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/index.ts:TSCodeGraph.saveResults",
+    "endNodeId": "Parameter:src/index.ts:saveResults:nodes",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/index.ts:TSCodeGraph.saveResults->Parameter:src/index.ts:saveResults:relationships",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/index.ts:TSCodeGraph.saveResults",
+    "endNodeId": "Parameter:src/index.ts:saveResults:relationships",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:nodesPath",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:nodesPath"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:relationshipsPath",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:relationshipsPath"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/index.ts:TSCodeGraph->Method:src/index.ts:TSCodeGraph.importToNeo4j",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Method:src/index.ts:TSCodeGraph.importToNeo4j"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/index.ts:TSCodeGraph.importToNeo4j->Parameter:src/index.ts:importToNeo4j:nodes",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/index.ts:TSCodeGraph.importToNeo4j",
+    "endNodeId": "Parameter:src/index.ts:importToNeo4j:nodes",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/index.ts:TSCodeGraph.importToNeo4j->Parameter:src/index.ts:importToNeo4j:relationships",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/index.ts:TSCodeGraph.importToNeo4j",
+    "endNodeId": "Parameter:src/index.ts:importToNeo4j:relationships",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:importer",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:importer"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/index.ts:TSCodeGraph->Method:src/index.ts:TSCodeGraph.executeQuery",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Method:src/index.ts:TSCodeGraph.executeQuery"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/index.ts:TSCodeGraph.executeQuery->Parameter:src/index.ts:executeQuery:cypher",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/index.ts:TSCodeGraph.executeQuery",
+    "endNodeId": "Parameter:src/index.ts:executeQuery:cypher",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/index.ts:TSCodeGraph.executeQuery->Parameter:src/index.ts:executeQuery:parameters",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/index.ts:TSCodeGraph.executeQuery",
+    "endNodeId": "Parameter:src/index.ts:executeQuery:parameters",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": true,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/index.ts:TSCodeGraph->Method:src/index.ts:TSCodeGraph.close",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/index.ts:TSCodeGraph",
+    "endNodeId": "Method:src/index.ts:TSCodeGraph.close"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Function:src/index.ts:main",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Function:src/index.ts:main"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:args",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:args"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:rootDir",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:rootDir"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:outputDir",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:outputDir"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:codebaseId",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:codebaseId"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:config",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:config"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/index.ts->Variable:src/index.ts:codeGraph",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "Variable:src/index.ts:codeGraph"
+  },
+  {
+    "nodeId": "EXPORTS_LOCAL:File:/Users/zach/Dev/SAGE/cli/src/index.ts->local",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/index.ts",
+    "endNodeId": "local",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": false,
+    "exportNames": [
+      "TSCodeGraph",
+      "Config"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Package:neo4j-driver",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Package:neo4j-driver",
+    "imports": [
+      "neo4j",
+      "Driver",
+      "Session"
+    ],
+    "importCount": 3,
+    "hasDefaultImport": true,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "neo4j-driver",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "neo4j-driver"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "imports": [
+      "Node",
+      "Relationship",
+      "SCHEMA_VERSION",
+      "SCHEMA_METADATA"
+    ],
+    "importCount": 4,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "../schema/index.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/schema/index.ts"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "imports": [
+      "createSchemaConstraints",
+      "verifySchemaConstraints",
+      "createCodebaseSchema"
+    ],
+    "importCount": 3,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./schema-constraints.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "imports": [
+      "SchemaMigration"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./schema-migration.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Interface:src/neo4j/importer.ts:Neo4jImporterConfig",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Interface:src/neo4j/importer.ts:Neo4jImporterConfig"
+  },
+  {
+    "nodeId": "DEFINES_CLASS:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Class:src/neo4j/importer.ts:Neo4jImporter",
+    "codebaseId": "self",
+    "type": "DEFINES_CLASS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/neo4j/importer.ts:Neo4jImporter->Property:src/neo4j/importer.ts:Neo4jImporter.driver",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Property:src/neo4j/importer.ts:Neo4jImporter.driver"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/neo4j/importer.ts:Neo4jImporter->Property:src/neo4j/importer.ts:Neo4jImporter.config",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Property:src/neo4j/importer.ts:Neo4jImporter.config"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.import",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.import"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.import->Parameter:src/neo4j/importer.ts:import:nodes",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.import",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:import:nodes",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.import->Parameter:src/neo4j/importer.ts:import:relationships",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.import",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:import:relationships",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:session",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:session"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:verifySession",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:verifySession"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:verified",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:verified"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:migrationSession",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:migrationSession"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:migrationNeeded",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:migrationNeeded"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:migrationResults",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:migrationResults"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:codebaseId",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:codebaseId"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:codebaseSession",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:codebaseSession"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.importNodes",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.importNodes"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.importNodes->Parameter:src/neo4j/importer.ts:importNodes:nodes",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.importNodes",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:importNodes:nodes",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:batchSize",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:batchSize"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:batches",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:batches"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:start",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:start"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:end",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:end"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:batch",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:batch"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.importNodeBatch",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.importNodeBatch"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.importNodeBatch->Parameter:src/neo4j/importer.ts:importNodeBatch:nodes",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.importNodeBatch",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:importNodeBatch:nodes",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:result",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:result"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:count",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:count"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.importRelationships",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.importRelationships"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.importRelationships->Parameter:src/neo4j/importer.ts:importRelationships:relationships",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.importRelationships",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:importRelationships:relationships",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.importRelationshipBatch",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.importRelationshipBatch"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.importRelationshipBatch->Parameter:src/neo4j/importer.ts:importRelationshipBatch:relationships",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.importRelationshipBatch",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:importRelationshipBatch:relationships",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:relationshipsByType",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:relationshipsByType"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:totalCount",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:totalCount"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:query",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:query"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.groupRelationshipsByType",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.groupRelationshipsByType"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.groupRelationshipsByType->Parameter:src/neo4j/importer.ts:groupRelationshipsByType:relationships",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.groupRelationshipsByType",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:groupRelationshipsByType:relationships",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:groups",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:groups"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.prepareNodeForImport",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.prepareNodeForImport"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.prepareNodeForImport->Parameter:src/neo4j/importer.ts:prepareNodeForImport:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.prepareNodeForImport",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:prepareNodeForImport:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:{ labels: originalLabels, ...nodeProperties }",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:{ labels: originalLabels, ...nodeProperties }"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:labels",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:labels"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:nodeWithVersion",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:nodeWithVersion"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.prepareRelationshipForImport",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.prepareRelationshipForImport"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/importer.ts:Neo4jImporter.prepareRelationshipForImport->Parameter:src/neo4j/importer.ts:prepareRelationshipForImport:relationship",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.prepareRelationshipForImport",
+    "endNodeId": "Parameter:src/neo4j/importer.ts:prepareRelationshipForImport:relationship",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:relForImport",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:relForImport"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:{ type, startNodeId, endNodeId, ...properties }",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:{ type, startNodeId, endNodeId, ...properties }"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts->Variable:src/neo4j/importer.ts:propertiesWithVersion",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/importer.ts",
+    "endNodeId": "Variable:src/neo4j/importer.ts:propertiesWithVersion"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.getLabelsParam",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.getLabelsParam"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.getSession",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.getSession"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/importer.ts:Neo4jImporter->Method:src/neo4j/importer.ts:Neo4jImporter.close",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/importer.ts:Neo4jImporter",
+    "endNodeId": "Method:src/neo4j/importer.ts:Neo4jImporter.close"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Package:neo4j-driver",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Package:neo4j-driver",
+    "imports": [
+      "neo4j",
+      "Driver",
+      "Session",
+      "Neo4jRecord"
+    ],
+    "importCount": 4,
+    "hasDefaultImport": true,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "neo4j-driver",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "neo4j-driver"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Interface:src/neo4j/query-executor.ts:QueryResult",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Interface:src/neo4j/query-executor.ts:QueryResult"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Interface:src/neo4j/query-executor.ts:QueryExecutorConfig",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Interface:src/neo4j/query-executor.ts:QueryExecutorConfig"
+  },
+  {
+    "nodeId": "DEFINES_CLASS:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "codebaseId": "self",
+    "type": "DEFINES_CLASS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/neo4j/query-executor.ts:QueryExecutor->Property:src/neo4j/query-executor.ts:QueryExecutor.driver",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "endNodeId": "Property:src/neo4j/query-executor.ts:QueryExecutor.driver"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/neo4j/query-executor.ts:QueryExecutor->Property:src/neo4j/query-executor.ts:QueryExecutor.config",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "endNodeId": "Property:src/neo4j/query-executor.ts:QueryExecutor.config"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/query-executor.ts:QueryExecutor->Method:src/neo4j/query-executor.ts:QueryExecutor.executeQuery",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "endNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.executeQuery"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/query-executor.ts:QueryExecutor.executeQuery->Parameter:src/neo4j/query-executor.ts:executeQuery:cypher",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.executeQuery",
+    "endNodeId": "Parameter:src/neo4j/query-executor.ts:executeQuery:cypher",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/query-executor.ts:QueryExecutor.executeQuery->Parameter:src/neo4j/query-executor.ts:executeQuery:parameters",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.executeQuery",
+    "endNodeId": "Parameter:src/neo4j/query-executor.ts:executeQuery:parameters",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": true,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/query-executor.ts:QueryExecutor.executeQuery->Parameter:src/neo4j/query-executor.ts:executeQuery:timeout",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.executeQuery",
+    "endNodeId": "Parameter:src/neo4j/query-executor.ts:executeQuery:timeout",
+    "index": 2,
+    "isOptional": true,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:session",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:session"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:startTime",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:startTime"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:txConfig",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:txConfig"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:result",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:result"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:executionTime",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:executionTime"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:records",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:records"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:stats",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:stats"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/query-executor.ts:QueryExecutor->Method:src/neo4j/query-executor.ts:QueryExecutor.executeTransaction",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "endNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.executeTransaction"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/query-executor.ts:QueryExecutor.executeTransaction->Parameter:src/neo4j/query-executor.ts:executeTransaction:queries",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.executeTransaction",
+    "endNodeId": "Parameter:src/neo4j/query-executor.ts:executeTransaction:queries",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/query-executor.ts:QueryExecutor.executeTransaction->Parameter:src/neo4j/query-executor.ts:executeTransaction:timeout",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.executeTransaction",
+    "endNodeId": "Parameter:src/neo4j/query-executor.ts:executeTransaction:timeout",
+    "index": 1,
+    "isOptional": true,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:results",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:results"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:tx",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:tx"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/query-executor.ts:QueryExecutor->Method:src/neo4j/query-executor.ts:QueryExecutor.recordToObject",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "endNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.recordToObject"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/query-executor.ts:QueryExecutor.recordToObject->Parameter:src/neo4j/query-executor.ts:recordToObject:record",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.recordToObject",
+    "endNodeId": "Parameter:src/neo4j/query-executor.ts:recordToObject:record",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts->Variable:src/neo4j/query-executor.ts:value",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/query-executor.ts",
+    "endNodeId": "Variable:src/neo4j/query-executor.ts:value"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/query-executor.ts:QueryExecutor->Method:src/neo4j/query-executor.ts:QueryExecutor.convertNeo4jValue",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "endNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.convertNeo4jValue"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/query-executor.ts:QueryExecutor.convertNeo4jValue->Parameter:src/neo4j/query-executor.ts:convertNeo4jValue:value",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.convertNeo4jValue",
+    "endNodeId": "Parameter:src/neo4j/query-executor.ts:convertNeo4jValue:value",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/query-executor.ts:QueryExecutor->Method:src/neo4j/query-executor.ts:QueryExecutor.getSession",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "endNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.getSession"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/query-executor.ts:QueryExecutor->Method:src/neo4j/query-executor.ts:QueryExecutor.close",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/query-executor.ts:QueryExecutor",
+    "endNodeId": "Method:src/neo4j/query-executor.ts:QueryExecutor.close"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Package:neo4j-driver",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Package:neo4j-driver",
+    "imports": [
+      "Session"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "neo4j-driver",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "neo4j-driver"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "imports": [
+      "SCHEMA_METADATA"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "../schema/index.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/schema/index.ts"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Function:src/neo4j/schema-constraints.ts:createSchemaConstraints",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Function:src/neo4j/schema-constraints.ts:createSchemaConstraints"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/neo4j/schema-constraints.ts:createSchemaConstraints->Parameter:src/neo4j/schema-constraints.ts:createSchemaConstraints:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/neo4j/schema-constraints.ts:createSchemaConstraints",
+    "endNodeId": "Parameter:src/neo4j/schema-constraints.ts:createSchemaConstraints:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:query",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:query"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:fullTextIndexAvailable",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:fullTextIndexAvailable"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:proceduresResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:proceduresResult"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Function:src/neo4j/schema-constraints.ts:dropSchemaConstraints",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Function:src/neo4j/schema-constraints.ts:dropSchemaConstraints"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/neo4j/schema-constraints.ts:dropSchemaConstraints->Parameter:src/neo4j/schema-constraints.ts:dropSchemaConstraints:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/neo4j/schema-constraints.ts:dropSchemaConstraints",
+    "endNodeId": "Parameter:src/neo4j/schema-constraints.ts:dropSchemaConstraints:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:constraintsResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:constraintsResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:name",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:name"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:indexesResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:indexesResult"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Function:src/neo4j/schema-constraints.ts:createCodebaseSchema",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Function:src/neo4j/schema-constraints.ts:createCodebaseSchema"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/neo4j/schema-constraints.ts:createCodebaseSchema->Parameter:src/neo4j/schema-constraints.ts:createCodebaseSchema:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/neo4j/schema-constraints.ts:createCodebaseSchema",
+    "endNodeId": "Parameter:src/neo4j/schema-constraints.ts:createCodebaseSchema:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/neo4j/schema-constraints.ts:createCodebaseSchema->Parameter:src/neo4j/schema-constraints.ts:createCodebaseSchema:codebaseId",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/neo4j/schema-constraints.ts:createCodebaseSchema",
+    "endNodeId": "Parameter:src/neo4j/schema-constraints.ts:createCodebaseSchema:codebaseId",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:commonNodeTypes",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:commonNodeTypes"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Function:src/neo4j/schema-constraints.ts:dropCodebaseSchema",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Function:src/neo4j/schema-constraints.ts:dropCodebaseSchema"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/neo4j/schema-constraints.ts:dropCodebaseSchema->Parameter:src/neo4j/schema-constraints.ts:dropCodebaseSchema:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/neo4j/schema-constraints.ts:dropCodebaseSchema",
+    "endNodeId": "Parameter:src/neo4j/schema-constraints.ts:dropCodebaseSchema:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/neo4j/schema-constraints.ts:dropCodebaseSchema->Parameter:src/neo4j/schema-constraints.ts:dropCodebaseSchema:codebaseId",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/neo4j/schema-constraints.ts:dropCodebaseSchema",
+    "endNodeId": "Parameter:src/neo4j/schema-constraints.ts:dropCodebaseSchema:codebaseId",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:labelsAndProperties",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:labelsAndProperties"
+  },
+  {
+    "nodeId": "DEFINES_FUNCTION:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Function:src/neo4j/schema-constraints.ts:verifySchemaConstraints",
+    "codebaseId": "self",
+    "type": "DEFINES_FUNCTION",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Function:src/neo4j/schema-constraints.ts:verifySchemaConstraints"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Function:src/neo4j/schema-constraints.ts:verifySchemaConstraints->Parameter:src/neo4j/schema-constraints.ts:verifySchemaConstraints:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Function:src/neo4j/schema-constraints.ts:verifySchemaConstraints",
+    "endNodeId": "Parameter:src/neo4j/schema-constraints.ts:verifySchemaConstraints:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:sampleRecord",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:sampleRecord"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:constraints",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:constraints"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:indexes",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:indexes"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:found",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:found"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:constraintLabel",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:constraintLabel"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:constraintProperty",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:constraintProperty"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:labelMatch",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:labelMatch"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:propertyMatch",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:propertyMatch"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts->Variable:src/neo4j/schema-constraints.ts:typeMatch",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-constraints.ts",
+    "endNodeId": "Variable:src/neo4j/schema-constraints.ts:typeMatch"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Package:neo4j-driver",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Package:neo4j-driver",
+    "imports": [
+      "Session"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "neo4j-driver",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "neo4j-driver"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "imports": [
+      "SCHEMA_VERSION"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "../schema/index.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/schema/index.ts"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Interface:src/neo4j/schema-migration.ts:SchemaMigrationConfig",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Interface:src/neo4j/schema-migration.ts:SchemaMigrationConfig"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Interface:src/neo4j/schema-migration.ts:MigrationResult",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Interface:src/neo4j/schema-migration.ts:MigrationResult"
+  },
+  {
+    "nodeId": "DEFINES_CLASS:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Class:src/neo4j/schema-migration.ts:SchemaMigration",
+    "codebaseId": "self",
+    "type": "DEFINES_CLASS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Class:src/neo4j/schema-migration.ts:SchemaMigration"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/schema-migration.ts:SchemaMigration->Method:src/neo4j/schema-migration.ts:SchemaMigration.isMigrationNeeded",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/schema-migration.ts:SchemaMigration",
+    "endNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.isMigrationNeeded"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/schema-migration.ts:SchemaMigration.isMigrationNeeded->Parameter:src/neo4j/schema-migration.ts:isMigrationNeeded:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.isMigrationNeeded",
+    "endNodeId": "Parameter:src/neo4j/schema-migration.ts:isMigrationNeeded:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:result",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:result"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:count",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:count"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/schema-migration.ts:SchemaMigration->Method:src/neo4j/schema-migration.ts:SchemaMigration.getCurrentVersions",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/schema-migration.ts:SchemaMigration",
+    "endNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.getCurrentVersions"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/schema-migration.ts:SchemaMigration.getCurrentVersions->Parameter:src/neo4j/schema-migration.ts:getCurrentVersions:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.getCurrentVersions",
+    "endNodeId": "Parameter:src/neo4j/schema-migration.ts:getCurrentVersions:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/schema-migration.ts:SchemaMigration->Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateSchema",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/schema-migration.ts:SchemaMigration",
+    "endNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateSchema"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateSchema->Parameter:src/neo4j/schema-migration.ts:migrateSchema:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateSchema",
+    "endNodeId": "Parameter:src/neo4j/schema-migration.ts:migrateSchema:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateSchema->Parameter:src/neo4j/schema-migration.ts:migrateSchema:fromVersion",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateSchema",
+    "endNodeId": "Parameter:src/neo4j/schema-migration.ts:migrateSchema:fromVersion",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateSchema->Parameter:src/neo4j/schema-migration.ts:migrateSchema:toVersion",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateSchema",
+    "endNodeId": "Parameter:src/neo4j/schema-migration.ts:migrateSchema:toVersion",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": true,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:tx",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:tx"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:nodesMigrated",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:nodesMigrated"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:relationshipsMigrated",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:relationshipsMigrated"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:nodeLabelResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:nodeLabelResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:relResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:relResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:remainingNodesResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:remainingNodesResult"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:nodeResult",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:nodeResult"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/schema-migration.ts:SchemaMigration->Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateAllToCurrentVersion",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/schema-migration.ts:SchemaMigration",
+    "endNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateAllToCurrentVersion"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateAllToCurrentVersion->Parameter:src/neo4j/schema-migration.ts:migrateAllToCurrentVersion:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.migrateAllToCurrentVersion",
+    "endNodeId": "Parameter:src/neo4j/schema-migration.ts:migrateAllToCurrentVersion:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:versions",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:versions"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:results",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:results"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/neo4j/schema-migration.ts:SchemaMigration->Method:src/neo4j/schema-migration.ts:SchemaMigration.createBackup",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/neo4j/schema-migration.ts:SchemaMigration",
+    "endNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.createBackup"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/schema-migration.ts:SchemaMigration.createBackup->Parameter:src/neo4j/schema-migration.ts:createBackup:session",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.createBackup",
+    "endNodeId": "Parameter:src/neo4j/schema-migration.ts:createBackup:session",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/neo4j/schema-migration.ts:SchemaMigration.createBackup->Parameter:src/neo4j/schema-migration.ts:createBackup:backupName",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/neo4j/schema-migration.ts:SchemaMigration.createBackup",
+    "endNodeId": "Parameter:src/neo4j/schema-migration.ts:createBackup:backupName",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:timestamp",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:timestamp"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts->Variable:src/neo4j/schema-migration.ts:backupFileName",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/neo4j/schema-migration.ts",
+    "endNodeId": "Variable:src/neo4j/schema-migration.ts:backupFileName"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Package:typescript",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Package:typescript",
+    "imports": [
+      "ts"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": false,
+    "hasNamespaceImport": true,
+    "isTypeOnly": false,
+    "importPath": "typescript",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "typescript"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Package:path",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Package:path",
+    "imports": [
+      "path"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": false,
+    "hasNamespaceImport": true,
+    "isTypeOnly": false,
+    "importPath": "path",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "path"
+  },
+  {
+    "nodeId": "IMPORTS_FROM_PACKAGE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Package:fs",
+    "codebaseId": "self",
+    "type": "IMPORTS_FROM_PACKAGE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Package:fs",
+    "imports": [
+      "fs"
+    ],
+    "importCount": 1,
+    "hasDefaultImport": false,
+    "hasNamedImports": false,
+    "hasNamespaceImport": true,
+    "isTypeOnly": false,
+    "importPath": "fs",
+    "isRelative": false,
+    "isResolved": true,
+    "packageName": "fs"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "imports": [
+      "Node",
+      "Relationship",
+      "File",
+      "Class",
+      "Interface",
+      "TypeAlias",
+      "Function",
+      "Method",
+      "Property",
+      "Variable",
+      "Parameter",
+      "Imports",
+      "ImportsFromPackage",
+      "ExportsLocal",
+      "ExportsDefault",
+      "HasParameter",
+      "HasMethod",
+      "HasProperty"
+    ],
+    "importCount": 18,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "../schema/index.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/schema/index.ts"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Interface:src/parser/ts-parser.ts:TSParserOptions",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Interface:src/parser/ts-parser.ts:TSParserOptions"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Interface:src/parser/ts-parser.ts:ParseResult",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Interface:src/parser/ts-parser.ts:ParseResult"
+  },
+  {
+    "nodeId": "DEFINES_CLASS:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Class:src/parser/ts-parser.ts:TSParser",
+    "codebaseId": "self",
+    "type": "DEFINES_CLASS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Class:src/parser/ts-parser.ts:TSParser"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/parser/ts-parser.ts:TSParser->Property:src/parser/ts-parser.ts:TSParser.rootDir",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Property:src/parser/ts-parser.ts:TSParser.rootDir"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/parser/ts-parser.ts:TSParser->Property:src/parser/ts-parser.ts:TSParser.codebaseId",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Property:src/parser/ts-parser.ts:TSParser.codebaseId"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/parser/ts-parser.ts:TSParser->Property:src/parser/ts-parser.ts:TSParser.compilerOptions",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Property:src/parser/ts-parser.ts:TSParser.compilerOptions"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/parser/ts-parser.ts:TSParser->Property:src/parser/ts-parser.ts:TSParser.program",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Property:src/parser/ts-parser.ts:TSParser.program"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/parser/ts-parser.ts:TSParser->Property:src/parser/ts-parser.ts:TSParser.typeChecker",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Property:src/parser/ts-parser.ts:TSParser.typeChecker"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.initialize",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.initialize"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.initialize->Parameter:src/parser/ts-parser.ts:initialize:filePaths",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.initialize",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:initialize:filePaths",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.parseFile",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.parseFile"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.parseFile->Parameter:src/parser/ts-parser.ts:parseFile:filePath",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.parseFile",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:parseFile:filePath",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:sourceFile",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:sourceFile"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:result",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:result"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:fileNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:fileNode"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.visitNode",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.visitNode"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.visitNode->Parameter:src/parser/ts-parser.ts:visitNode:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.visitNode",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:visitNode:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.visitNode->Parameter:src/parser/ts-parser.ts:visitNode:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.visitNode",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:visitNode:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.visitNode->Parameter:src/parser/ts-parser.ts:visitNode:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.visitNode",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:visitNode:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractClass",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractClass"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractClass->Parameter:src/parser/ts-parser.ts:extractClass:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractClass",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractClass:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractClass->Parameter:src/parser/ts-parser.ts:extractClass:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractClass",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractClass:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractClass->Parameter:src/parser/ts-parser.ts:extractClass:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractClass",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractClass:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:name",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:name"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:classNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:classNode"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:baseClassName",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:baseClassName"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:interfaceName",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:interfaceName"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractInterface",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractInterface"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractInterface->Parameter:src/parser/ts-parser.ts:extractInterface:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractInterface",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractInterface:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractInterface->Parameter:src/parser/ts-parser.ts:extractInterface:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractInterface",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractInterface:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractInterface->Parameter:src/parser/ts-parser.ts:extractInterface:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractInterface",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractInterface:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:interfaceNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:interfaceNode"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:baseInterfaceName",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:baseInterfaceName"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractTypeAlias",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractTypeAlias"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractTypeAlias->Parameter:src/parser/ts-parser.ts:extractTypeAlias:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractTypeAlias",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractTypeAlias:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractTypeAlias->Parameter:src/parser/ts-parser.ts:extractTypeAlias:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractTypeAlias",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractTypeAlias:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractTypeAlias->Parameter:src/parser/ts-parser.ts:extractTypeAlias:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractTypeAlias",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractTypeAlias:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:typeAliasNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:typeAliasNode"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractFunction",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractFunction"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractFunction->Parameter:src/parser/ts-parser.ts:extractFunction:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractFunction",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractFunction:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractFunction->Parameter:src/parser/ts-parser.ts:extractFunction:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractFunction",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractFunction:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractFunction->Parameter:src/parser/ts-parser.ts:extractFunction:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractFunction",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractFunction:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:functionNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:functionNode"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractMethod",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractMethod"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractMethod->Parameter:src/parser/ts-parser.ts:extractMethod:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractMethod",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractMethod:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractMethod->Parameter:src/parser/ts-parser.ts:extractMethod:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractMethod",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractMethod:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractMethod->Parameter:src/parser/ts-parser.ts:extractMethod:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractMethod",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractMethod:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:parent",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:parent"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:parentName",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:parentName"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:methodNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:methodNode"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:parentNodeId",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:parentNodeId"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractProperty",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractProperty"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractProperty->Parameter:src/parser/ts-parser.ts:extractProperty:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractProperty",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractProperty:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractProperty->Parameter:src/parser/ts-parser.ts:extractProperty:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractProperty",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractProperty:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractProperty->Parameter:src/parser/ts-parser.ts:extractProperty:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractProperty",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractProperty:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:propertyNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:propertyNode"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractVariableStatement",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractVariableStatement"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractVariableStatement->Parameter:src/parser/ts-parser.ts:extractVariableStatement:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractVariableStatement",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractVariableStatement:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractVariableStatement->Parameter:src/parser/ts-parser.ts:extractVariableStatement:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractVariableStatement",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractVariableStatement:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractVariableStatement->Parameter:src/parser/ts-parser.ts:extractVariableStatement:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractVariableStatement",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractVariableStatement:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:variableNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:variableNode"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractParameters",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractParameters"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractParameters->Parameter:src/parser/ts-parser.ts:extractParameters:parameters",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractParameters",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractParameters:parameters",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractParameters->Parameter:src/parser/ts-parser.ts:extractParameters:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractParameters",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractParameters:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractParameters->Parameter:src/parser/ts-parser.ts:extractParameters:parent",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractParameters",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractParameters:parent",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:paramNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:paramNode"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:hasParamRel",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:hasParamRel"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractImport",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractImport"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractImport->Parameter:src/parser/ts-parser.ts:extractImport:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractImport",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractImport:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractImport->Parameter:src/parser/ts-parser.ts:extractImport:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractImport",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractImport:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractImport->Parameter:src/parser/ts-parser.ts:extractImport:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractImport",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractImport:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:moduleSpecifier",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:moduleSpecifier"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:importClause",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:importClause"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:hasDefaultImport",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:hasDefaultImport"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:hasNamedImports",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:hasNamedImports"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:hasNamespaceImport",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:hasNamespaceImport"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:isTypeOnly",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:isTypeOnly"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:imports",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:imports"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:isPackageImport",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:isPackageImport"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:relationshipType",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:relationshipType"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:targetNodeId",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:targetNodeId"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:importRel",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:importRel"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.extractExport",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractExport"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractExport->Parameter:src/parser/ts-parser.ts:extractExport:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractExport",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractExport:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractExport->Parameter:src/parser/ts-parser.ts:extractExport:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractExport",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractExport:result",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.extractExport->Parameter:src/parser/ts-parser.ts:extractExport:fileNode",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.extractExport",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:extractExport:fileNode",
+    "index": 2,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:exportRel",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:exportRel"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.hasDefaultExport",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.hasDefaultExport"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.hasDefaultExport->Parameter:src/parser/ts-parser.ts:hasDefaultExport:sourceFile",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.hasDefaultExport",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:hasDefaultExport:sourceFile",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:hasDefault",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:hasDefault"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.getDefaultExportExpression",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.getDefaultExportExpression"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.getDefaultExportExpression->Parameter:src/parser/ts-parser.ts:getDefaultExportExpression:sourceFile",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.getDefaultExportExpression",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:getDefaultExportExpression:sourceFile",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:expression",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:expression"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.getLineNumber",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.getLineNumber"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.getLineNumber->Parameter:src/parser/ts-parser.ts:getLineNumber:pos",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.getLineNumber",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:getLineNumber:pos",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.getJsDocComment",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.getJsDocComment"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.getJsDocComment->Parameter:src/parser/ts-parser.ts:getJsDocComment:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.getJsDocComment",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:getJsDocComment:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:jsDocComments",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:jsDocComments"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.getVisibility",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.getVisibility"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.getVisibility->Parameter:src/parser/ts-parser.ts:getVisibility:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.getVisibility",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:getVisibility:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.getVariableScope",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.getVariableScope"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.getVariableScope->Parameter:src/parser/ts-parser.ts:getVariableScope:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.getVariableScope",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:getVariableScope:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.resolveImportPath",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.resolveImportPath"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.resolveImportPath->Parameter:src/parser/ts-parser.ts:resolveImportPath:filePath",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.resolveImportPath",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:resolveImportPath:filePath",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.resolveImportPath->Parameter:src/parser/ts-parser.ts:resolveImportPath:importPath",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.resolveImportPath",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:resolveImportPath:importPath",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:dir",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:dir"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:resolvedPath",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:resolvedPath"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.generateNodeId",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.generateNodeId"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.generateNodeId->Parameter:src/parser/ts-parser.ts:generateNodeId:type",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.generateNodeId",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:generateNodeId:type",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.generateNodeId->Parameter:src/parser/ts-parser.ts:generateNodeId:identifier",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.generateNodeId",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:generateNodeId:identifier",
+    "index": 1,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.hasNodeDecorators",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.hasNodeDecorators"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.hasNodeDecorators->Parameter:src/parser/ts-parser.ts:hasNodeDecorators:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.hasNodeDecorators",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:hasNodeDecorators:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/parser/ts-parser.ts:TSParser->Method:src/parser/ts-parser.ts:TSParser.getFileSize",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/parser/ts-parser.ts:TSParser",
+    "endNodeId": "Method:src/parser/ts-parser.ts:TSParser.getFileSize"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/parser/ts-parser.ts:TSParser.getFileSize->Parameter:src/parser/ts-parser.ts:getFileSize:filePath",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/parser/ts-parser.ts:TSParser.getFileSize",
+    "endNodeId": "Parameter:src/parser/ts-parser.ts:getFileSize:filePath",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts->Variable:src/parser/ts-parser.ts:stats",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/parser/ts-parser.ts",
+    "endNodeId": "Variable:src/parser/ts-parser.ts:stats"
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "*"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "*"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "REEXPORTS:File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "codebaseId": "self",
+    "type": "EXPORTS_LOCAL",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "exportCount": 1,
+    "hasNamedExports": true,
+    "isTypeOnly": false,
+    "isReExport": true,
+    "exportNames": [
+      "*"
+    ],
+    "exportKinds": [
+      "variable"
+    ]
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts->Variable:src/schema/index.ts:SCHEMA_VERSION",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "endNodeId": "Variable:src/schema/index.ts:SCHEMA_VERSION"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts->Variable:src/schema/index.ts:SCHEMA_METADATA",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "endNodeId": "Variable:src/schema/index.ts:SCHEMA_METADATA"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "imports": [
+      "Node",
+      "CodeElement",
+      "CodeLocation",
+      "NamedType",
+      "Callable",
+      "TypeParameter",
+      "Decorator",
+      "TypeReference"
+    ],
+    "importCount": 8,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./types.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/schema/types.ts"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Codebase",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Codebase"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Codebase->Node",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Codebase",
+    "endNodeId": "Node"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Package",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Package"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Package->Node",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Package",
+    "endNodeId": "Node"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Directory",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Directory"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Directory->Node",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Directory",
+    "endNodeId": "Node"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:File",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:File"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:File->Node",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:File",
+    "endNodeId": "Node"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Module",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Module"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Module->Node",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Module",
+    "endNodeId": "Node"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Namespace",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Namespace"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Namespace->NamedType",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Namespace",
+    "endNodeId": "NamedType"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Class",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Class"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Class->NamedType",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Class",
+    "endNodeId": "NamedType"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Interface",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Interface"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Interface->NamedType",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Interface",
+    "endNodeId": "NamedType"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Enum",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Enum"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Enum->NamedType",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Enum",
+    "endNodeId": "NamedType"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:EnumMember",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:EnumMember"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:EnumMember->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:EnumMember",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:TypeAlias",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:TypeAlias"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:TypeAlias->NamedType",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:TypeAlias",
+    "endNodeId": "NamedType"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Function",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Function"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Function->Callable",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Function",
+    "endNodeId": "Callable"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Method",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Method"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Method->Callable",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Method",
+    "endNodeId": "Callable"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Constructor",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Constructor"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Constructor->Callable",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Constructor",
+    "endNodeId": "Callable"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Property",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Property"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Property->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Property",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Variable",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Variable"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Variable->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Variable",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Parameter",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Parameter"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Parameter->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Parameter",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:JsxElement",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:JsxElement"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:JsxElement->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:JsxElement",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:JsxAttribute",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:JsxAttribute"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:JsxAttribute->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:JsxAttribute",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Test",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Test"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Test->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Test",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Component",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Component"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Component->NamedType",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Component",
+    "endNodeId": "NamedType"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:Dependency",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:Dependency"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:Dependency->Node",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:Dependency",
+    "endNodeId": "Node"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:TypeDefinition",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:TypeDefinition"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:TypeDefinition->NamedType",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:TypeDefinition",
+    "endNodeId": "NamedType"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts->Interface:src/schema/nodes.ts:ASTNodeInfo",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/nodes.ts",
+    "endNodeId": "Interface:src/schema/nodes.ts:ASTNodeInfo"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/nodes.ts:ASTNodeInfo->Node",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/nodes.ts:ASTNodeInfo",
+    "endNodeId": "Node"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "imports": [
+      "Relationship",
+      "TypeReference"
+    ],
+    "importCount": 2,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "./types.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/schema/types.ts"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ImportRelationship",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ImportRelationship"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ImportRelationship->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ImportRelationship",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ExportRelationship",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ExportRelationship"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ExportRelationship->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ExportRelationship",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:Imports",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:Imports"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:Imports->ImportRelationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:Imports",
+    "endNodeId": "ImportRelationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ImportsFromPackage",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ImportsFromPackage"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ImportsFromPackage->ImportRelationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ImportsFromPackage",
+    "endNodeId": "ImportRelationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ImportsTypes",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ImportsTypes"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ImportsTypes->ImportRelationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ImportsTypes",
+    "endNodeId": "ImportRelationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ImportsTypesFromPackage",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ImportsTypesFromPackage"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ImportsTypesFromPackage->ImportRelationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ImportsTypesFromPackage",
+    "endNodeId": "ImportRelationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ExportsLocal",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ExportsLocal"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ExportsLocal->ExportRelationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ExportsLocal",
+    "endNodeId": "ExportRelationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ExportsDefault",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ExportsDefault"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ExportsDefault->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ExportsDefault",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:Reexports",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:Reexports"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:Reexports->ExportRelationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:Reexports",
+    "endNodeId": "ExportRelationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ReexportsFromPackage",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ReexportsFromPackage"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ReexportsFromPackage->ExportRelationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ReexportsFromPackage",
+    "endNodeId": "ExportRelationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ReexportsAll",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ReexportsAll"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ReexportsAll->ExportRelationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ReexportsAll",
+    "endNodeId": "ExportRelationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:Extends",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:Extends"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:Extends->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:Extends",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:InterfaceExtends",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:InterfaceExtends"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:InterfaceExtends->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:InterfaceExtends",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:Implements",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:Implements"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:Implements->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:Implements",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:Calls",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:Calls"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:Calls->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:Calls",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:Contains",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:Contains"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:Contains->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:Contains",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:HasMethod",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:HasMethod"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:HasMethod->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:HasMethod",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:HasParameter",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:HasParameter"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:HasParameter->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:HasParameter",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:HasProperty",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:HasProperty"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:HasProperty->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:HasProperty",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ReferencesType",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ReferencesType"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ReferencesType->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ReferencesType",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ReferencesVariable",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ReferencesVariable"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ReferencesVariable->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ReferencesVariable",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:DependsOn",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:DependsOn"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:DependsOn->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:DependsOn",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:IsDecoratedBy",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:IsDecoratedBy"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:IsDecoratedBy->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:IsDecoratedBy",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:Tests",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:Tests"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:Tests->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:Tests",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:Renders",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:Renders"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:Renders->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:Renders",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:UsesHook",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:UsesHook"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:UsesHook->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:UsesHook",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts->Interface:src/schema/relationships.ts:ASTParentChild",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/relationships.ts",
+    "endNodeId": "Interface:src/schema/relationships.ts:ASTParentChild"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/relationships.ts:ASTParentChild->Relationship",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/relationships.ts:ASTParentChild",
+    "endNodeId": "Relationship"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:GraphEntity",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:GraphEntity"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:Node",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:Node"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/types.ts:Node->GraphEntity",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/types.ts:Node",
+    "endNodeId": "GraphEntity"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:Relationship",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:Relationship"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/types.ts:Relationship->GraphEntity",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/types.ts:Relationship",
+    "endNodeId": "GraphEntity"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:CodeLocation",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:CodeLocation"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:CodeElement",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:CodeElement"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/types.ts:CodeElement->Node",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/types.ts:CodeElement",
+    "endNodeId": "Node"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/types.ts:CodeElement->CodeLocation",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/types.ts:CodeElement",
+    "endNodeId": "CodeLocation"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:NamedType",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:NamedType"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/types.ts:NamedType->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/types.ts:NamedType",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:Callable",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:Callable"
+  },
+  {
+    "nodeId": "EXTENDS:Interface:src/schema/types.ts:Callable->CodeElement",
+    "codebaseId": "self",
+    "type": "EXTENDS",
+    "startNodeId": "Interface:src/schema/types.ts:Callable",
+    "endNodeId": "CodeElement"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:TypeParameter",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:TypeParameter"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:Decorator",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:Decorator"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:TypeReference",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:TypeReference"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts->Interface:src/schema/types.ts:Neo4jMetadata",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/types.ts",
+    "endNodeId": "Interface:src/schema/types.ts:Neo4jMetadata"
+  },
+  {
+    "nodeId": "IMPORTS:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "codebaseId": "self",
+    "type": "IMPORTS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "File:/Users/zach/Dev/SAGE/cli/src/schema/index.ts",
+    "imports": [
+      "Node",
+      "Relationship"
+    ],
+    "importCount": 2,
+    "hasDefaultImport": false,
+    "hasNamedImports": true,
+    "hasNamespaceImport": false,
+    "isTypeOnly": false,
+    "importPath": "../schema/index.ts",
+    "isRelative": true,
+    "isResolved": true,
+    "resolvedPath": "/Users/zach/Dev/SAGE/cli/src/schema/index.ts"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Interface:src/transformer/graph-transformer.ts:TransformResult",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Interface:src/transformer/graph-transformer.ts:TransformResult"
+  },
+  {
+    "nodeId": "DEFINES_INTERFACE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Interface:src/transformer/graph-transformer.ts:GraphTransformerConfig",
+    "codebaseId": "self",
+    "type": "DEFINES_INTERFACE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Interface:src/transformer/graph-transformer.ts:GraphTransformerConfig"
+  },
+  {
+    "nodeId": "DEFINES_CLASS:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "codebaseId": "self",
+    "type": "DEFINES_CLASS",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer"
+  },
+  {
+    "nodeId": "HAS_PROPERTY:Class:src/transformer/graph-transformer.ts:GraphTransformer->Property:src/transformer/graph-transformer.ts:GraphTransformer.config",
+    "codebaseId": "self",
+    "type": "HAS_PROPERTY",
+    "startNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "endNodeId": "Property:src/transformer/graph-transformer.ts:GraphTransformer.config"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/transformer/graph-transformer.ts:GraphTransformer->Method:src/transformer/graph-transformer.ts:GraphTransformer.transform",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "endNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.transform"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/transformer/graph-transformer.ts:GraphTransformer.transform->Parameter:src/transformer/graph-transformer.ts:transform:parseResults",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.transform",
+    "endNodeId": "Parameter:src/transformer/graph-transformer.ts:transform:parseResults",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:nodes",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:nodes"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:relationships",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:relationships"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:uniqueNodes",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:uniqueNodes"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:uniqueRelationships",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:uniqueRelationships"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:enhancedNodes",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:enhancedNodes"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/transformer/graph-transformer.ts:GraphTransformer->Method:src/transformer/graph-transformer.ts:GraphTransformer.deduplicateNodes",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "endNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.deduplicateNodes"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/transformer/graph-transformer.ts:GraphTransformer.deduplicateNodes->Parameter:src/transformer/graph-transformer.ts:deduplicateNodes:nodes",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.deduplicateNodes",
+    "endNodeId": "Parameter:src/transformer/graph-transformer.ts:deduplicateNodes:nodes",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:nodeMap",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:nodeMap"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/transformer/graph-transformer.ts:GraphTransformer->Method:src/transformer/graph-transformer.ts:GraphTransformer.deduplicateRelationships",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "endNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.deduplicateRelationships"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/transformer/graph-transformer.ts:GraphTransformer.deduplicateRelationships->Parameter:src/transformer/graph-transformer.ts:deduplicateRelationships:relationships",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.deduplicateRelationships",
+    "endNodeId": "Parameter:src/transformer/graph-transformer.ts:deduplicateRelationships:relationships",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:relationshipMap",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:relationshipMap"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/transformer/graph-transformer.ts:GraphTransformer->Method:src/transformer/graph-transformer.ts:GraphTransformer.validate",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "endNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.validate"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/transformer/graph-transformer.ts:GraphTransformer.validate->Parameter:src/transformer/graph-transformer.ts:validate:result",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.validate",
+    "endNodeId": "Parameter:src/transformer/graph-transformer.ts:validate:result",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:invalidNodes",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:invalidNodes"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:invalidRelationships",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:invalidRelationships"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:nodeIds",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:nodeIds"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:builtInModules",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:builtInModules"
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:danglingRelationships",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:danglingRelationships"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/transformer/graph-transformer.ts:GraphTransformer->Method:src/transformer/graph-transformer.ts:GraphTransformer.isValidNode",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "endNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.isValidNode"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/transformer/graph-transformer.ts:GraphTransformer.isValidNode->Parameter:src/transformer/graph-transformer.ts:isValidNode:node",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.isValidNode",
+    "endNodeId": "Parameter:src/transformer/graph-transformer.ts:isValidNode:node",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/transformer/graph-transformer.ts:GraphTransformer->Method:src/transformer/graph-transformer.ts:GraphTransformer.ensureNodeLabels",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "endNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.ensureNodeLabels"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/transformer/graph-transformer.ts:GraphTransformer.ensureNodeLabels->Parameter:src/transformer/graph-transformer.ts:ensureNodeLabels:nodes",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.ensureNodeLabels",
+    "endNodeId": "Parameter:src/transformer/graph-transformer.ts:ensureNodeLabels:nodes",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  },
+  {
+    "nodeId": "DEFINES_VARIABLE:File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts->Variable:src/transformer/graph-transformer.ts:enhancedNode",
+    "codebaseId": "self",
+    "type": "DEFINES_VARIABLE",
+    "startNodeId": "File:/Users/zach/Dev/SAGE/cli/src/transformer/graph-transformer.ts",
+    "endNodeId": "Variable:src/transformer/graph-transformer.ts:enhancedNode"
+  },
+  {
+    "nodeId": "HAS_METHOD:Class:src/transformer/graph-transformer.ts:GraphTransformer->Method:src/transformer/graph-transformer.ts:GraphTransformer.isValidRelationship",
+    "codebaseId": "self",
+    "type": "HAS_METHOD",
+    "startNodeId": "Class:src/transformer/graph-transformer.ts:GraphTransformer",
+    "endNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.isValidRelationship"
+  },
+  {
+    "nodeId": "HAS_PARAMETER:Method:src/transformer/graph-transformer.ts:GraphTransformer.isValidRelationship->Parameter:src/transformer/graph-transformer.ts:isValidRelationship:relationship",
+    "codebaseId": "self",
+    "type": "HAS_PARAMETER",
+    "startNodeId": "Method:src/transformer/graph-transformer.ts:GraphTransformer.isValidRelationship",
+    "endNodeId": "Parameter:src/transformer/graph-transformer.ts:isValidRelationship:relationship",
+    "index": 0,
+    "isOptional": false,
+    "isRest": false,
+    "hasDefaultValue": false,
+    "isDestructured": false
+  }
+]

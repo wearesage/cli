@@ -1,0 +1,47 @@
+{
+  "name": "@sage/cli",
+  "version": "1.0.0",
+  "description": "A system that ingests TypeScript codebases into Neo4j graph representations",
+  "main": "dist/index.js",
+  "bin": {
+    "sage": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "jest",
+    "analyze": "ts-node src/cli.ts analyze",
+    "query": "ts-node src/cli.ts query",
+    "example": "ts-node src/examples/analyze-project.ts",
+    "prepare": "npm run build",
+    "postbuild": "chmod +x dist/cli.js"
+  },
+  "keywords": [
+    "typescript",
+    "neo4j",
+    "graph",
+    "code-analysis",
+    "static-analysis",
+    "ast",
+    "parser",
+    "cypher",
+    "code-graph"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "neo4j-driver": "^5.28.1",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.15.3",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2"
+  }
+}
