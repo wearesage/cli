@@ -30,6 +30,9 @@ export interface Relationship extends GraphEntity {
   hash?: string;  // Hash of the relationship content for change detection
   createdAt?: string;  // Timestamp when the relationship was created
   updatedAt?: string;  // Timestamp when the relationship was last updated
+  isCrossCodebase?: boolean;  // Whether this relationship crosses codebase boundaries
+  sourceCodebaseId?: string;  // The codebase ID of the start node (for cross-codebase relationships)
+  targetCodebaseId?: string;  // The codebase ID of the end node (for cross-codebase relationships)
 }
 
 /**

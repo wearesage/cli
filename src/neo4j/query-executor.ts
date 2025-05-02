@@ -98,6 +98,11 @@ export interface QueryExecutorConfig {
    * Default timeout for queries in milliseconds (default: 30000)
    */
   defaultTimeout?: number;
+  
+  /**
+   * Default codebase ID to use for queries (optional)
+   */
+  defaultCodebaseId?: string;
 }
 
 /**
@@ -113,6 +118,7 @@ export class QueryExecutor {
   constructor(config: QueryExecutorConfig) {
     this.config = {
       defaultTimeout: 30000,
+      defaultCodebaseId: 'default',
       ...config
     };
     
@@ -363,5 +369,84 @@ export class QueryExecutor {
    */
   public async close(): Promise<void> {
     await this.driver.close();
+  }
+  
+  /**
+   * Execute a Cypher query scoped to a specific codebase
+   *
+   * This method automatically adds codebase filtering to the query
+   */
+  public async executeCodebaseScopedQuery(
+    codebaseId: string,
+    cypher: string,
+    parameters: Record<string, any> = {},
+    timeout?: number
+  ): Promise<QueryResult> {
+    // Add codebaseId to parameters
+    const paramsWithCodebase = {
+      ...parameters,
+      codebaseId,
+      nodeIdPrefix: `${codebaseId}:` // Add nodeIdPrefix for matching node IDs that start with codebaseId:
+    };
+    
+    // Check if the query already has a WHERE clause
+    const hasWhere = /\bWHERE\b/i.test(cypher);
+    
+    // Modify the query to include codebase filtering
+    let scopedCypher = cypher;
+    
+    // For each MATCH clause, add codebase filtering
+    // This is a simple approach and might need refinement for complex queries
+    scopedCypher = scopedCypher.replace(
+      /MATCH\s*\(([^)]+)\)/gi,
+      (match, nodePattern) => {
+        // Check if the node pattern already has a codebaseId filter
+        if (nodePattern.includes('codebaseId') || nodePattern.includes('nodeId')) {
+          return match;
+        }
+        
+        // Check if the node pattern has properties
+        if (nodePattern.includes('{')) {
+          // Add codebaseId to existing properties
+          return match.replace(/{([^}]*)}/g, '{$1, codebaseId: $codebaseId}');
+        } else {
+          // Add codebaseId as a new property
+          const parts = nodePattern.split(':');
+          const varName = parts[0].trim();
+          const labels = parts.slice(1).join(':');
+          
+          if (labels) {
+            return `MATCH (${varName}:${labels} {codebaseId: $codebaseId})`;
+          } else {
+            return `MATCH (${varName} {codebaseId: $codebaseId})`;
+          }
+        }
+      }
+    );
+    
+    console.log(`Executing codebase-scoped query for codebase ${codebaseId}`);
+    console.log(`Original query: ${cypher}`);
+    console.log(`Scoped query: ${scopedCypher}`);
+    
+    // Execute the modified query
+    return this.executeQuery(scopedCypher, paramsWithCodebase, timeout);
+  }
+  
+  /**
+   * Execute a Cypher query that spans multiple codebases
+   *
+   * This method allows explicit cross-codebase queries
+   */
+  public async executeCrossCodebaseQuery(
+    cypher: string,
+    parameters: Record<string, any> = {},
+    timeout?: number
+  ): Promise<QueryResult> {
+    // Add a warning log about cross-codebase query
+    console.warn('Executing cross-codebase query. This may have performance implications.');
+    console.log(`Cross-codebase query: ${cypher}`);
+    
+    // Execute the query without modification
+    return this.executeQuery(cypher, parameters, timeout);
   }
 }

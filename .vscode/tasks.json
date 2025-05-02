@@ -2,6 +2,31 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Cleanup Self Codebase",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "ts-node",
+        "scripts/cleanup-codebase.ts",
+        "self"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "problemMatcher": [],
+      "detail": "Delete all nodes and relationships for the 'self' codebase from Neo4j",
+      "options": {
+        "env": {
+          "NEO4J_URI": "neo4j://localhost:7687",
+          "NEO4J_USERNAME": "neo4j",
+          "NEO4J_PASSWORD": "justdontask"
+        }
+      }
+    },
+    {
       "label": "Analyze Self",
       "type": "shell",
       "command": "npx",
@@ -31,6 +56,19 @@
           "NEO4J_PASSWORD": "justdontask"
         }
       }
+    },
+    {
+      "label": "Clean and Analyze Self",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Cleanup Self Codebase", "Analyze Self"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "problemMatcher": [],
+      "detail": "Clean up existing 'self' codebase data and then analyze the codebase again"
     },
     {
       "label": "Analyze Self (JSON Only)",
@@ -95,6 +133,54 @@
       },
       "problemMatcher": [],
       "detail": "Generate a report of the current schema metadata"
+    },
+    {
+      "label": "Analyze Codebase Relationships",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "ts-node",
+        "scripts/analyze-codebase-relationships.ts"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "problemMatcher": [],
+      "detail": "Analyze relationships between multiple codebases in Neo4j",
+      "options": {
+        "env": {
+          "NEO4J_URI": "neo4j://localhost:7687",
+          "NEO4J_USERNAME": "neo4j",
+          "NEO4J_PASSWORD": "justdontask"
+        }
+      }
+    },
+    {
+      "label": "Fix Cross-Codebase Relationships",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "ts-node",
+        "scripts/fix-cross-codebase-relationships.ts"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "problemMatcher": [],
+      "detail": "Fix cross-codebase relationship properties in Neo4j",
+      "options": {
+        "env": {
+          "NEO4J_URI": "neo4j://localhost:7687",
+          "NEO4J_USERNAME": "neo4j",
+          "NEO4J_PASSWORD": "justdontask"
+        }
+      }
     }
   ],
   "inputs": [

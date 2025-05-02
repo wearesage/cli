@@ -4,9 +4,9 @@ import * as fs from 'fs';
 import {
   Node, Relationship,
   File, Class, Interface, TypeAlias, Function, Method,
-  Property, Variable, Parameter,
-  Imports, ImportsFromPackage, ExportsLocal, ExportsDefault,
-  HasParameter, HasMethod, HasProperty
+  Property, Variable, Parameter, InterfaceProperty,
+  Imports, ImportsFromPackage, ExportsLocal,
+  HasParameter, InterfaceHasProperty
 } from '../schema/index.ts';
 
 /**
@@ -284,6 +284,13 @@ export class TSParser {
       endNodeId: interfaceNode.nodeId
     });
     
+    // Extract interface properties
+    node.members.forEach((member, index) => {
+      if (ts.isPropertySignature(member)) {
+        this.extractInterfaceProperty(member, result, fileNode, interfaceNode, index);
+      }
+    });
+    
     // Extract heritage clauses (extends)
     if (node.heritageClauses) {
       for (const clause of node.heritageClauses) {
@@ -302,6 +309,54 @@ export class TSParser {
         }
       }
     }
+  }
+
+  /**
+   * Extract interface property information from a property signature
+   */
+  private extractInterfaceProperty(
+    node: ts.PropertySignature,
+    result: ParseResult,
+    fileNode: File,
+    interfaceNode: Interface,
+    index: number
+  ): void {
+    if (!node.name) return; // Skip properties without names
+    
+    const name = node.name.getText();
+    const typeNode = node.type;
+    const typeString = typeNode ? typeNode.getText() : 'any';
+    const description = this.getJsDocComment(node);
+    const isOptional = !!node.questionToken;
+    
+    // Create InterfaceProperty node
+    const propertyNode: InterfaceProperty = {
+      nodeId: this.generateNodeId('InterfaceProperty', `${fileNode.path}:${interfaceNode.name}.${name}`),
+      codebaseId: this.codebaseId,
+      labels: ['InterfaceProperty'],
+      type: 'InterfaceProperty',
+      name,
+      typeString,
+      description,
+      isOptional,
+      // PropertySignature doesn't have an initializer property in TypeScript
+      defaultValue: undefined
+    };
+    
+    result.nodes.push(propertyNode);
+    
+    // Add HAS_PROPERTY relationship
+    const relationship: InterfaceHasProperty = {
+      nodeId: this.generateNodeId('HAS_PROPERTY', `${interfaceNode.nodeId}->${propertyNode.nodeId}`),
+      codebaseId: this.codebaseId,
+      type: 'HAS_PROPERTY',
+      startNodeId: interfaceNode.nodeId,
+      endNodeId: propertyNode.nodeId,
+      index,
+      isOptional
+    };
+    
+    result.relationships.push(relationship);
   }
   
   /**
@@ -338,6 +393,15 @@ export class TSParser {
       startNodeId: fileNode.nodeId,
       endNodeId: typeAliasNode.nodeId
     });
+    
+    // Extract properties from type alias if it's a type literal
+    if (ts.isTypeLiteralNode(node.type)) {
+      node.type.members.forEach((member, index) => {
+        if (ts.isPropertySignature(member)) {
+          this.extractInterfaceProperty(member, result, fileNode, typeAliasNode as any, index);
+        }
+      });
+    }
   }
   
   /**

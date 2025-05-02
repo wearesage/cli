@@ -72,7 +72,8 @@ class TSCodeGraph {
         username: config.neo4j.username,
         password: config.neo4j.password,
         database: config.neo4j.database,
-        defaultTimeout: config.neo4j.defaultTimeout
+        defaultTimeout: config.neo4j.defaultTimeout,
+        defaultCodebaseId: config.codebaseId
       });
     }
   }
@@ -251,12 +252,101 @@ class TSCodeGraph {
   }
   
   /**
+   * Execute a Cypher query scoped to this codebase
+   */
+  public async executeCodebaseScopedQuery(
+    cypher: string,
+    parameters: Record<string, any> = {}
+  ): Promise<any> {
+    if (!this.queryExecutor) {
+      throw new Error('Query executor not initialized. Make sure Neo4j configuration is provided.');
+    }
+    
+    return this.queryExecutor.executeCodebaseScopedQuery(this.config.codebaseId, cypher, parameters);
+  }
+  
+  /**
+   * Execute a Cypher query that spans multiple codebases
+   */
+  public async executeCrossCodebaseQuery(
+    cypher: string,
+    parameters: Record<string, any> = {}
+  ): Promise<any> {
+    if (!this.queryExecutor) {
+      throw new Error('Query executor not initialized. Make sure Neo4j configuration is provided.');
+    }
+    
+    return this.queryExecutor.executeCrossCodebaseQuery(cypher, parameters);
+  }
+  
+  /**
    * Close all connections
    */
   public async close(): Promise<void> {
     if (this.queryExecutor) {
       await this.queryExecutor.close();
     }
+  }
+  
+  /**
+   * Get information about all codebases in the database
+   */
+  public async listCodebases(): Promise<any[]> {
+    if (!this.queryExecutor) {
+      throw new Error('Query executor not initialized. Make sure Neo4j configuration is provided.');
+    }
+    
+    const result = await this.queryExecutor.executeQuery(`
+      MATCH (n:Node)
+      WITH DISTINCT n.codebaseId AS codebaseId
+      MATCH (n:Node {codebaseId: codebaseId})
+      WITH codebaseId, count(n) AS nodeCount
+      RETURN codebaseId, nodeCount
+      ORDER BY codebaseId
+    `);
+    
+    return result.records;
+  }
+  
+  /**
+   * Find cross-codebase relationships
+   */
+  public async findCrossCodebaseRelationships(): Promise<any[]> {
+    if (!this.queryExecutor) {
+      throw new Error('Query executor not initialized. Make sure Neo4j configuration is provided.');
+    }
+    
+    const result = await this.queryExecutor.executeQuery(`
+      MATCH (source:Node)-[r {isCrossCodebase: true}]->(target:Node)
+      RETURN
+        r.type AS relationshipType,
+        source.nodeId AS sourceNodeId,
+        target.nodeId AS targetNodeId,
+        source.codebaseId AS sourceCodebaseId,
+        target.codebaseId AS targetCodebaseId,
+        count(*) AS count
+      ORDER BY count DESC
+    `);
+    
+    return result.records;
+  }
+  
+  /**
+   * Find dependencies between codebases
+   */
+  public async findCodebaseDependencies(): Promise<any[]> {
+    if (!this.queryExecutor) {
+      throw new Error('Query executor not initialized. Make sure Neo4j configuration is provided.');
+    }
+    
+    const result = await this.queryExecutor.executeQuery(`
+      MATCH (source:Node)-[r {isCrossCodebase: true}]->(target:Node)
+      WITH source.codebaseId AS sourceCodebase, target.codebaseId AS targetCodebase, count(*) AS relationshipCount
+      RETURN sourceCodebase, targetCodebase, relationshipCount
+      ORDER BY relationshipCount DESC
+    `);
+    
+    return result.records;
   }
 }
 

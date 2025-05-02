@@ -148,6 +148,37 @@ export async function createCodebaseSchema(session: Session, codebaseId: string)
     
     console.log(`Created index on File.path for codebase ${codebaseId}`);
     
+    // Create index for cross-codebase relationships
+    // Note: Neo4j syntax for relationship indexes is different
+    try {
+      await session.run(`
+        CREATE INDEX relationship_cross_codebase IF NOT EXISTS
+        FOR ()-[r]-()
+        ON (r.isCrossCodebase)
+      `);
+      
+      console.log(`Created index on relationship.isCrossCodebase for cross-codebase queries`);
+      
+      // Create index for source and target codebase IDs in relationships
+      await session.run(`
+        CREATE INDEX relationship_source_codebase IF NOT EXISTS
+        FOR ()-[r]-()
+        ON (r.sourceCodebaseId)
+      `);
+      
+      await session.run(`
+        CREATE INDEX relationship_target_codebase IF NOT EXISTS
+        FOR ()-[r]-()
+        ON (r.targetCodebaseId)
+      `);
+      
+      console.log(`Created indexes for cross-codebase relationship source and target`);
+    } catch (error) {
+      // Some versions of Neo4j have different syntax for relationship indexes
+      console.warn(`Warning: Could not create relationship indexes: ${error}`);
+      console.log(`This is not critical - the database will still work but queries on cross-codebase relationships may be slower`);
+    }
+    
     // Create a specific index for this codebase's nodes
     // Since we can't use WHERE in CREATE INDEX, we'll use a query to find nodes for this codebase
     console.log(`Schema for codebase ${codebaseId} created successfully`);
@@ -172,12 +203,22 @@ export async function dropCodebaseSchema(session: Session, codebaseId: string): 
       const labelsAndProperties = record.get('labelsOrTypes') + '.' + record.get('properties');
       
       // Only drop indexes that are specific to this codebase
-      if (labelsAndProperties.includes('codebaseId') && 
+      if (labelsAndProperties.includes('codebaseId') &&
           record.get('populationPercent') < 10) { // Heuristic to avoid dropping global indexes
         await session.run(`DROP INDEX ${name}`);
         console.log(`Dropped index ${name}`);
       }
     }
+    
+    // Delete all nodes and relationships for this codebase
+    const deleteResult = await session.run(`
+      MATCH (n:Node {codebaseId: $codebaseId})
+      DETACH DELETE n
+      RETURN count(n) as deletedCount
+    `, { codebaseId });
+    
+    const deletedCount = deleteResult.records[0].get('deletedCount').toNumber();
+    console.log(`Deleted ${deletedCount} nodes from codebase ${codebaseId}`);
     
     console.log(`Schema for codebase ${codebaseId} dropped successfully`);
   } catch (error) {

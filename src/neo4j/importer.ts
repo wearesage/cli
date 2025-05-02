@@ -131,6 +131,9 @@ export class Neo4jImporter {
       
       // Import relationships in batches
       await this.importRelationships(relationships);
+
+      // Update node properties based on relationships
+      await this.updateNodeProperties();
       
       console.log('Import complete');
     } catch (error) {
@@ -278,6 +281,26 @@ export class Neo4jImporter {
       }
     }
     
+    // Ensure the node has a codebaseId
+    if (!nodeProperties.codebaseId) {
+      console.warn(`Node ${node.nodeId} does not have a codebaseId. Using 'default' as fallback.`);
+      nodeProperties.codebaseId = 'default';
+    }
+    
+    // Special handling for Codebase nodes - ensure nodeId matches codebaseId
+    if (labels.includes('Codebase')) {
+      // For Codebase nodes, set nodeId to match codebaseId to ensure consistency
+      nodeProperties.nodeId = nodeProperties.codebaseId;
+      console.log(`Ensuring Codebase node has consistent ID: ${nodeProperties.nodeId}`);
+    }
+    // For all other nodes, ensure the nodeId includes the codebaseId as a prefix
+    else if (!node.nodeId.startsWith(`${nodeProperties.codebaseId}:`)) {
+      // Fix the nodeId by adding the codebaseId prefix
+      const originalNodeId = node.nodeId;
+      nodeProperties.nodeId = `${nodeProperties.codebaseId}:${originalNodeId}`;
+      console.log(`Fixed node ID from ${originalNodeId} to ${nodeProperties.nodeId}`);
+    }
+    
     // Add schema version
     const nodeWithVersion = {
       ...nodeProperties,
@@ -311,6 +334,20 @@ export class Neo4jImporter {
       console.warn(`Warning: Relationship type '${type}' is not defined in schema metadata. This may cause inconsistencies.`);
     }
     
+    // Ensure the relationship has a codebaseId
+    if (!properties.codebaseId) {
+      console.warn(`Relationship ${relationship.nodeId} does not have a codebaseId. Using 'default' as fallback.`);
+      properties.codebaseId = 'default';
+    }
+    
+    // We need to get the actual codebase IDs from the source and target nodes
+    // This requires a separate query, which we can't do here
+    // Instead, we'll rely on the codebaseId property of the relationship
+    
+    // For now, we'll set isCrossCodebase to false by default
+    // A separate process can update this property later if needed
+    properties.isCrossCodebase = false;
+    
     // Add schema version and timestamps
     const propertiesWithVersion = {
       ...properties,
@@ -332,6 +369,65 @@ export class Neo4jImporter {
       endNodeId,
       properties: propertiesWithVersion
     };
+  }
+
+  /**
+   * Update node properties based on their relationships
+   */
+  private async updateNodeProperties(): Promise<void> {
+    const session = this.getSession();
+    
+    try {
+      console.log('Updating node properties based on relationships...');
+      
+      // Get the codebase ID from the first node (assuming all nodes are from the same codebase)
+      const codebaseResult = await session.run(`
+        MATCH (n:Node)
+        RETURN n.codebaseId AS codebaseId
+        LIMIT 1
+      `);
+      
+      const codebaseId = codebaseResult.records.length > 0
+        ? codebaseResult.records[0].get('codebaseId')
+        : 'default';
+      
+      console.log(`Updating node properties for codebase: ${codebaseId}`);
+      
+      // Update importCount for File nodes within the same codebase
+      const importCountResult = await session.run(`
+        MATCH (f:File {codebaseId: $codebaseId})-[r:IMPORTS]->()
+        WITH f, count(r) AS importCount
+        SET f.importCount = importCount
+        RETURN count(f) AS updatedNodes
+      `, { codebaseId });
+      
+      // Update exportCount for File nodes within the same codebase
+      const exportCountResult = await session.run(`
+        MATCH (f:File {codebaseId: $codebaseId})-[r:EXPORTS_LOCAL]->()
+        WITH f, count(r) AS exportCount
+        SET f.exportCount = exportCount
+        RETURN count(f) AS updatedNodes
+      `, { codebaseId });
+      
+      // Update cross-codebase import count
+      const crossCodebaseImportResult = await session.run(`
+        MATCH (f:File {codebaseId: $codebaseId})-[r:IMPORTS]->(target)
+        WHERE target.codebaseId <> $codebaseId
+        WITH f, count(r) AS crossImportCount
+        SET f.crossCodebaseImportCount = crossImportCount
+        RETURN count(f) AS updatedNodes
+      `, { codebaseId });
+      
+      const importNodesUpdated = importCountResult.records[0].get('updatedNodes').toNumber();
+      const exportNodesUpdated = exportCountResult.records[0].get('updatedNodes').toNumber();
+      const crossImportNodesUpdated = crossCodebaseImportResult.records[0].get('updatedNodes').toNumber();
+      
+      console.log(`Updated importCount for ${importNodesUpdated} nodes`);
+      console.log(`Updated exportCount for ${exportNodesUpdated} nodes`);
+      console.log(`Updated crossCodebaseImportCount for ${crossImportNodesUpdated} nodes`);
+    } finally {
+      await session.close();
+    }
   }
   
   /**
