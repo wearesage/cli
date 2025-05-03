@@ -5,6 +5,86 @@ import * as fs from 'fs';
 import { TSCodeGraph } from './index';
 
 /**
+ * Performance tracker for measuring execution time of operations
+ */
+class PerformanceTracker {
+  private timestamps: Map<string, number> = new Map();
+  private startTime: number;
+  private verbose: boolean;
+
+  constructor(verbose = false) {
+    this.startTime = Date.now();
+    this.verbose = verbose;
+    this.timestamps.set('start', this.startTime);
+  }
+
+  // Record a timestamp with a label
+  mark(label: string): void {
+    const timestamp = Date.now();
+    this.timestamps.set(label, timestamp);
+    
+    if (this.verbose) {
+      console.log(`[${label}] ${this.formatTime(timestamp - this.startTime)}`);
+    }
+  }
+
+  // Calculate elapsed time between two timestamps
+  elapsed(fromLabel: string, toLabel: string): number {
+    const fromTime = this.timestamps.get(fromLabel);
+    const toTime = this.timestamps.get(toLabel);
+    
+    if (!fromTime || !toTime) {
+      return -1;
+    }
+    
+    return toTime - fromTime;
+  }
+
+  // Format milliseconds into a readable string
+  formatTime(ms: number): string {
+    if (ms < 1000) {
+      return `${ms}ms`;
+    } else if (ms < 60000) {
+      return `${(ms / 1000).toFixed(2)}s`;
+    } else {
+      const minutes = Math.floor(ms / 60000);
+      const seconds = ((ms % 60000) / 1000).toFixed(2);
+      return `${minutes}m ${seconds}s`;
+    }
+  }
+
+  // Print a summary of all recorded timestamps
+  summary(): void {
+    console.log('\n--- Performance Summary ---');
+    
+    // Calculate total time
+    const totalTime = Date.now() - this.startTime;
+    console.log(`Total execution time: ${this.formatTime(totalTime)}`);
+    
+    // Print individual operations if we have more than just start
+    if (this.timestamps.size > 1) {
+      console.log('\nOperation times:');
+      
+      // Get all timestamps in chronological order
+      const sortedLabels = Array.from(this.timestamps.entries())
+        .sort((a, b) => a[1] - b[1])
+        .map(entry => entry[0]);
+      
+      // Print elapsed time between consecutive timestamps
+      for (let i = 0; i < sortedLabels.length - 1; i++) {
+        const fromLabel = sortedLabels[i];
+        const toLabel = sortedLabels[i + 1];
+        const elapsed = this.elapsed(fromLabel, toLabel);
+        
+        console.log(`  ${fromLabel} → ${toLabel}: ${this.formatTime(elapsed)}`);
+      }
+    }
+    
+    console.log('---------------------------');
+  }
+}
+
+/**
  * Command-line interface for the TypeScript Code Graph system
  * 
  * This script provides a convenient way to analyze TypeScript projects
@@ -20,22 +100,35 @@ import { TSCodeGraph } from './index';
 const args = process.argv.slice(2);
 const command = args[0];
 
-if (!command || args.length < 2) {
+// Check for performance tracking options
+const perfEnabled = args.includes('--perf') || args.includes('--perf-verbose');
+const perfVerbose = args.includes('--perf-verbose');
+
+// Remove performance flags from args
+const cleanArgs = args.filter(arg => arg !== '--perf' && arg !== '--perf-verbose');
+const commandArgs = cleanArgs.slice(1);
+
+if (!command || (cleanArgs.length < 2 && !['help', 'ingest'].includes(command))) {
   printUsage();
   process.exit(1);
 }
 
 async function main() {
+  // Initialize performance tracker if enabled
+  const perfTracker = perfEnabled ? new PerformanceTracker(perfVerbose) : null;
+  
   try {
+    if (perfTracker) perfTracker.mark('init');
+    
     switch (command) {
       case 'analyze':
-        await analyzeProject(args.slice(1));
+        await analyzeProject(commandArgs, perfTracker);
         break;
       case 'ingest':
-        await ingestProject(args.slice(1));
+        await ingestProject(commandArgs, perfTracker);
         break;
       case 'query':
-        await queryGraph(args.slice(1));
+        await queryGraph(commandArgs, perfTracker);
         break;
       case 'help':
         printUsage();
@@ -45,8 +138,21 @@ async function main() {
         printUsage();
         process.exit(1);
     }
+    
+    // Print performance summary if tracking is enabled
+    if (perfTracker) {
+      perfTracker.mark('end');
+      perfTracker.summary();
+    }
   } catch (error) {
+    // Mark error timestamp if tracking is enabled
+    if (perfTracker) perfTracker.mark('error');
+    
     console.error('Error:', error);
+    
+    // Still show performance summary on error if tracking is enabled
+    if (perfTracker) perfTracker.summary();
+    
     process.exit(1);
   }
 }
@@ -73,6 +179,8 @@ Commands:
 Options:
   --skip-validation    Skip validation of the graph model (useful for projects with complex imports)
   --no-cleanup         Skip cleaning up existing data for the codebase (ingest command only)
+  --perf               Enable performance tracking
+  --perf-verbose       Enable verbose performance tracking with timestamps
 
 Examples:
   sage analyze ./my-project
@@ -94,7 +202,9 @@ Environment Variables:
 /**
  * Analyze a TypeScript project
  */
-async function analyzeProject(args: string[]) {
+async function analyzeProject(args: string[], perfTracker: PerformanceTracker | null = null) {
+  if (perfTracker) perfTracker.mark('analyze_start');
+  
   if (args.length < 1) {
     console.error('Error: Project path is required');
     printUsage();
@@ -103,6 +213,8 @@ async function analyzeProject(args: string[]) {
   
   // Check for --skip-validation flag
   const skipValidation = args.includes('--skip-validation');
+  
+  if (perfTracker) perfTracker.mark('parse_args');
   
   // Remove the flag from args if present
   const cleanArgs = args.filter(arg => arg !== '--skip-validation');
@@ -148,7 +260,9 @@ async function analyzeProject(args: string[]) {
   
   try {
     // Process the codebase
+    if (perfTracker) perfTracker.mark('process_start');
     await codeGraph.process(skipValidation);
+    if (perfTracker) perfTracker.mark('process_complete');
     
     console.log('\nAnalysis complete!');
     console.log(`Results saved to ${outputDir}`);
@@ -158,14 +272,17 @@ async function analyzeProject(args: string[]) {
     }
   } finally {
     // Close connections
+    if (perfTracker) perfTracker.mark('cleanup_start');
     await codeGraph.close();
+    if (perfTracker) perfTracker.mark('analyze_complete');
   }
 }
 
 /**
  * Run a Cypher query against the Neo4j database
  */
-async function queryGraph(args: string[]) {
+async function queryGraph(args: string[], perfTracker: PerformanceTracker | null = null) {
+  if (perfTracker) perfTracker.mark('query_start');
   if (args.length < 2) {
     console.error('Error: Codebase ID and Cypher query are required');
     printUsage();
@@ -200,7 +317,9 @@ async function queryGraph(args: string[]) {
   
   try {
     // Execute the query
+    if (perfTracker) perfTracker.mark('execute_query_start');
     const result = await codeGraph.executeQuery(cypherQuery, { codebaseId });
+    if (perfTracker) perfTracker.mark('execute_query_complete');
     
     console.log('\nQuery result:');
     console.log(JSON.stringify(result.records, null, 2));
@@ -210,7 +329,9 @@ async function queryGraph(args: string[]) {
     console.log(`  Execution time: ${result.summary.executionTime}ms`);
   } finally {
     // Close connections
+    if (perfTracker) perfTracker.mark('cleanup_start');
     await codeGraph.close();
+    if (perfTracker) perfTracker.mark('cleanup_complete');
   }
 }
 
@@ -218,7 +339,8 @@ async function queryGraph(args: string[]) {
  * Ingest a TypeScript project from the current directory
  * This combines cleanup, analysis, and import in one command
  */
-async function ingestProject(args: string[]) {
+async function ingestProject(args: string[], perfTracker: PerformanceTracker | null = null) {
+  if (perfTracker) perfTracker.mark('ingest_start');
   if (args.length < 1) {
     console.error('Error: Codebase ID is required');
     printUsage();
@@ -250,121 +372,43 @@ async function ingestProject(args: string[]) {
   // Step 1: Clean up existing data (if not skipped)
   if (!noCleanup) {
     console.log(`\nStep 1: Cleaning up existing data for codebase '${codebaseId}'...`);
-    
-    // Perform cleanup directly in the CLI
-    console.log(`Cleaning up codebase: ${codebaseId}`);
+    if (perfTracker) perfTracker.mark('cleanup_start');
     
     // Create query executor
     const { QueryExecutor } = await import('./neo4j/query-executor.js');
     const queryExecutor = new QueryExecutor(neo4jConfig);
     
     try {
-      // First, count the nodes to be deleted
-      const countResult = await queryExecutor.executeQuery(
-        `MATCH (n)
-         WHERE n.codebaseId = $codebaseId
-            OR n.nodeId STARTS WITH $codebaseIdPrefix
-            OR n.nodeId = $codebaseId
-            OR (n:Codebase AND n.name = $codebaseId)
-         RETURN count(n) as nodeCount`,
-        {
-          codebaseId,
-          codebaseIdPrefix: `${codebaseId}:`
-        }
-      );
+      console.log(`Deleting all nodes and relationships for codebase: ${codebaseId}`);
       
-      // Handle different record formats
-      let nodeCount = 0;
-      if (countResult.records && countResult.records.length > 0) {
-        const record = countResult.records[0];
-        if (typeof record.get === 'function') {
-          nodeCount = record.get('nodeCount').toNumber();
-        } else if (record.nodeCount !== undefined) {
-          nodeCount = typeof record.nodeCount === 'number' ?
-            record.nodeCount :
-            (record.nodeCount.low || 0);
-        }
-      }
-      console.log(`Found ${nodeCount} nodes to delete`);
+      // Delete all nodes and their relationships in one step
+      const deleteNodesQuery = `
+        MATCH (n)
+        WHERE n.codebaseId = $codebaseId
+           OR n.nodeId STARTS WITH $codebaseIdPrefix
+           OR n.nodeId = $codebaseId
+           OR (n:Codebase AND n.name = $codebaseId)
+        DETACH DELETE n
+      `;
       
-      if (nodeCount === 0) {
-        console.log('No nodes found for this codebase. Nothing to delete.');
-      } else {
-        // Ask for confirmation
-        console.log(`WARNING: This will delete all nodes and relationships for codebase '${codebaseId}'`);
-        console.log('Press Ctrl+C to cancel or wait 5 seconds to continue...');
-        
-        // Wait for 5 seconds
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        
-        // Delete all nodes and relationships for this codebase
-        console.log('Deleting nodes and relationships...');
-        
-        try {
-          const deleteResult = await queryExecutor.executeQuery(
-            `MATCH (n)
-             WHERE n.codebaseId = $codebaseId
-                OR n.nodeId STARTS WITH $codebaseIdPrefix
-                OR n.nodeId = $codebaseId
-                OR (n:Codebase AND n.name = $codebaseId)
-             DETACH DELETE n
-             RETURN count(n) as deletedCount`,
-            {
-              codebaseId,
-              codebaseIdPrefix: `${codebaseId}:`
-            }
-          );
-          
-          // Handle different record formats
-          let deletedCount = 0;
-          if (deleteResult.records && deleteResult.records.length > 0) {
-            const record = deleteResult.records[0];
-            if (typeof record.get === 'function') {
-              deletedCount = record.get('deletedCount').toNumber();
-            } else if (record.deletedCount !== undefined) {
-              deletedCount = typeof record.deletedCount === 'number' ?
-                record.deletedCount :
-                (record.deletedCount.low || 0);
-            }
-          }
-          console.log(`Successfully deleted ${deletedCount} nodes and their relationships`);
-          
-          // Also clean up any dangling relationships that might have the codebase in their properties
-          try {
-            const cleanupResult = await queryExecutor.executeQuery(
-              `MATCH ()-[r]-()
-               WHERE r.codebaseId = $codebaseId OR
-                     r.sourceCodebaseId = $codebaseId OR
-                     r.targetCodebaseId = $codebaseId
-               DELETE r
-               RETURN count(r) as deletedRelCount`,
-              { codebaseId }
-            );
-            
-            // Handle different record formats
-            let deletedRelCount = 0;
-            if (cleanupResult.records && cleanupResult.records.length > 0) {
-              const record = cleanupResult.records[0];
-              if (typeof record.get === 'function') {
-                deletedRelCount = record.get('deletedRelCount').toNumber();
-              } else if (record.deletedRelCount !== undefined) {
-                deletedRelCount = typeof record.deletedRelCount === 'number' ?
-                  record.deletedRelCount :
-                  (record.deletedRelCount.low || 0);
-              }
-            }
-            console.log(`Additionally cleaned up ${deletedRelCount} dangling relationships`);
-          } catch (relError) {
-            console.warn(`Warning: Could not clean up dangling relationships: ${relError}`);
-            console.log('This is not critical - the main nodes have been deleted');
-          }
-        } catch (error) {
-          console.error(`Error deleting nodes for codebase ${codebaseId}:`, error);
-          throw error;
-        }
-      }
+      await queryExecutor.executeQuery(deleteNodesQuery, {
+        codebaseId,
+        codebaseIdPrefix: `${codebaseId}:`
+      });
+      
+      // Clean up any dangling relationships in a separate query
+      const cleanupRelQuery = `
+        MATCH ()-[r]-()
+        WHERE r.codebaseId = $codebaseId OR
+              r.sourceCodebaseId = $codebaseId OR
+              r.targetCodebaseId = $codebaseId
+        DELETE r
+      `;
+      
+      await queryExecutor.executeQuery(cleanupRelQuery, { codebaseId });
       
       console.log('Cleanup completed successfully');
+      if (perfTracker) perfTracker.mark('cleanup_complete');
     } catch (error) {
       console.error('Error during cleanup:', error);
       process.exit(1);
@@ -378,6 +422,7 @@ async function ingestProject(args: string[]) {
   
   // Step 2: Analyze the project
   console.log(`\nStep 2: Analyzing project...`);
+  if (perfTracker) perfTracker.mark('analysis_start');
   
   // Create config
   const config = {
@@ -403,6 +448,7 @@ async function ingestProject(args: string[]) {
     
     console.log('\nAnalysis complete!');
     console.log(`Results saved to ${outputDir}`);
+    if (perfTracker) perfTracker.mark('analysis_complete');
   } finally {
     // Close connections
     await codeGraph.close();
@@ -410,6 +456,7 @@ async function ingestProject(args: string[]) {
   
   // Step 3: Import the JSON files to Neo4j
   console.log(`\nStep 3: Importing analysis results to Neo4j...`);
+  if (perfTracker) perfTracker.mark('import_start');
   
   // Perform import directly in the CLI
   console.log(`Importing codebase: ${codebaseId} from ${outputDir}`);
@@ -625,12 +672,15 @@ async function ingestProject(args: string[]) {
     
     console.log(`Successfully imported ${importedNodes} nodes and ${importedRels} relationships`);
     console.log(`\nIngestion complete! Codebase '${codebaseId}' is now available in Neo4j.`);
+    if (perfTracker) perfTracker.mark('import_complete');
   } catch (error) {
     console.error('Error during import:', error);
     process.exit(1);
   } finally {
     // Close the connection
+    if (perfTracker) perfTracker.mark('cleanup_connection');
     await queryExecutor.close();
+    if (perfTracker) perfTracker.mark('ingest_complete');
   }
 }
 
