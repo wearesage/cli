@@ -7,13 +7,13 @@
  */
 
 // Export base types
-export * from "./types.ts";
+export * from "./types";
 
 // Export node types
-export * from "./nodes.ts";
+export * from "./nodes";
 
 // Export relationship types
-export * from "./relationships.ts";
+export * from "./relationships";
 
 // Export schema version and metadata
 export const SCHEMA_VERSION = "2.0.0";
@@ -57,6 +57,14 @@ export const SCHEMA_METADATA = {
     "Result",
     "Orientation",
     "InterfaceProperty",
+    "VueComponent",
+    "ComponentTemplate",
+    "ComponentScript",
+    "ComponentStyle",
+    "Prop",
+    "Emit",
+    "ReactiveState",
+    "Composable",
   ],
   relationshipTypes: [
     "IMPORTS",
@@ -93,8 +101,8 @@ export const SCHEMA_METADATA = {
     "DEFINES_NAMESPACE",
     "DEFINES_MODULE",
     "DEFINES_COMPONENT",
-    'DECOMPOSES_TO', 'EXECUTED_BY', 'VERIFIED_BY'
-
+    'DECOMPOSES_TO', 'EXECUTED_BY', 'VERIFIED_BY',
+    'DEFINES_VUE_COMPONENT', 'PROVIDES_PROPS', 'LISTENS_TO', 'USES_SLOT', 'USES_COMPOSABLE'
   ],
   neo4jIndexes: [
     { label: "File", property: "path", type: "BTREE" },
@@ -107,7 +115,12 @@ export const SCHEMA_METADATA = {
     { label: 'Task', property: 'title', type: 'BTREE' },
     { label: 'Subtask', property: 'title', type: 'BTREE' },
     { label: 'Agent', property: 'name', type: 'BTREE' },
-    { label: 'InterfaceProperty', property: 'name', type: 'BTREE' }
+    { label: 'InterfaceProperty', property: 'name', type: 'BTREE' },
+    { label: 'VueComponent', property: 'name', type: 'BTREE' },
+    { label: 'Prop', property: 'name', type: 'BTREE' },
+    { label: 'Emit', property: 'name', type: 'BTREE' },
+    { label: 'ReactiveState', property: 'name', type: 'BTREE' },
+    { label: 'Composable', property: 'name', type: 'BTREE' }
   ],
   neo4jConstraints: [{ label: "Node", property: "nodeId", type: "UNIQUENESS" }],
   neo4jFullTextIndexes: [
@@ -115,6 +128,11 @@ export const SCHEMA_METADATA = {
       name: "codeSearch",
       labels: ["CodeElement"],
       properties: ["name", "documentation", "sourceCode"],
+    },
+    {
+      name: "vueComponentSearch",
+      labels: ["VueComponent", "ComponentTemplate", "ComponentScript", "Composable"],
+      properties: ["name", "path"],
     },
   ],
 };

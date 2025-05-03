@@ -1,5 +1,5 @@
 import { Session } from 'neo4j-driver';
-import { SCHEMA_METADATA } from '../schema/index.ts';
+import { SCHEMA_METADATA } from '../schema/index';
 
 /**
  * Creates Neo4j schema constraints and indexes for the TypeScript code graph

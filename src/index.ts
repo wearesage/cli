@@ -1,10 +1,12 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { TSParser } from './parser/ts-parser.ts';
-import { SCHEMA_VERSION, SCHEMA_METADATA } from './schema/index.ts';
-import { Neo4jImporter } from './neo4j/importer.ts';
-import { GraphTransformer } from './transformer/graph-transformer.ts';
-import { QueryExecutor } from './neo4j/query-executor.ts';
+import { TSParser } from './parser/ts-parser';
+import { VueParser } from './parser/vue-parser';
+import { PackageParser } from './parser/package-parser';
+import { SCHEMA_VERSION, SCHEMA_METADATA } from './schema/index';
+import { Neo4jImporter } from './neo4j/importer';
+import { GraphTransformer } from './transformer/graph-transformer';
+import { QueryExecutor } from './neo4j/query-executor';
 
 /**
  * Configuration for the TypeScript codebase to Neo4j graph system
@@ -42,7 +44,9 @@ interface Config {
  */
 class TSCodeGraph {
   private config: Config;
-  private parser: TSParser;
+  private tsParser: TSParser;
+  private vueParser: VueParser | null = null;
+  private packageParser: PackageParser;
   private transformer: GraphTransformer;
   private queryExecutor: QueryExecutor | null = null;
   
@@ -51,7 +55,20 @@ class TSCodeGraph {
    */
   constructor(config: Config) {
     this.config = config;
-    this.parser = new TSParser({
+    this.tsParser = new TSParser({
+      rootDir: config.rootDir,
+      codebaseId: config.codebaseId
+    });
+    
+    // Initialize Vue parser if needed
+    this.vueParser = new VueParser({
+      rootDir: config.rootDir,
+      codebaseId: config.codebaseId,
+      tsParser: this.tsParser
+    });
+    
+    // Initialize Package parser
+    this.packageParser = new PackageParser({
       rootDir: config.rootDir,
       codebaseId: config.codebaseId
     });
@@ -81,27 +98,51 @@ class TSCodeGraph {
   /**
    * Process a TypeScript codebase and generate a Neo4j graph
    */
-  public async process(): Promise<void> {
+  public async process(skipValidation: boolean = false): Promise<void> {
     console.log(`Processing codebase: ${this.config.codebaseId}`);
     console.log(`Root directory: ${this.config.rootDir}`);
     console.log(`Schema version: ${SCHEMA_VERSION}`);
     
-    // Find all TypeScript files
-    const tsFiles = this.findTypeScriptFiles(this.config.rootDir);
-    console.log(`Found ${tsFiles.length} TypeScript files`);
+    // Create a Codebase node
+    const codebaseNode = {
+      nodeId: this.config.codebaseId,
+      name: this.config.codebaseId,
+      codebaseId: this.config.codebaseId, // Required by Node type
+      createdAt: new Date().toISOString(),
+      description: `Codebase from ${this.config.rootDir}`,
+      language: "typescript", // Default to typescript
+      labels: ["Codebase", "Node"]
+    };
+    console.log(`Created Codebase node: ${codebaseNode.nodeId}`);
     
-    // Initialize the parser
-    this.parser.initialize(tsFiles);
+    // Find all TypeScript and Vue files
+    const sourceFiles = this.findSourceFiles(this.config.rootDir);
+    const vueFileCount = sourceFiles.filter((file: string) => file.endsWith('.vue')).length;
+    const tsFileCount = sourceFiles.length - vueFileCount;
+    console.log(`Found ${tsFileCount} TypeScript files and ${vueFileCount} Vue files`);
+    
+    // Initialize the TypeScript parser
+    this.tsParser.initialize(sourceFiles);
     
     // Parse each file
     const parseResults = [];
 
     const parseStart = performance.now();
 
-    for (const file of tsFiles) {
+    for (const file of sourceFiles) {
       console.log(`Parsing file: ${file}`);
       try {
-        const result = this.parser.parseFile(file);
+        let result;
+        if (file.endsWith('.vue')) {
+          // Parse Vue files with the Vue parser
+          if (!this.vueParser) {
+            throw new Error('Vue parser not initialized but Vue files were found');
+          }
+          result = this.vueParser.parseFile(file);
+        } else {
+          // Parse TypeScript files with the TypeScript parser
+          result = this.tsParser.parseFile(file);
+        }
         parseResults.push(result);
       } catch (error) {
         console.error(`Error parsing file ${file}:`, error);
@@ -110,18 +151,44 @@ class TSCodeGraph {
     
     console.log(`Parsed ${parseResults.length} files in ${( performance.now() - parseStart ).toFixed(2)} ms`);
     
+    // Build a component registry and resolve component references
+    console.log('Building component registry and resolving component references...');
+    const resolveStart = performance.now();
+    this.resolveComponentReferences(parseResults);
+    console.log(`Resolved component references in ${( performance.now() - resolveStart ).toFixed(2)} ms`);
+    
     const transformStart = performance.now();
     // Transform the parse results into a graph model
     const transformResult = this.transformer.transform(parseResults);
     
-    // Validate the graph model
-    const isValid = this.transformer.validate(transformResult);
-    if (!isValid) {
-      throw new Error('Graph model validation failed');
+    // Validate the graph model (unless skipped)
+    if (!skipValidation) {
+      const isValid = this.transformer.validate(transformResult);
+      if (!isValid) {
+        throw new Error('Graph model validation failed');
+      }
+    } else {
+      console.log('Skipping graph model validation');
     }
     
     const { nodes, relationships } = transformResult;
     console.log(`Transformed to ${nodes.length} nodes and ${relationships.length} relationships in ${( performance.now() - transformStart ).toFixed(2)} ms`);
+    
+    // Parse package.json files
+    console.log('Parsing package.json files...');
+    const packageStart = performance.now();
+    // Pass the existing relationships to the PackageParser so it can link dependencies to imports
+    const packageResult = this.packageParser.parseAllPackageJsonFiles(nodes, relationships);
+    console.log(`Parsed package.json files in ${( performance.now() - packageStart ).toFixed(2)} ms`);
+    console.log(`Found ${packageResult.nodes.length} package nodes and ${packageResult.relationships.length} package relationships`);
+    
+    // Add package nodes and relationships to the graph
+    nodes.push(...packageResult.nodes);
+    relationships.push(...packageResult.relationships);
+    
+    // Add the Codebase node to the list of nodes
+    nodes.push(codebaseNode);
+    console.log(`Added Codebase node to nodes list (total: ${nodes.length} nodes)`);
     
     // Save the results
     this.saveResults(nodes, relationships);
@@ -135,9 +202,9 @@ class TSCodeGraph {
   }
   
   /**
-   * Find all TypeScript files in a directory
+   * Find all TypeScript and Vue files in a directory
    */
-  private findTypeScriptFiles(dir: string): string[] {
+  private findSourceFiles(dir: string): string[] {
     const files: string[] = [];
     
     const walk = (directory: string) => {
@@ -151,9 +218,13 @@ class TSCodeGraph {
           if (entry.name !== 'node_modules' && entry.name !== 'dist' && !entry.name.startsWith('.')) {
             walk(fullPath);
           }
-        } else if (entry.isFile() && (entry.name.endsWith('.ts') || entry.name.endsWith('.tsx'))) {
-          // Skip declaration files
-          if (!entry.name.endsWith('.d.ts')) {
+        } else if (entry.isFile()) {
+          // Check for TypeScript files
+          if ((entry.name.endsWith('.ts') || entry.name.endsWith('.tsx')) && !entry.name.endsWith('.d.ts')) {
+            files.push(fullPath);
+          }
+          // Check for Vue files
+          else if (entry.name.endsWith('.vue')) {
             files.push(fullPath);
           }
         }
@@ -237,6 +308,67 @@ class TSCodeGraph {
     }
   }
   
+  /**
+   * Build a component registry and resolve component references
+   */
+  private resolveComponentReferences(parseResults: any[]): void {
+    // Build a registry of all Vue components
+    const componentRegistry = new Map<string, string>();
+    
+    // First pass: collect all Vue components
+    for (const result of parseResults) {
+      for (const node of result.nodes) {
+        if (node.labels && node.labels.includes('VueComponent')) {
+          // Map component name to its nodeId
+          componentRegistry.set(node.name, node.nodeId);
+          console.log(`Registered component: ${node.name} -> ${node.nodeId}`);
+        }
+      }
+    }
+    
+    // Second pass: resolve component references in relationships
+    for (const result of parseResults) {
+      for (const relationship of result.relationships) {
+        // Handle Vue-specific relationships
+        if (['RENDERS', 'PROVIDES_PROPS', 'LISTENS_TO', 'USES_SLOT'].includes(relationship.type)) {
+          // If endNodeId doesn't start with codebaseId, it's a placeholder component name
+          if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
+            const componentName = relationship.endNodeId;
+            const resolvedNodeId = componentRegistry.get(componentName);
+            
+            if (resolvedNodeId) {
+              // Replace placeholder with actual node ID
+              relationship.endNodeId = resolvedNodeId;
+              console.log(`Resolved component reference: ${componentName} -> ${resolvedNodeId}`);
+            } else {
+              console.warn(`Could not resolve component reference: ${componentName}`);
+              // Keep the placeholder but mark it for special handling
+              relationship.unresolvedComponent = true;
+            }
+          }
+        }
+        
+        // Handle composable references
+        if (relationship.type === 'USES_COMPOSABLE') {
+          if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
+            // For now, we'll keep these as is, but mark them for special handling
+            relationship.unresolvedComposable = true;
+          }
+        }
+        
+        // Handle import references
+        if (relationship.type === 'IMPORTS') {
+          if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
+            // For now, we'll keep these as is, but mark them for special handling
+            relationship.unresolvedImport = true;
+          }
+        }
+      }
+    }
+    
+    console.log(`Component registry built with ${componentRegistry.size} components`);
+  }
+
   /**
    * Execute a Cypher query against the Neo4j database
    */

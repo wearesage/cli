@@ -6,8 +6,17 @@ import {
   File, Class, Interface, TypeAlias, Function, Method,
   Property, Variable, Parameter, InterfaceProperty,
   Imports, ImportsFromPackage, ExportsLocal,
-  HasParameter, InterfaceHasProperty
-} from '../schema/index.ts';
+  HasParameter, InterfaceHasProperty,
+  Extends, InterfaceExtends, Calls,
+  ReferencesType, ReferencesVariable
+} from '../schema/index';
+
+// Define a local interface for class implements relationship to avoid conflict with the other Implements interface
+interface ClassImplements extends Relationship {
+  type: 'IMPLEMENTS';
+  isPartial: boolean;
+  typeArguments?: string[];
+}
 
 /**
  * Configuration options for the TypeScript parser
@@ -169,6 +178,21 @@ export class TSParser {
       case ts.SyntaxKind.ExportDeclaration:
         this.extractExport(node as ts.ExportDeclaration, result, fileNode);
         break;
+        
+      case ts.SyntaxKind.CallExpression:
+        // Extract function calls when we encounter a call expression
+        this.extractFunctionCall(node as ts.CallExpression, result, fileNode);
+        break;
+        
+      case ts.SyntaxKind.TypeReference:
+        // Extract type references
+        this.extractTypeReference(node as ts.TypeReferenceNode, result, fileNode);
+        break;
+        
+      case ts.SyntaxKind.Identifier:
+        // Extract variable references
+        this.extractVariableReference(node as ts.Identifier, result, fileNode);
+        break;
     }
     
     // Visit each child node
@@ -221,27 +245,41 @@ export class TSParser {
         if (clause.token === ts.SyntaxKind.ExtendsKeyword) {
           for (const type of clause.types) {
             const baseClassName = type.expression.getText();
-            // We would need to resolve the actual class node here
-            // For simplicity, we'll just create a relationship with the name
-            result.relationships.push({
-              nodeId: this.generateNodeId('EXTENDS', `${classNode.nodeId}->${baseClassName}`),
-              codebaseId: this.codebaseId,
-              type: 'EXTENDS',
-              startNodeId: classNode.nodeId,
-              endNodeId: baseClassName // This is a simplification
-            });
+            // Resolve the actual class node ID
+            const baseClassNodeId = this.resolveTypeNodeId(type.expression, 'Class', fileNode.path);
+            
+            if (baseClassNodeId) {
+              const extendsRel: Extends = {
+                nodeId: this.generateNodeId('EXTENDS', `${classNode.nodeId}->${baseClassNodeId}`),
+                codebaseId: this.codebaseId,
+                type: 'EXTENDS',
+                startNodeId: classNode.nodeId,
+                endNodeId: baseClassNodeId,
+                isDirectExtension: true,
+                inheritanceLevel: 1,
+                typeArguments: type.typeArguments ? type.typeArguments.map(t => t.getText()) : undefined
+              };
+              result.relationships.push(extendsRel);
+            }
           }
         } else if (clause.token === ts.SyntaxKind.ImplementsKeyword) {
           for (const type of clause.types) {
             const interfaceName = type.expression.getText();
-            // Similar simplification as above
-            result.relationships.push({
-              nodeId: this.generateNodeId('IMPLEMENTS', `${classNode.nodeId}->${interfaceName}`),
-              codebaseId: this.codebaseId,
-              type: 'IMPLEMENTS',
-              startNodeId: classNode.nodeId,
-              endNodeId: interfaceName // This is a simplification
-            });
+            // Resolve the actual interface node ID
+            const interfaceNodeId = this.resolveTypeNodeId(type.expression, 'Interface', fileNode.path);
+            
+            if (interfaceNodeId) {
+              const implementsRel: ClassImplements = {
+                nodeId: this.generateNodeId('IMPLEMENTS', `${classNode.nodeId}->${interfaceNodeId}`),
+                codebaseId: this.codebaseId,
+                type: 'IMPLEMENTS',
+                startNodeId: classNode.nodeId,
+                endNodeId: interfaceNodeId,
+                isPartial: false,
+                typeArguments: type.typeArguments ? type.typeArguments.map(t => t.getText()) : undefined
+              };
+              result.relationships.push(implementsRel);
+            }
           }
         }
       }
@@ -297,14 +335,22 @@ export class TSParser {
         if (clause.token === ts.SyntaxKind.ExtendsKeyword) {
           for (const type of clause.types) {
             const baseInterfaceName = type.expression.getText();
-            // Simplification as in extractClass
-            result.relationships.push({
-              nodeId: this.generateNodeId('EXTENDS', `${interfaceNode.nodeId}->${baseInterfaceName}`),
-              codebaseId: this.codebaseId,
-              type: 'EXTENDS',
-              startNodeId: interfaceNode.nodeId,
-              endNodeId: baseInterfaceName // This is a simplification
-            });
+            // Resolve the actual interface node ID
+            const baseInterfaceNodeId = this.resolveTypeNodeId(type.expression, 'Interface', fileNode.path);
+            
+            if (baseInterfaceNodeId) {
+              const interfaceExtendsRel: InterfaceExtends = {
+                nodeId: this.generateNodeId('INTERFACE_EXTENDS', `${interfaceNode.nodeId}->${baseInterfaceNodeId}`),
+                codebaseId: this.codebaseId,
+                type: 'INTERFACE_EXTENDS',
+                startNodeId: interfaceNode.nodeId,
+                endNodeId: baseInterfaceNodeId,
+                isDirectExtension: true,
+                inheritanceLevel: 1,
+                typeArguments: type.typeArguments ? type.typeArguments.map(t => t.getText()) : undefined
+              };
+              result.relationships.push(interfaceExtendsRel);
+            }
           }
         }
       }
@@ -870,13 +916,26 @@ export class TSParser {
    * Resolve an import path relative to a file
    */
   private resolveImportPath(filePath: string, importPath: string): string {
-    // This is a simplification
-    const dir = path.dirname(filePath);
-    const resolvedPath = path.resolve(dir, importPath);
+    // Convert relative filePath to absolute path using rootDir
+    const absoluteFilePath = path.isAbsolute(filePath)
+      ? filePath
+      : path.resolve(this.rootDir, filePath);
     
-    // Add .ts extension if not present
-    if (!path.extname(resolvedPath)) {
-      return `${resolvedPath}.ts`;
+    const dir = path.dirname(absoluteFilePath);
+    let resolvedPath = path.resolve(dir, importPath);
+    
+    // Handle extension mapping for TypeScript files
+    const ext = path.extname(resolvedPath);
+    
+    if (!ext) {
+      // No extension - add .ts
+      resolvedPath = `${resolvedPath}.ts`;
+    } else if (ext === '.js') {
+      // Check if a .ts version exists instead of .js
+      const tsPath = resolvedPath.replace(/\.js$/, '.ts');
+      if (fs.existsSync(tsPath)) {
+        resolvedPath = tsPath;
+      }
     }
     
     return resolvedPath;
@@ -886,7 +945,7 @@ export class TSParser {
    * Generate a unique node ID
    */
   private generateNodeId(type: string, identifier: string): string {
-    return `${type}:${identifier}`;
+    return `${this.codebaseId}:${type}:${identifier}`;
   }
   
   /**
@@ -910,5 +969,514 @@ export class TSParser {
       console.error(`Error getting file size for ${filePath}:`, error);
       return 0;
     }
+  }
+
+  /**
+   * Get the column number for a position in the source file
+   */
+  private getColumnNumber(pos: number): number {
+    if (!this.program) {
+      throw new Error('Program not initialized');
+    }
+    
+    const sourceFile = this.program.getSourceFile(this.program.getRootFileNames()[0]);
+    if (!sourceFile) {
+      return 0;
+    }
+    
+    return sourceFile.getLineAndCharacterOfPosition(pos).character;
+  }
+
+  /**
+   * Resolve a type expression to a node ID
+   */
+  private resolveTypeNodeId(expression: ts.Expression | ts.EntityName, expectedType: string, currentFilePath: string): string | null {
+    if (!this.typeChecker) {
+      return null;
+    }
+
+    // Get the symbol for the type expression
+    const symbol = this.typeChecker.getSymbolAtLocation(expression);
+    if (!symbol) {
+      return null;
+    }
+
+    // Get the declaration for the symbol
+    const declarations = symbol.getDeclarations();
+    if (!declarations || declarations.length === 0) {
+      return null;
+    }
+
+    // Get the first declaration
+    const declaration = declarations[0];
+    
+    // Check if the declaration is of the expected type
+    if (
+      (expectedType === 'Class' && ts.isClassDeclaration(declaration)) ||
+      (expectedType === 'Interface' && ts.isInterfaceDeclaration(declaration))
+    ) {
+      // Get the source file of the declaration
+      const sourceFile = declaration.getSourceFile();
+      const filePath = sourceFile.fileName;
+      
+      // Get the name of the declaration
+      const name = declaration.name ? declaration.name.getText() : 'anonymous';
+      
+      // Generate a node ID for the declaration
+      const relativePath = path.relative(this.rootDir, filePath);
+      return this.generateNodeId(expectedType, `${relativePath}:${name}`);
+    }
+    
+    return null;
+  }
+
+  /**
+   * Extract function call information from a call expression
+   */
+  private extractFunctionCall(node: ts.CallExpression, result: ParseResult, fileNode: File): void {
+    if (!this.typeChecker) {
+      throw new Error('Type checker not initialized');
+    }
+
+    // Get the current function or method context
+    const callerNode = this.findCallerContext(node);
+    if (!callerNode) {
+      return; // Skip if we can't determine the caller context
+    }
+
+    // Get the caller node ID
+    const callerNodeId = this.getCallerNodeId(callerNode, fileNode);
+    if (!callerNodeId) {
+      return; // Skip if we can't determine the caller node ID
+    }
+
+    // Get information about the called function
+    const calleeInfo = this.getCalleeInfo(node);
+    if (!calleeInfo) {
+      return; // Skip if we can't determine the callee information
+    }
+
+    // Create a unique ID for the called function
+    const calleeNodeId = this.generateCalleeNodeId(calleeInfo, fileNode);
+    if (!calleeNodeId) {
+      return; // Skip if we can't generate a callee node ID
+    }
+
+    // Get the call location as separate primitive arrays
+    const callLocationLine = this.getLineNumber(node.getStart());
+    const callLocationColumn = this.getColumnNumber(node.getStart());
+
+    // Create the CALLS relationship
+    const callsRelationship = {
+      nodeId: this.generateNodeId('CALLS', `${callerNodeId}->${calleeNodeId}`),
+      codebaseId: this.codebaseId,
+      type: 'CALLS',
+      startNodeId: callerNodeId,
+      endNodeId: calleeNodeId,
+      callCount: 1,
+      callLocationLines: [callLocationLine],
+      callLocationColumns: [callLocationColumn],
+      arguments: node.arguments.map(arg => arg.getText()),
+      isAsync: false, // Would need to check if the call is awaited
+      isAwait: node.parent && ts.isAwaitExpression(node.parent),
+      isChained: node.parent && ts.isPropertyAccessExpression(node.parent),
+      isConditional: this.isInConditionalContext(node)
+    };
+
+    // Add the relationship to the result
+    result.relationships.push(callsRelationship);
+  }
+
+  /**
+   * Find the function or method that contains this call expression
+   */
+  private findCallerContext(node: ts.Node): ts.FunctionDeclaration | ts.MethodDeclaration | ts.ArrowFunction | ts.FunctionExpression | null {
+    let current: ts.Node | undefined = node;
+    
+    while (current) {
+      if (
+        ts.isFunctionDeclaration(current) ||
+        ts.isMethodDeclaration(current) ||
+        ts.isArrowFunction(current) ||
+        ts.isFunctionExpression(current)
+      ) {
+        return current;
+      }
+      current = current.parent;
+    }
+    
+    return null;
+  }
+
+  /**
+   * Get the node ID of the caller function or method
+   */
+  private getCallerNodeId(
+    callerNode: ts.FunctionDeclaration | ts.MethodDeclaration | ts.ArrowFunction | ts.FunctionExpression,
+    fileNode: File
+  ): string | null {
+    if (ts.isFunctionDeclaration(callerNode) && callerNode.name) {
+      // Function declaration
+      return this.generateNodeId('Function', `${fileNode.path}:${callerNode.name.getText()}`);
+    } else if (ts.isMethodDeclaration(callerNode) && callerNode.name) {
+      // Method declaration
+      const parent = callerNode.parent;
+      if (ts.isClassDeclaration(parent) && parent.name) {
+        const parentName = parent.name.getText();
+        const methodName = callerNode.name.getText();
+        return this.generateNodeId('Method', `${fileNode.path}:${parentName}.${methodName}`);
+      }
+    } else if (ts.isArrowFunction(callerNode) || ts.isFunctionExpression(callerNode)) {
+      // For arrow functions and function expressions, we need to find the variable or property they're assigned to
+      const parent = callerNode.parent;
+      if (ts.isVariableDeclaration(parent) && parent.name) {
+        return this.generateNodeId('Function', `${fileNode.path}:${parent.name.getText()}`);
+      } else if (ts.isPropertyAssignment(parent) && ts.isIdentifier(parent.name)) {
+        return this.generateNodeId('Function', `${fileNode.path}:${parent.name.getText()}`);
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Get information about the called function
+   */
+  private getCalleeInfo(node: ts.CallExpression): { name: string; type: string } | null {
+    const expression = node.expression;
+    
+    if (ts.isIdentifier(expression)) {
+      // Direct function call: foo()
+      return { name: expression.getText(), type: 'Function' };
+    } else if (ts.isPropertyAccessExpression(expression)) {
+      // Method call: obj.method()
+      const object = expression.expression.getText();
+      const property = expression.name.getText();
+      return { name: `${object}.${property}`, type: 'Method' };
+    }
+    
+    return null;
+  }
+
+  /**
+   * Generate a node ID for the called function
+   */
+  private generateCalleeNodeId(calleeInfo: { name: string; type: string }, fileNode: File): string | null {
+    return this.generateNodeId(calleeInfo.type, `${fileNode.path}:${calleeInfo.name}`);
+  }
+
+  /**
+   * Check if a node is in a conditional context (if, ternary, &&, ||, etc.)
+   */
+  private isInConditionalContext(node: ts.Node): boolean {
+    let current: ts.Node | undefined = node;
+    
+    while (current) {
+      if (
+        ts.isIfStatement(current) ||
+        ts.isConditionalExpression(current) ||
+        ts.isBinaryExpression(current) && (
+          current.operatorToken.kind === ts.SyntaxKind.AmpersandAmpersandToken ||
+          current.operatorToken.kind === ts.SyntaxKind.BarBarToken
+        )
+      ) {
+        return true;
+      }
+      current = current.parent;
+    }
+    
+    return false;
+  }
+
+  /**
+   * Extract type reference information from a type reference node
+   */
+  private extractTypeReference(node: ts.TypeReferenceNode, result: ParseResult, fileNode: File): void {
+    if (!this.typeChecker) {
+      return;
+    }
+
+    // Get the current context (function, method, class, etc.)
+    const context = this.findReferenceContext(node);
+    if (!context) {
+      return; // Skip if we can't determine the context
+    }
+
+    // Get the context node ID
+    const contextNodeId = this.getReferenceContextNodeId(context, fileNode);
+    if (!contextNodeId) {
+      return; // Skip if we can't determine the context node ID
+    }
+
+    // Get the referenced type
+    const typeName = node.typeName.getText();
+    const typeNodeId = this.resolveTypeNodeId(node.typeName, 'Interface', fileNode.path) ||
+                      this.resolveTypeNodeId(node.typeName, 'Class', fileNode.path) ||
+                      this.resolveTypeNodeId(node.typeName, 'TypeAlias', fileNode.path);
+    
+    if (!typeNodeId) {
+      return; // Skip if we can't resolve the type
+    }
+
+    // Determine reference type
+    let referenceType: 'parameter' | 'return' | 'property' | 'variable' | 'typeAlias' | 'generic' = 'variable';
+    
+    if (ts.isParameter(context)) {
+      referenceType = 'parameter';
+    } else if (ts.isPropertyDeclaration(context) || ts.isPropertySignature(context)) {
+      referenceType = 'property';
+    } else if (ts.isTypeAliasDeclaration(context)) {
+      referenceType = 'typeAlias';
+    } else if (ts.isTypeParameterDeclaration(context)) {
+      referenceType = 'generic';
+    }
+
+    // Create the REFERENCES_TYPE relationship
+    const referencesTypeRel: ReferencesType = {
+      nodeId: this.generateNodeId('REFERENCES_TYPE', `${contextNodeId}->${typeNodeId}`),
+      codebaseId: this.codebaseId,
+      type: 'REFERENCES_TYPE',
+      startNodeId: contextNodeId,
+      endNodeId: typeNodeId,
+      referenceType,
+      isArray: this.isArrayType(node),
+      isUnion: this.isUnionType(node.parent),
+      isIntersection: this.isIntersectionType(node.parent),
+      isGeneric: !!(node.typeArguments && node.typeArguments.length > 0),
+      typeArguments: node.typeArguments ? node.typeArguments.map(t => t.getText()) : undefined
+    };
+
+    result.relationships.push(referencesTypeRel);
+  }
+
+  /**
+   * Extract variable reference information from an identifier node
+   */
+  private extractVariableReference(node: ts.Identifier, result: ParseResult, fileNode: File): void {
+    if (!this.typeChecker) {
+      return;
+    }
+
+    // Skip identifiers that are part of declarations
+    if (this.isDeclarationIdentifier(node)) {
+      return;
+    }
+
+    // Get the current context (function, method, class, etc.)
+    const context = this.findReferenceContext(node);
+    if (!context) {
+      return; // Skip if we can't determine the context
+    }
+
+    // Get the context node ID
+    const contextNodeId = this.getReferenceContextNodeId(context, fileNode);
+    if (!contextNodeId) {
+      return; // Skip if we can't determine the context node ID
+    }
+
+    // Get the referenced variable
+    const variableName = node.getText();
+    const symbol = this.typeChecker.getSymbolAtLocation(node);
+    if (!symbol || !symbol.declarations || symbol.declarations.length === 0) {
+      return; // Skip if we can't resolve the symbol
+    }
+
+    const declaration = symbol.declarations[0];
+    if (!ts.isVariableDeclaration(declaration) && !ts.isParameter(declaration)) {
+      return; // Skip if it's not a variable or parameter
+    }
+
+    // Get the variable node ID
+    const variableNodeId = this.getVariableNodeId(declaration, fileNode);
+    if (!variableNodeId) {
+      return; // Skip if we can't determine the variable node ID
+    }
+
+    // Determine reference type (read, write, or readwrite)
+    const referenceType = this.getVariableReferenceType(node);
+
+    // Get the reference location as separate primitive arrays
+    const referenceLocationLine = this.getLineNumber(node.getStart());
+    const referenceLocationColumn = this.getColumnNumber(node.getStart());
+
+    // Create the REFERENCES_VARIABLE relationship
+    const referencesVarRel: ReferencesVariable = {
+      nodeId: this.generateNodeId('REFERENCES_VARIABLE', `${contextNodeId}->${variableNodeId}`),
+      codebaseId: this.codebaseId,
+      type: 'REFERENCES_VARIABLE',
+      startNodeId: contextNodeId,
+      endNodeId: variableNodeId,
+      referenceType,
+      referenceCount: 1,
+      referenceLocationLines: [referenceLocationLine],
+      referenceLocationColumns: [referenceLocationColumn]
+    };
+
+    result.relationships.push(referencesVarRel);
+  }
+
+  /**
+   * Find the context node for a reference (function, method, class, etc.)
+   */
+  private findReferenceContext(node: ts.Node): ts.Node | null {
+    let current: ts.Node | undefined = node;
+    
+    while (current) {
+      if (
+        ts.isFunctionDeclaration(current) ||
+        ts.isMethodDeclaration(current) ||
+        ts.isClassDeclaration(current) ||
+        ts.isInterfaceDeclaration(current) ||
+        ts.isTypeAliasDeclaration(current) ||
+        ts.isParameter(current) ||
+        ts.isPropertyDeclaration(current) ||
+        ts.isPropertySignature(current) ||
+        ts.isVariableDeclaration(current)
+      ) {
+        return current;
+      }
+      current = current.parent;
+    }
+    
+    return null;
+  }
+
+  /**
+   * Get the node ID for a reference context
+   */
+  private getReferenceContextNodeId(context: ts.Node, fileNode: File): string | null {
+    if (ts.isFunctionDeclaration(context) && context.name) {
+      return this.generateNodeId('Function', `${fileNode.path}:${context.name.getText()}`);
+    } else if (ts.isMethodDeclaration(context) && context.name) {
+      const parent = context.parent;
+      if (ts.isClassDeclaration(parent) && parent.name) {
+        const parentName = parent.name.getText();
+        const methodName = context.name.getText();
+        return this.generateNodeId('Method', `${fileNode.path}:${parentName}.${methodName}`);
+      }
+    } else if (ts.isClassDeclaration(context) && context.name) {
+      return this.generateNodeId('Class', `${fileNode.path}:${context.name.getText()}`);
+    } else if (ts.isInterfaceDeclaration(context) && context.name) {
+      return this.generateNodeId('Interface', `${fileNode.path}:${context.name.getText()}`);
+    } else if (ts.isTypeAliasDeclaration(context) && context.name) {
+      return this.generateNodeId('TypeAlias', `${fileNode.path}:${context.name.getText()}`);
+    } else if (ts.isParameter(context) && ts.isIdentifier(context.name)) {
+      const parent = this.findReferenceContext(context.parent);
+      if (parent && (ts.isFunctionDeclaration(parent) || ts.isMethodDeclaration(parent)) && parent.name) {
+        const parentName = parent.name.getText();
+        const paramName = context.name.getText();
+        return this.generateNodeId('Parameter', `${fileNode.path}:${parentName}:${paramName}`);
+      }
+    } else if (ts.isPropertyDeclaration(context) && ts.isIdentifier(context.name)) {
+      const parent = context.parent;
+      if (ts.isClassDeclaration(parent) && parent.name) {
+        const parentName = parent.name.getText();
+        const propName = context.name.getText();
+        return this.generateNodeId('Property', `${fileNode.path}:${parentName}.${propName}`);
+      }
+    } else if (ts.isVariableDeclaration(context) && ts.isIdentifier(context.name)) {
+      return this.generateNodeId('Variable', `${fileNode.path}:${context.name.getText()}`);
+    }
+    
+    return null;
+  }
+
+  /**
+   * Get the node ID for a variable declaration
+   */
+  private getVariableNodeId(declaration: ts.VariableDeclaration | ts.ParameterDeclaration, fileNode: File): string | null {
+    if (ts.isVariableDeclaration(declaration) && ts.isIdentifier(declaration.name)) {
+      return this.generateNodeId('Variable', `${fileNode.path}:${declaration.name.getText()}`);
+    } else if (ts.isParameter(declaration) && ts.isIdentifier(declaration.name)) {
+      const parent = this.findReferenceContext(declaration.parent);
+      if (parent && (ts.isFunctionDeclaration(parent) || ts.isMethodDeclaration(parent)) && parent.name) {
+        const parentName = parent.name.getText();
+        const paramName = declaration.name.getText();
+        return this.generateNodeId('Parameter', `${fileNode.path}:${parentName}:${paramName}`);
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Check if an identifier is part of a declaration
+   */
+  private isDeclarationIdentifier(node: ts.Identifier): boolean {
+    const parent = node.parent;
+    
+    return (
+      (ts.isVariableDeclaration(parent) && parent.name === node) ||
+      (ts.isParameter(parent) && parent.name === node) ||
+      (ts.isFunctionDeclaration(parent) && parent.name === node) ||
+      (ts.isClassDeclaration(parent) && parent.name === node) ||
+      (ts.isInterfaceDeclaration(parent) && parent.name === node) ||
+      (ts.isTypeAliasDeclaration(parent) && parent.name === node) ||
+      (ts.isPropertyDeclaration(parent) && parent.name === node) ||
+      (ts.isMethodDeclaration(parent) && parent.name === node)
+    );
+  }
+
+  /**
+   * Determine if a variable reference is read, write, or readwrite
+   */
+  private getVariableReferenceType(node: ts.Identifier): 'read' | 'write' | 'readwrite' {
+    const parent = node.parent;
+    
+    if (ts.isBinaryExpression(parent) && parent.left === node && parent.operatorToken.kind === ts.SyntaxKind.EqualsToken) {
+      return 'write';
+    } else if (
+      ts.isPrefixUnaryExpression(parent) &&
+      (parent.operator === ts.SyntaxKind.PlusPlusToken || parent.operator === ts.SyntaxKind.MinusMinusToken)
+    ) {
+      return 'readwrite';
+    } else if (
+      ts.isPostfixUnaryExpression(parent) &&
+      (parent.operator === ts.SyntaxKind.PlusPlusToken || parent.operator === ts.SyntaxKind.MinusMinusToken)
+    ) {
+      return 'readwrite';
+    } else if (
+      ts.isBinaryExpression(parent) &&
+      parent.left === node &&
+      [
+        ts.SyntaxKind.PlusEqualsToken,
+        ts.SyntaxKind.MinusEqualsToken,
+        ts.SyntaxKind.AsteriskEqualsToken,
+        ts.SyntaxKind.SlashEqualsToken,
+        ts.SyntaxKind.PercentEqualsToken,
+        ts.SyntaxKind.AmpersandEqualsToken,
+        ts.SyntaxKind.BarEqualsToken,
+        ts.SyntaxKind.CaretEqualsToken,
+        ts.SyntaxKind.LessThanLessThanEqualsToken,
+        ts.SyntaxKind.GreaterThanGreaterThanEqualsToken,
+        ts.SyntaxKind.GreaterThanGreaterThanGreaterThanEqualsToken
+      ].includes(parent.operatorToken.kind)
+    ) {
+      return 'readwrite';
+    }
+    
+    return 'read';
+  }
+
+  /**
+   * Check if a type is an array type
+   */
+  private isArrayType(node: ts.TypeReferenceNode): boolean {
+    return node.typeName.getText() === 'Array' ||
+           (node.parent && ts.isArrayTypeNode(node.parent));
+  }
+
+  /**
+   * Check if a type is part of a union type
+   */
+  private isUnionType(node: ts.Node | undefined): boolean {
+    return node !== undefined && ts.isUnionTypeNode(node);
+  }
+
+  /**
+   * Check if a type is part of an intersection type
+   */
+  private isIntersectionType(node: ts.Node | undefined): boolean {
+    return node !== undefined && ts.isIntersectionTypeNode(node);
   }
 }

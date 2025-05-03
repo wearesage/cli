@@ -34,7 +34,15 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
+    "@babel/parser": "^7.27.1",
+    "@babel/traverse": "^7.27.1",
+    "@babel/types": "^7.27.1",
+    "@vue/compiler-dom": "^3.5.13",
+    "@vue/compiler-sfc": "^3.5.13",
     "neo4j-driver": "^5.28.1",
+    "postcss": "^8.5.3",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.87.0",
     "typescript": "^5.8.3"
   },
   "devDependencies": {

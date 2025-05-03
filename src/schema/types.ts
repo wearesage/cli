@@ -33,6 +33,12 @@ export interface Relationship extends GraphEntity {
   isCrossCodebase?: boolean;  // Whether this relationship crosses codebase boundaries
   sourceCodebaseId?: string;  // The codebase ID of the start node (for cross-codebase relationships)
   targetCodebaseId?: string;  // The codebase ID of the end node (for cross-codebase relationships)
+  
+  // Properties for handling unresolved references
+  unresolvedComponent?: boolean;  // Whether this relationship references an unresolved component
+  unresolvedComposable?: boolean;  // Whether this relationship references an unresolved composable
+  unresolvedImport?: boolean;  // Whether this relationship references an unresolved import
+  _schemaVersion?: string;  // Schema version for the relationship
 }
 
 /**

@@ -2,7 +2,7 @@
 
 import * as path from 'path';
 import * as fs from 'fs';
-import { TSCodeGraph } from './index.ts';
+import { TSCodeGraph } from './index';
 
 /**
  * Command-line interface for the TypeScript Code Graph system
@@ -31,6 +31,9 @@ async function main() {
       case 'analyze':
         await analyzeProject(args.slice(1));
         break;
+      case 'ingest':
+        await ingestProject(args.slice(1));
+        break;
       case 'query':
         await queryGraph(args.slice(1));
         break;
@@ -56,18 +59,28 @@ function printUsage() {
 TypeScript Code Graph - A tool for analyzing TypeScript codebases and importing them into Neo4j
 
 Usage:
-  sage analyze <project-path> [output-dir] [codebase-id]
+  sage analyze <project-path> [output-dir] [codebase-id] [--skip-validation]
+  sage ingest <codebase-id> [--skip-validation] [--no-cleanup]
   sage query <codebase-id> <cypher-query>
   sage help
 
 Commands:
   analyze    Analyze a TypeScript project and import it into Neo4j
+  ingest     Analyze and import the current directory with the specified codebase ID
   query      Run a Cypher query against the Neo4j database
   help       Show this help message
+
+Options:
+  --skip-validation    Skip validation of the graph model (useful for projects with complex imports)
+  --no-cleanup         Skip cleaning up existing data for the codebase (ingest command only)
 
 Examples:
   sage analyze ./my-project
   sage analyze ./my-project ./output my-project
+  sage analyze ./my-project ./output my-project --skip-validation
+  sage ingest my-project
+  sage ingest my-project --skip-validation
+  sage ingest my-project --no-cleanup
   sage query my-project "MATCH (n:Class) RETURN n.name LIMIT 10"
 
 Environment Variables:
@@ -88,9 +101,15 @@ async function analyzeProject(args: string[]) {
     process.exit(1);
   }
   
-  const projectPath = path.resolve(args[0]);
-  const outputDir = args[1] ? path.resolve(args[1]) : path.join(process.cwd(), 'output');
-  const codebaseId = args[2] || path.basename(projectPath);
+  // Check for --skip-validation flag
+  const skipValidation = args.includes('--skip-validation');
+  
+  // Remove the flag from args if present
+  const cleanArgs = args.filter(arg => arg !== '--skip-validation');
+  
+  const projectPath = path.resolve(cleanArgs[0]);
+  const outputDir = cleanArgs[1] ? path.resolve(cleanArgs[1]) : path.join(process.cwd(), 'output');
+  const codebaseId = cleanArgs[2] || path.basename(projectPath);
   
   // Check if project path exists
   if (!fs.existsSync(projectPath)) {
@@ -129,7 +148,7 @@ async function analyzeProject(args: string[]) {
   
   try {
     // Process the codebase
-    await codeGraph.process();
+    await codeGraph.process(skipValidation);
     
     console.log('\nAnalysis complete!');
     console.log(`Results saved to ${outputDir}`);
@@ -156,16 +175,11 @@ async function queryGraph(args: string[]) {
   const codebaseId = args[0];
   const cypherQuery = args[1];
   
-  // Configure Neo4j connection
-  if (!process.env.NEO4J_URI) {
-    console.error('Error: NEO4J_URI environment variable is required for querying');
-    process.exit(1);
-  }
-  
+  // Configure Neo4j connection with default values
   const neo4jConfig = {
-    uri: process.env.NEO4J_URI,
+    uri: process.env.NEO4J_URI || 'neo4j://localhost:7687',
     username: process.env.NEO4J_USERNAME || 'neo4j',
-    password: process.env.NEO4J_PASSWORD || 'password',
+    password: process.env.NEO4J_PASSWORD || 'justdontask',
     database: process.env.NEO4J_DATABASE
   };
   
@@ -197,6 +211,426 @@ async function queryGraph(args: string[]) {
   } finally {
     // Close connections
     await codeGraph.close();
+  }
+}
+
+/**
+ * Ingest a TypeScript project from the current directory
+ * This combines cleanup, analysis, and import in one command
+ */
+async function ingestProject(args: string[]) {
+  if (args.length < 1) {
+    console.error('Error: Codebase ID is required');
+    printUsage();
+    process.exit(1);
+  }
+
+  // Parse arguments
+  const codebaseId = args[0];
+  const skipValidation = args.includes('--skip-validation');
+  const noCleanup = args.includes('--no-cleanup');
+  
+  // Current directory is the project path
+  const projectPath = process.cwd();
+  const outputDir = path.join(projectPath, 'output', `${codebaseId}-analysis`);
+  
+  // Configure Neo4j connection with default values
+  const neo4jConfig = {
+    uri: process.env.NEO4J_URI || 'neo4j://localhost:7687',
+    username: process.env.NEO4J_USERNAME || 'neo4j',
+    password: process.env.NEO4J_PASSWORD || 'justdontask',
+    database: process.env.NEO4J_DATABASE
+  };
+  
+  console.log(`Neo4j connection: ${neo4jConfig.uri}`);
+  console.log(`Ingesting current directory as codebase: ${codebaseId}`);
+  console.log(`Project path: ${projectPath}`);
+  console.log(`Output directory: ${outputDir}`);
+  
+  // Step 1: Clean up existing data (if not skipped)
+  if (!noCleanup) {
+    console.log(`\nStep 1: Cleaning up existing data for codebase '${codebaseId}'...`);
+    
+    // Perform cleanup directly in the CLI
+    console.log(`Cleaning up codebase: ${codebaseId}`);
+    
+    // Create query executor
+    const { QueryExecutor } = await import('./neo4j/query-executor.js');
+    const queryExecutor = new QueryExecutor(neo4jConfig);
+    
+    try {
+      // First, count the nodes to be deleted
+      const countResult = await queryExecutor.executeQuery(
+        `MATCH (n)
+         WHERE n.codebaseId = $codebaseId
+            OR n.nodeId STARTS WITH $codebaseIdPrefix
+            OR n.nodeId = $codebaseId
+            OR (n:Codebase AND n.name = $codebaseId)
+         RETURN count(n) as nodeCount`,
+        {
+          codebaseId,
+          codebaseIdPrefix: `${codebaseId}:`
+        }
+      );
+      
+      // Handle different record formats
+      let nodeCount = 0;
+      if (countResult.records && countResult.records.length > 0) {
+        const record = countResult.records[0];
+        if (typeof record.get === 'function') {
+          nodeCount = record.get('nodeCount').toNumber();
+        } else if (record.nodeCount !== undefined) {
+          nodeCount = typeof record.nodeCount === 'number' ?
+            record.nodeCount :
+            (record.nodeCount.low || 0);
+        }
+      }
+      console.log(`Found ${nodeCount} nodes to delete`);
+      
+      if (nodeCount === 0) {
+        console.log('No nodes found for this codebase. Nothing to delete.');
+      } else {
+        // Ask for confirmation
+        console.log(`WARNING: This will delete all nodes and relationships for codebase '${codebaseId}'`);
+        console.log('Press Ctrl+C to cancel or wait 5 seconds to continue...');
+        
+        // Wait for 5 seconds
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        
+        // Delete all nodes and relationships for this codebase
+        console.log('Deleting nodes and relationships...');
+        
+        try {
+          const deleteResult = await queryExecutor.executeQuery(
+            `MATCH (n)
+             WHERE n.codebaseId = $codebaseId
+                OR n.nodeId STARTS WITH $codebaseIdPrefix
+                OR n.nodeId = $codebaseId
+                OR (n:Codebase AND n.name = $codebaseId)
+             DETACH DELETE n
+             RETURN count(n) as deletedCount`,
+            {
+              codebaseId,
+              codebaseIdPrefix: `${codebaseId}:`
+            }
+          );
+          
+          // Handle different record formats
+          let deletedCount = 0;
+          if (deleteResult.records && deleteResult.records.length > 0) {
+            const record = deleteResult.records[0];
+            if (typeof record.get === 'function') {
+              deletedCount = record.get('deletedCount').toNumber();
+            } else if (record.deletedCount !== undefined) {
+              deletedCount = typeof record.deletedCount === 'number' ?
+                record.deletedCount :
+                (record.deletedCount.low || 0);
+            }
+          }
+          console.log(`Successfully deleted ${deletedCount} nodes and their relationships`);
+          
+          // Also clean up any dangling relationships that might have the codebase in their properties
+          try {
+            const cleanupResult = await queryExecutor.executeQuery(
+              `MATCH ()-[r]-()
+               WHERE r.codebaseId = $codebaseId OR
+                     r.sourceCodebaseId = $codebaseId OR
+                     r.targetCodebaseId = $codebaseId
+               DELETE r
+               RETURN count(r) as deletedRelCount`,
+              { codebaseId }
+            );
+            
+            // Handle different record formats
+            let deletedRelCount = 0;
+            if (cleanupResult.records && cleanupResult.records.length > 0) {
+              const record = cleanupResult.records[0];
+              if (typeof record.get === 'function') {
+                deletedRelCount = record.get('deletedRelCount').toNumber();
+              } else if (record.deletedRelCount !== undefined) {
+                deletedRelCount = typeof record.deletedRelCount === 'number' ?
+                  record.deletedRelCount :
+                  (record.deletedRelCount.low || 0);
+              }
+            }
+            console.log(`Additionally cleaned up ${deletedRelCount} dangling relationships`);
+          } catch (relError) {
+            console.warn(`Warning: Could not clean up dangling relationships: ${relError}`);
+            console.log('This is not critical - the main nodes have been deleted');
+          }
+        } catch (error) {
+          console.error(`Error deleting nodes for codebase ${codebaseId}:`, error);
+          throw error;
+        }
+      }
+      
+      console.log('Cleanup completed successfully');
+    } catch (error) {
+      console.error('Error during cleanup:', error);
+      process.exit(1);
+    } finally {
+      // Close the connection
+      await queryExecutor.close();
+    }
+  } else {
+    console.log('\nSkipping cleanup as requested with --no-cleanup');
+  }
+  
+  // Step 2: Analyze the project
+  console.log(`\nStep 2: Analyzing project...`);
+  
+  // Create config
+  const config = {
+    rootDir: projectPath,
+    outputDir,
+    codebaseId,
+    neo4j: neo4jConfig
+  };
+  
+  // Create and run the graph generator
+  const codeGraph = new TSCodeGraph(config);
+  
+  try {
+    // Process the codebase (but don't import to Neo4j yet - set neo4j to undefined)
+    const analysisConfig = {
+      ...config,
+      neo4j: undefined // Don't import to Neo4j during analysis
+    };
+    
+    const analysisCodeGraph = new TSCodeGraph(analysisConfig);
+    await analysisCodeGraph.process(skipValidation);
+    await analysisCodeGraph.close();
+    
+    console.log('\nAnalysis complete!');
+    console.log(`Results saved to ${outputDir}`);
+  } finally {
+    // Close connections
+    await codeGraph.close();
+  }
+  
+  // Step 3: Import the JSON files to Neo4j
+  console.log(`\nStep 3: Importing analysis results to Neo4j...`);
+  
+  // Perform import directly in the CLI
+  console.log(`Importing codebase: ${codebaseId} from ${outputDir}`);
+  
+  // Create query executor
+  const { QueryExecutor } = await import('./neo4j/query-executor.js');
+  const queryExecutor = new QueryExecutor(neo4jConfig);
+  
+  try {
+    // Read nodes and relationships from JSON files
+    const nodesPath = path.join(outputDir, 'nodes.json');
+    const relationshipsPath = path.join(outputDir, 'relationships.json');
+    
+    if (!fs.existsSync(nodesPath) || !fs.existsSync(relationshipsPath)) {
+      console.error(`Error: JSON files not found in ${outputDir}`);
+      process.exit(1);
+    }
+    
+    const nodes = JSON.parse(fs.readFileSync(nodesPath, 'utf8'));
+    const relationships = JSON.parse(fs.readFileSync(relationshipsPath, 'utf8'));
+    
+    console.log(`Found ${nodes.length} nodes and ${relationships.length} relationships`);
+    
+    // Import nodes
+    console.log('Importing nodes...');
+    let importedNodes = 0;
+    const batchSize = 500;
+    
+    for (let i = 0; i < nodes.length; i += batchSize) {
+      const batch = nodes.slice(i, i + batchSize);
+      
+      // Process nodes to handle Map objects
+      const processedBatch = batch.map((node: any) => {
+        const processed = { ...node };
+        
+        // Handle Map objects and other complex types
+        for (const key in processed) {
+          // Check for Map objects specifically
+          if (processed[key] &&
+              typeof processed[key] === 'object' &&
+              processed[key].constructor &&
+              processed[key].constructor.name === 'Map') {
+            console.log(`Converting Map in node ${node.nodeId}, property ${key} to JSON string`);
+            try {
+              // Convert Map to object then to JSON string
+              const mapObj: Record<string, any> = {};
+              for (const [k, v] of Object.entries(processed[key])) {
+                mapObj[k] = v;
+              }
+              processed[key + 'Json'] = JSON.stringify(mapObj);
+              delete processed[key];
+            } catch (e) {
+              console.log(`Error converting Map in node ${node.nodeId}, property ${key}: ${e}`);
+              delete processed[key];
+            }
+          }
+          // Handle other non-primitive objects (except arrays)
+          else if (processed[key] !== null &&
+              typeof processed[key] === 'object' &&
+              !Array.isArray(processed[key])) {
+            try {
+              processed[key + 'Json'] = JSON.stringify(processed[key]);
+              delete processed[key];
+            } catch (e) {
+              console.log(`Error converting object in node ${node.nodeId}, property ${key}: ${e}`);
+              delete processed[key];
+            }
+          }
+        }
+        
+        return processed;
+      });
+      
+      // Create nodes in batch
+      const query = `
+        UNWIND $nodes AS node
+        CREATE (n:Node)
+        SET n = node
+        WITH n, node.labels AS nodeLabels
+        WHERE nodeLabels IS NOT NULL
+        UNWIND nodeLabels AS label
+        CALL apoc.create.addLabels(n, [label])
+        YIELD node AS _
+        RETURN count(n) AS count
+      `;
+      
+      const result = await queryExecutor.executeQuery(query, { nodes: processedBatch });
+      // Handle different result formats
+      let count = 0;
+      if (result.records && result.records.length > 0) {
+        const record = result.records[0];
+        if (typeof record.get === 'function') {
+          count = record.get('count').toNumber();
+        } else if (record.count !== undefined) {
+          count = typeof record.count === 'number' ?
+            record.count :
+            (record.count.low || 0);
+        }
+      }
+      importedNodes += count;
+      
+      console.log(`Imported ${importedNodes}/${nodes.length} nodes`);
+    }
+    
+    // Import relationships
+    console.log('Importing relationships...');
+    let importedRels = 0;
+    
+    // Group relationships by type
+    const relsByType: { [key: string]: any[] } = {};
+    
+    // Group relationships by type
+    for (const rel of relationships) {
+      if (!relsByType[rel.type]) {
+        relsByType[rel.type] = [];
+      }
+      relsByType[rel.type].push(rel);
+    }
+    
+    for (const relType in relsByType) {
+      const rels = relsByType[relType];
+      console.log(`Importing ${rels.length} ${relType} relationships`);
+      
+      // Process relationships in batches
+      for (let i = 0; i < rels.length; i += batchSize) {
+        const batch = rels.slice(i, i + batchSize);
+        
+        // Transform complex properties
+        const transformedBatch = batch.map((rel: any) => {
+          // Clone the relationship to avoid modifying the original
+          const transformed = { ...rel };
+          
+          // Handle complex properties
+          if (transformed.bindings) {
+            // Convert Map to string representation
+            transformed.bindingsJson = JSON.stringify(transformed.bindings);
+            delete transformed.bindings;
+          }
+          
+          // Handle event handlers in LISTENS_TO relationships
+          if (relType === 'LISTENS_TO' && transformed.handlers) {
+            // Convert handlers to string representation
+            transformed.handlersJson = JSON.stringify(transformed.handlers);
+            delete transformed.handlers;
+          }
+          
+          // Convert any object properties to JSON strings
+          for (const key in transformed) {
+            // Check for Map objects specifically
+            if (transformed[key] &&
+                typeof transformed[key] === 'object' &&
+                transformed[key].constructor &&
+                transformed[key].constructor.name === 'Map') {
+              console.log(`Converting Map in relationship ${rel.nodeId}, property ${key} to JSON string`);
+              try {
+                // Convert Map to object then to JSON string
+                const mapObj: Record<string, any> = {};
+                for (const [k, v] of Object.entries(transformed[key])) {
+                  mapObj[k] = v;
+                }
+                transformed[key + 'Json'] = JSON.stringify(mapObj);
+                delete transformed[key];
+              } catch (e) {
+                console.log(`Error converting Map in relationship ${rel.nodeId}, property ${key}: ${e}`);
+                delete transformed[key];
+              }
+            }
+            // Handle other non-primitive objects
+            else if (transformed[key] !== null &&
+                typeof transformed[key] === 'object' &&
+                !Array.isArray(transformed[key])) {
+              transformed[key + 'Json'] = JSON.stringify(transformed[key]);
+              delete transformed[key];
+            }
+          }
+          
+          return transformed;
+        });
+        
+        // Create relationships in batch
+        const query = `
+          UNWIND $relationships AS rel
+          MATCH (start:Node {nodeId: rel.startNodeId})
+          MATCH (end:Node {nodeId: rel.endNodeId})
+          CREATE (start)-[r:\`${relType}\`]->(end)
+          SET r = rel
+          RETURN count(r) AS count
+        `;
+        
+        try {
+          const result = await queryExecutor.executeQuery(query, { relationships: transformedBatch });
+          // Handle different result formats
+          let count = 0;
+          if (result.records && result.records.length > 0) {
+            const record = result.records[0];
+            if (typeof record.get === 'function') {
+              count = record.get('count').toNumber();
+            } else if (record.count !== undefined) {
+              count = typeof record.count === 'number' ?
+                record.count :
+                (record.count.low || 0);
+            }
+          }
+          importedRels += count;
+          
+          console.log(`Imported ${importedRels}/${relationships.length} relationships`);
+        } catch (error) {
+          console.error(`Error importing ${relType} relationships:`, error);
+          console.log('Continuing with next batch...');
+        }
+      }
+    }
+    
+    console.log(`Successfully imported ${importedNodes} nodes and ${importedRels} relationships`);
+    console.log(`\nIngestion complete! Codebase '${codebaseId}' is now available in Neo4j.`);
+  } catch (error) {
+    console.error('Error during import:', error);
+    process.exit(1);
+  } finally {
+    // Close the connection
+    await queryExecutor.close();
   }
 }
 

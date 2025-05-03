@@ -1,4 +1,4 @@
-import { Node, CodeElement, NamedType, Callable, Decorator } from "./types.ts";
+import { Node, CodeElement, NamedType, Callable, Decorator } from "./types";
 
 /**
  * Represents an entire codebase
@@ -512,4 +512,137 @@ export interface InterfaceProperty extends Node {
   description?: string;
   isOptional: boolean;
   defaultValue?: string;
+}
+
+/**
+ * Represents a Vue Single File Component
+ */
+export interface VueComponent extends Node {
+  path: string;
+  absolutePath: string;
+  name: string;
+  hasTemplate: boolean;
+  hasScript: boolean;
+  hasScriptSetup: boolean;
+  hasStyle: boolean;
+  styleCount: number;
+  isAsync: boolean;
+  isExported: boolean;
+  isDefaultExport: boolean;
+}
+
+/**
+ * Represents the template section of a Vue component
+ */
+export interface ComponentTemplate extends Node {
+  content: string;
+  lang: string;
+  componentId: string;
+  hasSlots: boolean;
+  slotCount: number;
+}
+
+/**
+ * Represents the script section of a Vue component
+ */
+export interface ComponentScript extends Node {
+  lang: string;
+  componentId: string;
+  isSetup: boolean;
+  hasDefineProps: boolean;
+  hasDefineEmits: boolean;
+  hasDefineExpose: boolean;
+  hasDefineOptions: boolean;
+}
+
+/**
+ * Represents the style section of a Vue component
+ */
+export interface ComponentStyle extends Node {
+  lang: string;
+  componentId: string;
+  isScoped: boolean;
+  isModule: boolean;
+}
+
+/**
+ * Represents a prop definition in a Vue component
+ */
+export interface Prop extends Node {
+  name: string;
+  componentId: string;
+  type: string;
+  isRequired: boolean;
+  hasDefault: boolean;
+  defaultValue?: string;
+}
+
+/**
+ * Represents an emit definition in a Vue component
+ */
+export interface Emit extends Node {
+  name: string;
+  componentId: string;
+  payloadType?: string;
+}
+
+/**
+ * Represents a Vue composable function
+ */
+export interface Composable extends Node {
+  name: string;
+  file: string;
+  startLine: number;
+  endLine: number;
+  isAsync: boolean;
+  description?: string;
+  returnTypes?: string[];
+  dependencies?: string[];
+}
+
+/**
+ * Represents reactive state in a composable or component
+ */
+export interface ReactiveState extends Node {
+  name: string;
+  composableId?: string;
+  componentId?: string;
+  type: string;
+  reactivityType: 'ref' | 'reactive' | 'computed' | 'readonly' | 'shallowRef' | 'shallowReactive';
+  initialValue?: string;
+}
+
+/**
+ * Represents a SASS variable
+ */
+export interface SassVariable extends Node {
+  name: string;
+  value: string;
+  file: string;
+  isPrivate: boolean;
+  usageCount?: number;
+}
+
+/**
+ * Represents a SASS mixin
+ */
+export interface SassMixin extends Node {
+  name: string;
+  parameters: string[];
+  content: string;
+  file: string;
+  usageCount?: number;
+}
+
+/**
+ * Represents a SASS module/partial
+ */
+export interface SassModule extends Node {
+  path: string;
+  absolutePath: string;
+  name: string;
+  isPartial: boolean;
+  variableCount: number;
+  mixinCount: number;
+  functionCount: number;
 }

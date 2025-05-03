@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { TSCodeGraph } from '../index.ts';
+import { TSCodeGraph } from '../index';
 
 /**
  * Example script that demonstrates how to use the TypeScript Code Graph system

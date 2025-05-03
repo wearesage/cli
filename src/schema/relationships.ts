@@ -1,4 +1,4 @@
-import { Relationship, TypeReference } from './types.ts';
+import { Relationship } from './types';
 
 /**
  * Base import relationship with common properties
@@ -145,7 +145,8 @@ export interface Implements extends Relationship {
 export interface Calls extends Relationship {
   type: 'CALLS';
   callCount: number;
-  callLocations: { line: number; column: number }[];
+  callLocationLines: number[];
+  callLocationColumns: number[];
   arguments?: string[];
   isAsync: boolean;
   isAwait: boolean;
@@ -220,7 +221,8 @@ export interface ReferencesVariable extends Relationship {
   type: 'REFERENCES_VARIABLE';
   referenceType: 'read' | 'write' | 'readwrite';
   referenceCount: number;
-  referenceLocations: { line: number; column: number }[];
+  referenceLocationLines: number[];
+  referenceLocationColumns: number[];
 }
 
 /**
@@ -260,7 +262,8 @@ export interface Tests extends Relationship {
 export interface Renders extends Relationship {
   type: 'RENDERS';
   renderCount: number;
-  renderLocations: { line: number; column: number }[];
+  renderLocationLines: number[];
+  renderLocationColumns: number[];
   isConditional: boolean;
   props?: Record<string, string>;
 }
@@ -450,4 +453,106 @@ export interface ExecutedBy extends Relationship {
  */
 export interface VerifiedBy extends Relationship {
   type: 'VERIFIED_BY';
+}
+
+/**
+ * Component renders another component
+ */
+export interface ComponentRenders extends Relationship {
+  type: 'RENDERS';
+  isConditional: boolean;
+  isLoop: boolean;
+  key?: string;
+}
+
+/**
+ * Component provides props to another component
+ */
+export interface ProvidesProps extends Relationship {
+  type: 'PROVIDES_PROPS';
+  props: string[];
+  bindings: Record<string, string>;
+}
+
+/**
+ * Component listens to events from another component
+ */
+export interface ListensTo extends Relationship {
+  type: 'LISTENS_TO';
+  events: string[];
+  handlers: Record<string, string>;
+}
+
+/**
+ * Component uses a slot defined by another component
+ */
+export interface UsesSlot extends Relationship {
+  type: 'USES_SLOT';
+  name: string;
+  isScoped: boolean;
+  hasDefaultContent: boolean;
+}
+
+/**
+ * File defines a Vue component
+ */
+export interface DefinesVueComponent extends Relationship {
+  type: 'DEFINES_VUE_COMPONENT';
+}
+
+/**
+ * Component uses a composable function
+ */
+export interface UsesComposable extends Relationship {
+  type: 'USES_COMPOSABLE';
+}
+
+/**
+ * Symbol is auto-imported
+ */
+export interface ImportsAuto extends Relationship {
+  type: 'IMPORTS_AUTO';
+  symbol: string;
+  source: string;
+  isGlobal: boolean;
+  pluginName: string;
+}
+
+/**
+ * Component is auto-registered
+ */
+export interface RegistersAuto extends Relationship {
+  type: 'REGISTERS_AUTO';
+  componentName: string;
+  source: string;
+  pluginName: string;
+}
+
+/**
+ * Style imports a SASS module
+ */
+export interface ImportsSass extends Relationship {
+  type: 'IMPORTS_SASS';
+  path: string;
+  isPartial: boolean;
+  namespace?: string;
+}
+
+/**
+ * Style uses a SASS variable
+ */
+export interface UsesVariable extends Relationship {
+  type: 'USES_VARIABLE';
+  variable: string;
+  context: string;
+  isOverride: boolean;
+}
+
+/**
+ * Style includes a SASS mixin
+ */
+export interface IncludesMixin extends Relationship {
+  type: 'INCLUDES_MIXIN';
+  mixin: string;
+  parameters?: Record<string, string>;
 }

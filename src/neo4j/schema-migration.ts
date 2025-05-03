@@ -1,5 +1,5 @@
 import { Session } from 'neo4j-driver';
-import { SCHEMA_VERSION } from '../schema/index.ts';
+import { SCHEMA_VERSION } from '../schema/index';
 
 /**
  * Schema migration configuration
