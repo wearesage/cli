@@ -1,10 +1,11 @@
 "use strict";
 /**
- * Schema for TypeScript codebase to Neo4j graph representation
+ * Schema for Neo4j graph representation
  *
- * This schema defines the structure of the graph representation of a TypeScript codebase.
- * It includes node types, relationship types, and utility types for representing TypeScript
- * code elements and their relationships.
+ * This schema defines the structure of the graph representation organized by domains:
+ * - code: Code-related entities (files, classes, functions, etc.)
+ * - mind: Metacognitive entities (hypotheses, reflections, insights, etc.)
+ * - crypto: Crypto-related entities (to be designed)
  */
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -22,22 +23,23 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SCHEMA_METADATA = exports.SCHEMA_VERSION = void 0;
-// Export base types
-__exportStar(require("./types"), exports);
-// Export node types
-__exportStar(require("./nodes"), exports);
-// Export relationship types
-__exportStar(require("./relationships"), exports);
+// Export common types
+__exportStar(require("./common"), exports);
+// Export domain-specific types
+__exportStar(require("./code"), exports);
+__exportStar(require("./mind"), exports);
+__exportStar(require("./crypto"), exports);
 // Export schema version and metadata
-exports.SCHEMA_VERSION = "2.0.0";
+exports.SCHEMA_VERSION = "3.0.0";
 exports.SCHEMA_METADATA = {
-    name: "TypeScript Code Graph Schema",
+    name: "Domain-Organized Graph Schema",
     version: exports.SCHEMA_VERSION,
-    description: "A comprehensive schema for representing TypeScript codebases as a graph",
-    author: "TypeScript Code Graph Team",
+    description: "A comprehensive schema for representing entities as a graph, organized by domain",
+    author: "SAGE Team",
     license: "MIT",
-    repository: "https://github.com/typescript-code-graph/schema",
+    domains: ["code", "mind", "crypto"],
     nodeTypes: [
+        // Code domain
         "Codebase",
         "Package",
         "Directory",
@@ -61,12 +63,6 @@ exports.SCHEMA_METADATA = {
         "Dependency",
         "TypeDefinition",
         "ASTNodeInfo",
-        "Task",
-        "Subtask",
-        "Agent",
-        "Verification",
-        "Result",
-        "Orientation",
         "InterfaceProperty",
         "VueComponent",
         "ComponentTemplate",
@@ -76,8 +72,33 @@ exports.SCHEMA_METADATA = {
         "Emit",
         "ReactiveState",
         "Composable",
+        "SassVariable",
+        "SassMixin",
+        "SassModule",
+        // Mind domain
+        "Hypothesis",
+        "Reflection",
+        "Insight",
+        "Question",
+        "Decision",
+        "Pattern",
+        "Task",
+        "Subtask",
+        "Agent",
+        "Verification",
+        "Result",
+        "Orientation",
+        // Crypto domain
+        "Layer0",
+        "Layer1",
+        "Layer2",
+        "Layer3",
+        "Token",
+        "InteroperabilitySolution",
+        "Organization",
     ],
     relationshipTypes: [
+        // Code domain
         "IMPORTS",
         "IMPORTS_FROM_PACKAGE",
         "IMPORTS_TYPES",
@@ -112,8 +133,49 @@ exports.SCHEMA_METADATA = {
         "DEFINES_NAMESPACE",
         "DEFINES_MODULE",
         "DEFINES_COMPONENT",
-        'DECOMPOSES_TO', 'EXECUTED_BY', 'VERIFIED_BY',
-        'DEFINES_VUE_COMPONENT', 'PROVIDES_PROPS', 'LISTENS_TO', 'USES_SLOT', 'USES_COMPOSABLE'
+        "DEFINES_VUE_COMPONENT",
+        "PROVIDES_PROPS",
+        "LISTENS_TO",
+        "USES_SLOT",
+        "USES_COMPOSABLE",
+        "IMPORTS_AUTO",
+        "REGISTERS_AUTO",
+        "IMPORTS_SASS",
+        "USES_VARIABLE",
+        "INCLUDES_MIXIN",
+        // Mind domain
+        "SUGGESTS",
+        "BASED_ON",
+        "LEADS_TO",
+        "ANSWERS",
+        "CONTRADICTS",
+        "REFINES",
+        "IDENTIFIES",
+        "EVOLVES_TO",
+        "APPLIES_TO",
+        "IMPLEMENTS_DECISION",
+        "ADDRESSES",
+        "RESOLVES",
+        "APPLIES",
+        "MODIFIES",
+        "TASK_DEPENDS_ON",
+        "TASK_BLOCKED_BY",
+        "DECOMPOSES_TO",
+        "EXECUTED_BY",
+        "VERIFIED_BY",
+        // Crypto domain
+        "BUILDS_ON",
+        "CONNECTS",
+        "ISSUES",
+        "DEVELOPS",
+        "SUPPORTS",
+        "BRIDGES",
+        "PARTNERS_WITH",
+        {
+            name: "cryptoSearch",
+            labels: ["Layer0", "Layer1", "Layer2", "Layer3", "Token", "InteroperabilitySolution", "Organization"],
+            properties: ["name", "description", "symbol"],
+        },
     ],
     neo4jIndexes: [
         { label: "File", property: "path", type: "BTREE" },
@@ -123,15 +185,25 @@ exports.SCHEMA_METADATA = {
         { label: "Function", property: "name", type: "BTREE" },
         { label: "Variable", property: "name", type: "BTREE" },
         { label: "Component", property: "name", type: "BTREE" },
-        { label: 'Task', property: 'title', type: 'BTREE' },
-        { label: 'Subtask', property: 'title', type: 'BTREE' },
-        { label: 'Agent', property: 'name', type: 'BTREE' },
-        { label: 'InterfaceProperty', property: 'name', type: 'BTREE' },
-        { label: 'VueComponent', property: 'name', type: 'BTREE' },
-        { label: 'Prop', property: 'name', type: 'BTREE' },
-        { label: 'Emit', property: 'name', type: 'BTREE' },
-        { label: 'ReactiveState', property: 'name', type: 'BTREE' },
-        { label: 'Composable', property: 'name', type: 'BTREE' }
+        { label: "Task", property: "title", type: "BTREE" },
+        { label: "Subtask", property: "title", type: "BTREE" },
+        { label: "Agent", property: "name", type: "BTREE" },
+        { label: "InterfaceProperty", property: "name", type: "BTREE" },
+        { label: "VueComponent", property: "name", type: "BTREE" },
+        { label: "Prop", property: "name", type: "BTREE" },
+        { label: "Emit", property: "name", type: "BTREE" },
+        { label: "ReactiveState", property: "name", type: "BTREE" },
+        { label: "Composable", property: "name", type: "BTREE" },
+        { label: "Hypothesis", property: "title", type: "BTREE" },
+        { label: "Reflection", property: "title", type: "BTREE" },
+        { label: "Insight", property: "title", type: "BTREE" },
+        { label: "Token", property: "symbol", type: "BTREE" },
+        { label: "Layer0", property: "name", type: "BTREE" },
+        { label: "Layer1", property: "name", type: "BTREE" },
+        { label: "Layer2", property: "name", type: "BTREE" },
+        { label: "Layer3", property: "name", type: "BTREE" },
+        { label: "InteroperabilitySolution", property: "name", type: "BTREE" },
+        { label: "Organization", property: "name", type: "BTREE" },
     ],
     neo4jConstraints: [{ label: "Node", property: "nodeId", type: "UNIQUENESS" }],
     neo4jFullTextIndexes: [
@@ -144,6 +216,11 @@ exports.SCHEMA_METADATA = {
             name: "vueComponentSearch",
             labels: ["VueComponent", "ComponentTemplate", "ComponentScript", "Composable"],
             properties: ["name", "path"],
+        },
+        {
+            name: "mindSearch",
+            labels: ["Hypothesis", "Reflection", "Insight", "Question", "Decision", "Pattern"],
+            properties: ["title", "content", "description"],
         },
     ],
 };

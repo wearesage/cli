@@ -612,9 +612,17 @@ export class Neo4jImporter {
     // This requires a separate query, which we can't do here
     // Instead, we'll rely on the codebaseId property of the relationship
     
-    // For now, we'll set isCrossCodebase to false by default
-    // A separate process can update this property later if needed
-    properties.isCrossCodebase = false;
+    // Only set isCrossCodebase to false if it's not already set
+    // This allows relationships to be explicitly marked as cross-codebase
+    if (properties.isCrossCodebase === undefined) {
+      properties.isCrossCodebase = false;
+    }
+    
+    // If sourceCodebaseId and targetCodebaseId are set, ensure isCrossCodebase is true
+    if (properties.sourceCodebaseId && properties.targetCodebaseId &&
+        properties.sourceCodebaseId !== properties.targetCodebaseId) {
+      properties.isCrossCodebase = true;
+    }
     
     // Convert any Map objects to JSON strings
     const processedProperties = this.convertComplexPropertiesToPrimitives(properties);

@@ -165,9 +165,14 @@ class TSCodeGraph {
         const packageResult = this.packageParser.parseAllPackageJsonFiles(nodes, relationships);
         console.log(`Parsed package.json files in ${(performance.now() - packageStart).toFixed(2)} ms`);
         console.log(`Found ${packageResult.nodes.length} package nodes and ${packageResult.relationships.length} package relationships`);
-        // Add package nodes and relationships to the graph
-        nodes.push(...packageResult.nodes);
-        relationships.push(...packageResult.relationships);
+        // Add package nodes and relationships to the graph without using spread operator
+        console.log('Adding package nodes and relationships to the graph...');
+        for (const node of packageResult.nodes) {
+            nodes.push(node);
+        }
+        for (const relationship of packageResult.relationships) {
+            relationships.push(relationship);
+        }
         // Add the Codebase node to the list of nodes
         nodes.push(codebaseNode);
         console.log(`Added Codebase node to nodes list (total: ${nodes.length} nodes)`);
@@ -278,51 +283,70 @@ class TSCodeGraph {
     resolveComponentReferences(parseResults) {
         // Build a registry of all Vue components
         const componentRegistry = new Map();
+        const chunkSize = 1000; // Process in chunks to reduce memory pressure
+        console.log('Building component registry...');
         // First pass: collect all Vue components
+        let processedResults = 0;
         for (const result of parseResults) {
-            for (const node of result.nodes) {
-                if (node.labels && node.labels.includes('VueComponent')) {
-                    // Map component name to its nodeId
-                    componentRegistry.set(node.name, node.nodeId);
-                    console.log(`Registered component: ${node.name} -> ${node.nodeId}`);
+            if (result.nodes) {
+                for (let i = 0; i < result.nodes.length; i++) {
+                    const node = result.nodes[i];
+                    if (node.labels && Array.isArray(node.labels) && node.labels.includes('VueComponent')) {
+                        // Map component name to its nodeId
+                        componentRegistry.set(node.name, node.nodeId);
+                    }
                 }
             }
+            // Log progress periodically
+            processedResults++;
+            if (processedResults % 500 === 0) {
+                console.log(`Building component registry: processed ${processedResults}/${parseResults.length} results (${Math.round(processedResults / parseResults.length * 100)}%)`);
+            }
         }
+        console.log(`Found ${componentRegistry.size} Vue components`);
         // Second pass: resolve component references in relationships
+        console.log('Resolving component references...');
+        processedResults = 0;
         for (const result of parseResults) {
-            for (const relationship of result.relationships) {
-                // Handle Vue-specific relationships
-                if (['RENDERS', 'PROVIDES_PROPS', 'LISTENS_TO', 'USES_SLOT'].includes(relationship.type)) {
-                    // If endNodeId doesn't start with codebaseId, it's a placeholder component name
-                    if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
-                        const componentName = relationship.endNodeId;
-                        const resolvedNodeId = componentRegistry.get(componentName);
-                        if (resolvedNodeId) {
-                            // Replace placeholder with actual node ID
-                            relationship.endNodeId = resolvedNodeId;
-                            console.log(`Resolved component reference: ${componentName} -> ${resolvedNodeId}`);
+            if (result.relationships) {
+                for (let i = 0; i < result.relationships.length; i++) {
+                    const relationship = result.relationships[i];
+                    // Handle Vue-specific relationships
+                    if (['RENDERS', 'PROVIDES_PROPS', 'LISTENS_TO', 'USES_SLOT'].includes(relationship.type)) {
+                        // If endNodeId doesn't start with codebaseId, it's a placeholder component name
+                        if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
+                            const componentName = relationship.endNodeId;
+                            const resolvedNodeId = componentRegistry.get(componentName);
+                            if (resolvedNodeId) {
+                                // Replace placeholder with actual node ID
+                                relationship.endNodeId = resolvedNodeId;
+                            }
+                            else {
+                                // Keep the placeholder but mark it for special handling
+                                relationship.unresolvedComponent = true;
+                            }
                         }
-                        else {
-                            console.warn(`Could not resolve component reference: ${componentName}`);
-                            // Keep the placeholder but mark it for special handling
-                            relationship.unresolvedComponent = true;
+                    }
+                    // Handle composable references
+                    if (relationship.type === 'USES_COMPOSABLE') {
+                        if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
+                            // For now, we'll keep these as is, but mark them for special handling
+                            relationship.unresolvedComposable = true;
+                        }
+                    }
+                    // Handle import references
+                    if (relationship.type === 'IMPORTS') {
+                        if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
+                            // For now, we'll keep these as is, but mark them for special handling
+                            relationship.unresolvedImport = true;
                         }
                     }
                 }
-                // Handle composable references
-                if (relationship.type === 'USES_COMPOSABLE') {
-                    if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
-                        // For now, we'll keep these as is, but mark them for special handling
-                        relationship.unresolvedComposable = true;
-                    }
-                }
-                // Handle import references
-                if (relationship.type === 'IMPORTS') {
-                    if (typeof relationship.endNodeId === 'string' && !relationship.endNodeId.startsWith(`${relationship.codebaseId}:`)) {
-                        // For now, we'll keep these as is, but mark them for special handling
-                        relationship.unresolvedImport = true;
-                    }
-                }
+            }
+            // Log progress periodically
+            processedResults++;
+            if (processedResults % 500 === 0) {
+                console.log(`Resolving component references: processed ${processedResults}/${parseResults.length} results (${Math.round(processedResults / parseResults.length * 100)}%)`);
             }
         }
         console.log(`Component registry built with ${componentRegistry.size} components`);

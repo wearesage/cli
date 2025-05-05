@@ -396,6 +396,18 @@ async function ingestProject(args, perfTracker = null) {
         DELETE r
       `;
             await queryExecutor.executeQuery(cleanupRelQuery, { codebaseId });
+            // Clean up orphaned global dependency nodes
+            // This will only delete global dependency nodes that are not referenced by any other codebase
+            const cleanupOrphanedDepsQuery = `
+        MATCH (d:Dependency {codebaseId: 'global'})
+        WHERE NOT EXISTS {
+          MATCH (d)<-[r]-()
+          WHERE r.sourceCodebaseId <> $codebaseId
+        }
+        DETACH DELETE d
+      `;
+            const orphanResult = await queryExecutor.executeQuery(cleanupOrphanedDepsQuery, { codebaseId });
+            console.log(`Cleaned up ${orphanResult.summary.stats.nodesDeleted} orphaned global dependency nodes`);
             console.log('Cleanup completed successfully');
             if (perfTracker)
                 perfTracker.mark('cleanup_complete');
@@ -513,8 +525,9 @@ async function ingestProject(args, perfTracker = null) {
             // Create nodes in batch
             const query = `
         UNWIND $nodes AS node
-        CREATE (n:Node)
-        SET n = node
+        MERGE (n:Node {nodeId: node.nodeId})
+        ON CREATE SET n = node
+        ON MATCH SET n += node
         WITH n, node.labels AS nodeLabels
         WHERE nodeLabels IS NOT NULL
         UNWIND nodeLabels AS label
@@ -606,10 +619,20 @@ async function ingestProject(args, perfTracker = null) {
                     return transformed;
                 });
                 // Create relationships in batch
+                // Use MERGE instead of MATCH for end nodes to handle global dependency nodes
+                // that might not exist yet (if they were created by a different codebase)
                 const query = `
           UNWIND $relationships AS rel
           MATCH (start:Node {nodeId: rel.startNodeId})
-          MATCH (end:Node {nodeId: rel.endNodeId})
+          MERGE (end:Node {nodeId: rel.endNodeId})
+          ON CREATE SET end.codebaseId = 'global', end.labels = ['Node', 'Dependency', 'Package']
+          WITH start, end, rel
+          CALL apoc.do.when(
+            NOT 'Dependency' IN labels(end) AND end.codebaseId = 'global',
+            'CALL apoc.create.addLabels($endNode, ["Dependency", "Package"]) YIELD node RETURN node',
+            'RETURN $endNode as node',
+            {endNode: end}
+          ) YIELD value
           CREATE (start)-[r:\`${relType}\`]->(end)
           SET r = rel
           RETURN count(r) AS count

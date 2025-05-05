@@ -1,23 +1,29 @@
 /**
- * Schema for TypeScript codebase to Neo4j graph representation
+ * Schema for Neo4j graph representation
  *
- * This schema defines the structure of the graph representation of a TypeScript codebase.
- * It includes node types, relationship types, and utility types for representing TypeScript
- * code elements and their relationships.
+ * This schema defines the structure of the graph representation organized by domains:
+ * - code: Code-related entities (files, classes, functions, etc.)
+ * - mind: Metacognitive entities (hypotheses, reflections, insights, etc.)
+ * - crypto: Crypto-related entities (to be designed)
  */
-export * from "./types";
-export * from "./nodes";
-export * from "./relationships";
-export declare const SCHEMA_VERSION = "2.0.0";
+export * from "./common";
+export * from "./code";
+export * from "./mind";
+export * from "./crypto";
+export declare const SCHEMA_VERSION = "3.0.0";
 export declare const SCHEMA_METADATA: {
     name: string;
     version: string;
     description: string;
     author: string;
     license: string;
-    repository: string;
+    domains: string[];
     nodeTypes: string[];
-    relationshipTypes: string[];
+    relationshipTypes: (string | {
+        name: string;
+        labels: string[];
+        properties: string[];
+    })[];
     neo4jIndexes: {
         label: string;
         property: string;

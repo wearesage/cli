@@ -125,7 +125,7 @@ class PackageParser {
         // Process regular dependencies
         if (packageJson.dependencies) {
             for (const [depName, depVersion] of Object.entries(packageJson.dependencies)) {
-                const depNodeId = `${this.config.codebaseId}:dependency:${depName}`;
+                const depNodeId = `dependency:${depName}:${depVersion}`;
                 // Create dependency node
                 nodes.push({
                     nodeId: depNodeId,
@@ -136,7 +136,7 @@ class PackageParser {
                     isOptionalDependency: false,
                     isDirectDependency: true,
                     isTransitiveDependency: false,
-                    codebaseId: this.config.codebaseId,
+                    codebaseId: 'global', // Use 'global' instead of this.config.codebaseId
                     labels: ['Dependency', 'Node', 'Package']
                 });
                 // Also create a package node with the same ID format that the TS parser uses
@@ -161,14 +161,18 @@ class PackageParser {
                     isStrong: true,
                     isWeak: false,
                     weight: 1,
-                    codebaseId: this.config.codebaseId
+                    codebaseId: this.config.codebaseId,
+                    // Add cross-codebase relationship metadata
+                    isCrossCodebase: true,
+                    sourceCodebaseId: this.config.codebaseId,
+                    targetCodebaseId: 'global'
                 });
             }
         }
         // Process dev dependencies
         if (packageJson.devDependencies) {
             for (const [depName, depVersion] of Object.entries(packageJson.devDependencies)) {
-                const depNodeId = `${this.config.codebaseId}:dependency:${depName}`;
+                const depNodeId = `dependency:${depName}:${depVersion}`;
                 // Create dependency node
                 nodes.push({
                     nodeId: depNodeId,
@@ -179,7 +183,7 @@ class PackageParser {
                     isOptionalDependency: false,
                     isDirectDependency: true,
                     isTransitiveDependency: false,
-                    codebaseId: this.config.codebaseId,
+                    codebaseId: 'global', // Use 'global' instead of this.config.codebaseId
                     labels: ['Dependency', 'Node', 'Package']
                 });
                 // Also create a package node with the same ID format that the TS parser uses
@@ -203,14 +207,18 @@ class PackageParser {
                     isStrong: false,
                     isWeak: true,
                     weight: 0.5,
-                    codebaseId: this.config.codebaseId
+                    codebaseId: this.config.codebaseId,
+                    // Add cross-codebase relationship metadata
+                    isCrossCodebase: true,
+                    sourceCodebaseId: this.config.codebaseId,
+                    targetCodebaseId: 'global'
                 });
             }
         }
         // Process peer dependencies
         if (packageJson.peerDependencies) {
             for (const [depName, depVersion] of Object.entries(packageJson.peerDependencies)) {
-                const depNodeId = `${this.config.codebaseId}:dependency:${depName}`;
+                const depNodeId = `dependency:${depName}:${depVersion}`;
                 // Create dependency node
                 nodes.push({
                     nodeId: depNodeId,
@@ -221,7 +229,7 @@ class PackageParser {
                     isOptionalDependency: false,
                     isDirectDependency: true,
                     isTransitiveDependency: false,
-                    codebaseId: this.config.codebaseId,
+                    codebaseId: 'global', // Use 'global' instead of this.config.codebaseId
                     labels: ['Dependency', 'Node', 'Package']
                 });
                 // Also create a package node with the same ID format that the TS parser uses
@@ -245,7 +253,11 @@ class PackageParser {
                     isStrong: true,
                     isWeak: false,
                     weight: 0.8,
-                    codebaseId: this.config.codebaseId
+                    codebaseId: this.config.codebaseId,
+                    // Add cross-codebase relationship metadata
+                    isCrossCodebase: true,
+                    sourceCodebaseId: this.config.codebaseId,
+                    targetCodebaseId: 'global'
                 });
             }
         }
@@ -285,9 +297,13 @@ class PackageParser {
             node.labels.includes('Package') &&
             !node.labels.includes('Dependency'));
         // Create a map of dependency names to node IDs for quick lookup
+        // For dependencies with the same name but different versions, we'll use the first one we find
+        // This is a simplification - in a real system, we might want to be more sophisticated about version resolution
         const dependencyMap = new Map();
         for (const dep of dependencyNodes) {
-            dependencyMap.set(dep.name, dep.nodeId);
+            if (!dependencyMap.has(dep.name)) {
+                dependencyMap.set(dep.name, dep.nodeId);
+            }
         }
         // List of built-in Node.js modules
         const builtInModules = [
@@ -299,7 +315,7 @@ class PackageParser {
         // Create dependency nodes for built-in Node.js modules
         for (const moduleName of builtInModules) {
             if (!dependencyMap.has(moduleName)) {
-                const depNodeId = `${this.config.codebaseId}:dependency:${moduleName}`;
+                const depNodeId = `dependency:${moduleName}:built-in`;
                 // Create dependency node
                 const depNode = {
                     nodeId: depNodeId,
@@ -311,7 +327,7 @@ class PackageParser {
                     isDirectDependency: true,
                     isTransitiveDependency: false,
                     isBuiltIn: true,
-                    codebaseId: this.config.codebaseId,
+                    codebaseId: 'global', // Use 'global' instead of this.config.codebaseId
                     labels: ['Dependency', 'Node', 'Package', 'BuiltInModule']
                 };
                 // Add to nodes array
@@ -351,7 +367,11 @@ class PackageParser {
                     isDevDependency: dep.isDevDependency || false,
                     isPeerDependency: dep.isPeerDependency || false,
                     isOptionalDependency: dep.isOptionalDependency || false,
-                    codebaseId: this.config.codebaseId
+                    codebaseId: this.config.codebaseId,
+                    // Add cross-codebase relationship metadata
+                    isCrossCodebase: true,
+                    sourceCodebaseId: this.config.codebaseId,
+                    targetCodebaseId: 'global'
                 });
             }
         }
@@ -403,7 +423,11 @@ class PackageParser {
                 isRelative: false,
                 isResolved: true,
                 packageName: packageName,
-                codebaseId: this.config.codebaseId
+                codebaseId: this.config.codebaseId,
+                // Add cross-codebase relationship metadata
+                isCrossCodebase: true,
+                sourceCodebaseId: this.config.codebaseId,
+                targetCodebaseId: 'global'
             });
         }
         // Log the dependency map for debugging

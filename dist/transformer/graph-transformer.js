@@ -51,45 +51,245 @@ class GraphTransformer {
      */
     transform(parseResults) {
         console.log(`Transforming ${parseResults.length} parse results into a graph model`);
-        // Combine all nodes and relationships
-        const nodes = [];
-        const relationships = [];
-        // Process each parse result
-        for (const result of parseResults) {
-            // Add nodes and relationships from the parse result
-            nodes.push(...result.nodes);
-            relationships.push(...result.relationships);
+        // Instead of accumulating everything in memory, we'll process in a streaming fashion
+        // First, extract and deduplicate all node IDs to create a lookup map
+        console.log('Building node ID lookup map...');
+        const nodeIdMap = new Map();
+        const relationshipIdMap = new Map();
+        // Count total nodes and relationships for progress reporting
+        let totalNodeCount = 0;
+        let totalRelationshipCount = 0;
+        // First pass: just count and build ID maps
+        const batchSize = 100;
+        for (let i = 0; i < parseResults.length; i += batchSize) {
+            const endIdx = Math.min(i + batchSize, parseResults.length);
+            console.log(`Counting batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(parseResults.length / batchSize)} (${i}-${endIdx})`);
+            for (let j = i; j < endIdx; j++) {
+                const result = parseResults[j];
+                if (result.nodes) {
+                    for (let k = 0; k < result.nodes.length; k++) {
+                        const nodeId = result.nodes[k].nodeId;
+                        if (!nodeIdMap.has(nodeId)) {
+                            nodeIdMap.set(nodeId, true);
+                            totalNodeCount++;
+                        }
+                    }
+                }
+                if (result.relationships) {
+                    for (let k = 0; k < result.relationships.length; k++) {
+                        const relId = result.relationships[k].nodeId;
+                        if (!relationshipIdMap.has(relId)) {
+                            relationshipIdMap.set(relId, true);
+                            totalRelationshipCount++;
+                        }
+                    }
+                }
+            }
+            // Force garbage collection
+            if (global.gc) {
+                global.gc();
+            }
         }
-        // Deduplicate nodes and relationships
-        const uniqueNodes = this.deduplicateNodes(nodes);
-        const uniqueRelationships = this.deduplicateRelationships(relationships);
-        // Post-process relationships to derive additional semantic relationships
-        const enhancedRelationships = this.deriveAdditionalRelationships(uniqueRelationships, uniqueNodes);
-        console.log(`Transformed to ${uniqueNodes.length} nodes and ${enhancedRelationships.length} relationships`);
-        // Ensure nodes have appropriate labels
-        const enhancedNodes = this.ensureNodeLabels(uniqueNodes);
+        console.log(`Found ${totalNodeCount} unique nodes and ${totalRelationshipCount} unique relationships`);
+        // Pre-allocate arrays with known sizes to avoid resizing
+        const nodes = new Array(totalNodeCount);
+        const relationships = new Array(totalRelationshipCount);
+        // Reset maps for second pass
+        nodeIdMap.clear();
+        relationshipIdMap.clear();
+        // Second pass: actually collect unique nodes and relationships
+        let nodeIndex = 0;
+        let relationshipIndex = 0;
+        for (let i = 0; i < parseResults.length; i += batchSize) {
+            const endIdx = Math.min(i + batchSize, parseResults.length);
+            console.log(`Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(parseResults.length / batchSize)} (${i}-${endIdx})`);
+            for (let j = i; j < endIdx; j++) {
+                const result = parseResults[j];
+                if (result.nodes) {
+                    for (let k = 0; k < result.nodes.length; k++) {
+                        const node = result.nodes[k];
+                        if (!nodeIdMap.has(node.nodeId)) {
+                            nodeIdMap.set(node.nodeId, true);
+                            nodes[nodeIndex++] = node;
+                        }
+                    }
+                    // Clear nodes array to free memory
+                    result.nodes = [];
+                }
+                if (result.relationships) {
+                    for (let k = 0; k < result.relationships.length; k++) {
+                        const relationship = result.relationships[k];
+                        if (!relationshipIdMap.has(relationship.nodeId)) {
+                            relationshipIdMap.set(relationship.nodeId, true);
+                            relationships[relationshipIndex++] = relationship;
+                        }
+                    }
+                    // Clear relationships array to free memory
+                    result.relationships = [];
+                }
+            }
+            // Force garbage collection
+            if (global.gc) {
+                global.gc();
+            }
+        }
+        // Clear maps to free memory
+        nodeIdMap.clear();
+        relationshipIdMap.clear();
+        console.log(`Collected ${nodeIndex} nodes and ${relationshipIndex} relationships`);
+        // Process nodes in smaller chunks to ensure node labels
+        console.log('Ensuring node labels...');
+        const labelChunkSize = 1000;
+        for (let i = 0; i < nodes.length; i += labelChunkSize) {
+            const end = Math.min(i + labelChunkSize, nodes.length);
+            for (let j = i; j < end; j++) {
+                const node = nodes[j];
+                // Ensure labels is an array
+                if (!Array.isArray(node.labels)) {
+                    node.labels = [];
+                }
+                // Add CodeElement label to nodes that implement the CodeElement interface
+                if ('name' in node && 'file' in node && 'startLine' in node && 'endLine' in node) {
+                    if (!node.labels.includes('CodeElement')) {
+                        node.labels.push('CodeElement');
+                    }
+                }
+            }
+            if (nodes.length > 10000 && i % 10000 === 0) {
+                console.log(`Ensuring node labels: ${i}/${nodes.length} (${Math.round(i / nodes.length * 100)}%)`);
+                if (global.gc)
+                    global.gc();
+            }
+        }
+        // Derive additional relationships in smaller chunks
+        console.log('Deriving additional relationships...');
+        const derivedRelationships = this.deriveAdditionalRelationshipsInChunks(relationships, nodes);
+        // Combine original and derived relationships
+        const allRelationships = relationships.concat(derivedRelationships);
+        console.log(`Transformed to ${nodes.length} nodes and ${allRelationships.length} relationships`);
         return {
-            nodes: enhancedNodes,
-            relationships: enhancedRelationships
+            nodes: nodes,
+            relationships: allRelationships
         };
     }
     /**
+     * Derive additional relationships in chunks to reduce memory pressure
+     */
+    deriveAdditionalRelationshipsInChunks(relationships, nodes) {
+        console.log('Deriving additional semantic relationships in chunks...');
+        // Create node lookup object
+        const nodeObj = {};
+        for (let i = 0; i < nodes.length; i++) {
+            nodeObj[nodes[i].nodeId] = nodes[i];
+        }
+        // Group relationships by type
+        const relationshipTypes = new Set();
+        for (let i = 0; i < relationships.length; i++) {
+            relationshipTypes.add(relationships[i].type);
+        }
+        console.log(`Found ${relationshipTypes.size} relationship types`);
+        const newRelationships = [];
+        const processedDependsOnIds = new Set();
+        // Process each relationship type separately to reduce memory pressure
+        for (const relType of relationshipTypes) {
+            // Skip types that don't need derivation
+            if (!['CALLS', 'REFERENCES_TYPE', 'REFERENCES_VARIABLE'].includes(relType)) {
+                continue;
+            }
+            console.log(`Processing ${relType} relationships...`);
+            // Filter relationships of this type
+            const typeRelationships = relationships.filter(rel => rel.type === relType);
+            console.log(`Found ${typeRelationships.length} ${relType} relationships`);
+            // Process in small batches
+            const batchSize = 200;
+            for (let i = 0; i < typeRelationships.length; i += batchSize) {
+                const endIdx = Math.min(i + batchSize, typeRelationships.length);
+                for (let j = i; j < endIdx; j++) {
+                    const rel = typeRelationships[j];
+                    const dependsOnId = `${this.config.codebaseId}:DEPENDS_ON:${rel.startNodeId}->${rel.endNodeId}`;
+                    // Skip if already processed
+                    if (processedDependsOnIds.has(dependsOnId)) {
+                        continue;
+                    }
+                    processedDependsOnIds.add(dependsOnId);
+                    // Create appropriate DependsOn relationship based on type
+                    if (relType === 'CALLS') {
+                        newRelationships.push({
+                            nodeId: dependsOnId,
+                            codebaseId: this.config.codebaseId,
+                            type: 'DEPENDS_ON',
+                            startNodeId: rel.startNodeId,
+                            endNodeId: rel.endNodeId,
+                            dependencyType: 'call',
+                            isStrong: true,
+                            isWeak: false,
+                            weight: 1
+                        });
+                    }
+                    else {
+                        // For REFERENCES_TYPE and REFERENCES_VARIABLE
+                        newRelationships.push({
+                            nodeId: dependsOnId,
+                            codebaseId: this.config.codebaseId,
+                            type: 'DEPENDS_ON',
+                            startNodeId: rel.startNodeId,
+                            endNodeId: rel.endNodeId,
+                            dependencyType: 'reference',
+                            isStrong: false,
+                            isWeak: true,
+                            weight: 1
+                        });
+                    }
+                }
+                // Log progress and force GC
+                if (typeRelationships.length > 1000 && i % 1000 === 0) {
+                    console.log(`Processing ${relType}: ${i}/${typeRelationships.length} (${Math.round(i / typeRelationships.length * 100)}%)`);
+                    if (global.gc)
+                        global.gc();
+                }
+            }
+        }
+        processedDependsOnIds.clear();
+        console.log(`Added ${newRelationships.length} derived relationships`);
+        return newRelationships;
+    }
+    /**
      * Deduplicate nodes by nodeId
+     * Optimized to process in chunks to reduce memory pressure
      */
     deduplicateNodes(nodes) {
         const nodeMap = new Map();
-        for (const node of nodes) {
-            nodeMap.set(node.nodeId, node);
+        const chunkSize = 500; // Smaller chunk size to reduce memory pressure
+        // Process nodes in chunks
+        for (let i = 0; i < nodes.length; i += chunkSize) {
+            const end = Math.min(i + chunkSize, nodes.length);
+            for (let j = i; j < end; j++) {
+                nodeMap.set(nodes[j].nodeId, nodes[j]);
+            }
+            // Log progress for large node arrays
+            if (nodes.length > 10000 && i % 10000 === 0) {
+                console.log(`Deduplicating nodes: ${i}/${nodes.length} (${Math.round(i / nodes.length * 100)}%)`);
+            }
         }
         return Array.from(nodeMap.values());
     }
     /**
      * Deduplicate relationships by nodeId
+     * Optimized to process in chunks to reduce memory pressure
      */
     deduplicateRelationships(relationships) {
         const relationshipMap = new Map();
-        for (const relationship of relationships) {
-            relationshipMap.set(relationship.nodeId, relationship);
+        const chunkSize = 500; // Smaller chunk size to reduce memory pressure
+        // Process relationships in chunks
+        for (let i = 0; i < relationships.length; i += chunkSize) {
+            const end = Math.min(i + chunkSize, relationships.length);
+            for (let j = i; j < end; j++) {
+                relationshipMap.set(relationships[j].nodeId, relationships[j]);
+            }
+            // Log progress for large relationship arrays
+            if (relationships.length > 10000 && i % 10000 === 0) {
+                console.log(`Deduplicating relationships: ${i}/${relationships.length} (${Math.round(i / relationships.length * 100)}%)`);
+            }
         }
         return Array.from(relationshipMap.values());
     }
@@ -253,21 +453,33 @@ class GraphTransformer {
      * This is crucial for Neo4j schema alignment
      */
     ensureNodeLabels(nodes) {
-        return nodes.map(node => {
-            // Create a new node object to avoid modifying the original
-            const enhancedNode = { ...node };
-            // Ensure labels is an array
-            if (!Array.isArray(enhancedNode.labels)) {
-                enhancedNode.labels = [];
-            }
-            // Add CodeElement label to nodes that implement the CodeElement interface
-            if ('name' in node && 'file' in node && 'startLine' in node && 'endLine' in node) {
-                if (!enhancedNode.labels.includes('CodeElement')) {
-                    enhancedNode.labels.push('CodeElement');
+        const chunkSize = 500; // Smaller chunk size to reduce memory pressure
+        const result = new Array(nodes.length);
+        for (let i = 0; i < nodes.length; i += chunkSize) {
+            const end = Math.min(i + chunkSize, nodes.length);
+            for (let j = i; j < end; j++) {
+                const node = nodes[j];
+                // Create a new node object to avoid modifying the original
+                // Use Object.assign instead of spread operator for better memory efficiency
+                const enhancedNode = Object.assign({}, node);
+                // Ensure labels is an array
+                if (!Array.isArray(enhancedNode.labels)) {
+                    enhancedNode.labels = [];
                 }
+                // Add CodeElement label to nodes that implement the CodeElement interface
+                if ('name' in node && 'file' in node && 'startLine' in node && 'endLine' in node) {
+                    if (!enhancedNode.labels.includes('CodeElement')) {
+                        enhancedNode.labels.push('CodeElement');
+                    }
+                }
+                result[j] = enhancedNode;
             }
-            return enhancedNode;
-        });
+            // Log progress for large node arrays
+            if (nodes.length > 10000 && i % 10000 === 0) {
+                console.log(`Ensuring node labels: ${i}/${nodes.length} (${Math.round(i / nodes.length * 100)}%)`);
+            }
+        }
+        return result;
     }
     /**
      * Check if a relationship is valid
@@ -285,126 +497,189 @@ class GraphTransformer {
      */
     deriveAdditionalRelationships(relationships, nodes) {
         console.log('Deriving additional semantic relationships...');
-        // Create a copy of the relationships array to avoid modifying the original
-        const enhancedRelationships = [...relationships];
-        // Create maps for quick lookups
-        const nodeMap = new Map();
-        nodes.forEach(node => nodeMap.set(node.nodeId, node));
-        // Group relationships by type for easier processing
-        const relationshipsByType = new Map();
-        relationships.forEach(rel => {
-            const relType = rel.type;
-            if (!relationshipsByType.has(relType)) {
-                relationshipsByType.set(relType, []);
+        // Use plain objects instead of Maps to reduce memory usage
+        const newRelationships = [];
+        // Create node lookup object
+        const nodeObj = {};
+        for (let i = 0; i < nodes.length; i++) {
+            nodeObj[nodes[i].nodeId] = nodes[i];
+        }
+        // Group relationships by type using plain objects
+        const relationshipsByType = {};
+        // Process in batches to reduce memory pressure
+        const batchSize = 500; // Smaller batch size to reduce memory pressure
+        for (let i = 0; i < relationships.length; i += batchSize) {
+            const endIdx = Math.min(i + batchSize, relationships.length);
+            for (let j = i; j < endIdx; j++) {
+                const rel = relationships[j];
+                if (!relationshipsByType[rel.type]) {
+                    relationshipsByType[rel.type] = [];
+                }
+                relationshipsByType[rel.type].push(rel);
             }
-            relationshipsByType.get(relType)?.push(rel);
-        });
+            // Log progress for large relationship arrays
+            if (relationships.length > 10000 && i % 10000 === 0) {
+                console.log(`Grouping relationships by type: ${i}/${relationships.length} (${Math.round(i / relationships.length * 100)}%)`);
+            }
+        }
         // Count relationship types
         console.log('Relationship type counts:');
-        relationshipsByType.forEach((rels, type) => {
-            console.log(`  ${type}: ${rels.length}`);
-        });
+        for (const type in relationshipsByType) {
+            console.log(`  ${type}: ${relationshipsByType[type].length}`);
+        }
         // Process CALLS relationships to derive DependsOn relationships
-        if (relationshipsByType.has('CALLS')) {
-            const callsRelationships = relationshipsByType.get('CALLS') || [];
+        if (relationshipsByType['CALLS']) {
+            const callsRelationships = relationshipsByType['CALLS'];
             console.log(`Processing ${callsRelationships.length} CALLS relationships to derive DependsOn relationships`);
-            const dependsOnMap = new Map();
-            callsRelationships.forEach(callsRel => {
-                const dependsOnId = `${this.config.codebaseId}:DEPENDS_ON:${callsRel.startNodeId}->${callsRel.endNodeId}`;
-                if (!dependsOnMap.has(dependsOnId)) {
-                    const dependsOnRel = {
-                        nodeId: dependsOnId,
-                        codebaseId: this.config.codebaseId,
-                        type: 'DEPENDS_ON',
-                        startNodeId: callsRel.startNodeId,
-                        endNodeId: callsRel.endNodeId,
-                        dependencyType: 'call',
-                        isStrong: true,
-                        isWeak: false,
-                        weight: 1
-                    };
-                    dependsOnMap.set(dependsOnId, dependsOnRel);
-                }
-                else {
-                    // Increment the weight if the relationship already exists
-                    const existingRel = dependsOnMap.get(dependsOnId);
-                    if (existingRel && 'weight' in existingRel) {
-                        existingRel.weight += 1;
+            const dependsOnObj = {};
+            // Process in smaller batches
+            const smallerBatchSize = 200; // Even smaller batch size for processing relationships
+            for (let i = 0; i < callsRelationships.length; i += smallerBatchSize) {
+                const endIdx = Math.min(i + batchSize, callsRelationships.length);
+                for (let j = i; j < endIdx; j++) {
+                    const callsRel = callsRelationships[j];
+                    const dependsOnId = `${this.config.codebaseId}:DEPENDS_ON:${callsRel.startNodeId}->${callsRel.endNodeId}`;
+                    if (!dependsOnObj[dependsOnId]) {
+                        dependsOnObj[dependsOnId] = {
+                            nodeId: dependsOnId,
+                            codebaseId: this.config.codebaseId,
+                            type: 'DEPENDS_ON',
+                            startNodeId: callsRel.startNodeId,
+                            endNodeId: callsRel.endNodeId,
+                            dependencyType: 'call',
+                            isStrong: true,
+                            isWeak: false,
+                            weight: 1
+                        };
+                    }
+                    else {
+                        // Increment the weight if the relationship already exists
+                        const existingRel = dependsOnObj[dependsOnId];
+                        if (existingRel && 'weight' in existingRel) {
+                            existingRel.weight += 1;
+                        }
                     }
                 }
-            });
+                // Log progress for large relationship arrays
+                if (callsRelationships.length > 10000 && i % 10000 === 0) {
+                    console.log(`Processing CALLS relationships: ${i}/${callsRelationships.length} (${Math.round(i / callsRelationships.length * 100)}%)`);
+                }
+            }
             // Add the derived DependsOn relationships
-            enhancedRelationships.push(...dependsOnMap.values());
-            console.log(`Added ${dependsOnMap.size} derived DependsOn relationships`);
+            for (const id in dependsOnObj) {
+                newRelationships.push(dependsOnObj[id]);
+            }
+            // Clear the object to free memory
+            const dependsOnCount = Object.keys(dependsOnObj).length;
+            for (const key in dependsOnObj)
+                delete dependsOnObj[key];
+            console.log(`Added ${dependsOnCount} derived DependsOn relationships`);
         }
         // Process REFERENCES_TYPE relationships to derive DependsOn relationships
-        if (relationshipsByType.has('REFERENCES_TYPE')) {
-            const referencesTypeRelationships = relationshipsByType.get('REFERENCES_TYPE') || [];
+        if (relationshipsByType['REFERENCES_TYPE']) {
+            const referencesTypeRelationships = relationshipsByType['REFERENCES_TYPE'];
             console.log(`Processing ${referencesTypeRelationships.length} REFERENCES_TYPE relationships to derive DependsOn relationships`);
-            const dependsOnMap = new Map();
-            referencesTypeRelationships.forEach(refRel => {
-                const dependsOnId = `${this.config.codebaseId}:DEPENDS_ON:${refRel.startNodeId}->${refRel.endNodeId}`;
-                if (!dependsOnMap.has(dependsOnId)) {
-                    const dependsOnRel = {
-                        nodeId: dependsOnId,
-                        codebaseId: this.config.codebaseId,
-                        type: 'DEPENDS_ON',
-                        startNodeId: refRel.startNodeId,
-                        endNodeId: refRel.endNodeId,
-                        dependencyType: 'reference',
-                        isStrong: false,
-                        isWeak: true,
-                        weight: 1
-                    };
-                    dependsOnMap.set(dependsOnId, dependsOnRel);
-                }
-                else {
-                    // Increment the weight if the relationship already exists
-                    const existingRel = dependsOnMap.get(dependsOnId);
-                    if (existingRel && 'weight' in existingRel) {
-                        existingRel.weight += 1;
+            const dependsOnObj = {};
+            // Process in batches
+            const smallerBatchSize = 200; // Even smaller batch size for processing relationships
+            for (let i = 0; i < referencesTypeRelationships.length; i += smallerBatchSize) {
+                const endIdx = Math.min(i + batchSize, referencesTypeRelationships.length);
+                for (let j = i; j < endIdx; j++) {
+                    const refRel = referencesTypeRelationships[j];
+                    const dependsOnId = `${this.config.codebaseId}:DEPENDS_ON:${refRel.startNodeId}->${refRel.endNodeId}`;
+                    if (!dependsOnObj[dependsOnId]) {
+                        dependsOnObj[dependsOnId] = {
+                            nodeId: dependsOnId,
+                            codebaseId: this.config.codebaseId,
+                            type: 'DEPENDS_ON',
+                            startNodeId: refRel.startNodeId,
+                            endNodeId: refRel.endNodeId,
+                            dependencyType: 'reference',
+                            isStrong: false,
+                            isWeak: true,
+                            weight: 1
+                        };
+                    }
+                    else {
+                        // Increment the weight if the relationship already exists
+                        const existingRel = dependsOnObj[dependsOnId];
+                        if (existingRel && 'weight' in existingRel) {
+                            existingRel.weight += 1;
+                        }
                     }
                 }
-            });
+                // Log progress for large relationship arrays
+                if (referencesTypeRelationships.length > 10000 && i % 10000 === 0) {
+                    console.log(`Processing REFERENCES_TYPE relationships: ${i}/${referencesTypeRelationships.length} (${Math.round(i / referencesTypeRelationships.length * 100)}%)`);
+                }
+            }
             // Add the derived DependsOn relationships
-            enhancedRelationships.push(...dependsOnMap.values());
-            console.log(`Added ${dependsOnMap.size} derived DependsOn relationships from type references`);
+            for (const id in dependsOnObj) {
+                newRelationships.push(dependsOnObj[id]);
+            }
+            // Clear the object to free memory
+            const dependsOnCount = Object.keys(dependsOnObj).length;
+            for (const key in dependsOnObj)
+                delete dependsOnObj[key];
+            console.log(`Added ${dependsOnCount} derived DependsOn relationships from type references`);
         }
         // Process REFERENCES_VARIABLE relationships to derive DependsOn relationships
-        if (relationshipsByType.has('REFERENCES_VARIABLE')) {
-            const referencesVarRelationships = relationshipsByType.get('REFERENCES_VARIABLE') || [];
+        if (relationshipsByType['REFERENCES_VARIABLE']) {
+            const referencesVarRelationships = relationshipsByType['REFERENCES_VARIABLE'];
             console.log(`Processing ${referencesVarRelationships.length} REFERENCES_VARIABLE relationships to derive DependsOn relationships`);
-            const dependsOnMap = new Map();
-            referencesVarRelationships.forEach(refRel => {
-                const dependsOnId = `${this.config.codebaseId}:DEPENDS_ON:${refRel.startNodeId}->${refRel.endNodeId}`;
-                if (!dependsOnMap.has(dependsOnId)) {
-                    const dependsOnRel = {
-                        nodeId: dependsOnId,
-                        codebaseId: this.config.codebaseId,
-                        type: 'DEPENDS_ON',
-                        startNodeId: refRel.startNodeId,
-                        endNodeId: refRel.endNodeId,
-                        dependencyType: 'reference',
-                        isStrong: false,
-                        isWeak: true,
-                        weight: 1
-                    };
-                    dependsOnMap.set(dependsOnId, dependsOnRel);
-                }
-                else {
-                    // Increment the weight if the relationship already exists
-                    const existingRel = dependsOnMap.get(dependsOnId);
-                    if (existingRel && 'weight' in existingRel) {
-                        existingRel.weight += 1;
+            const dependsOnObj = {};
+            // Process in batches
+            const smallerBatchSize = 200; // Even smaller batch size for processing relationships
+            for (let i = 0; i < referencesVarRelationships.length; i += smallerBatchSize) {
+                const endIdx = Math.min(i + batchSize, referencesVarRelationships.length);
+                for (let j = i; j < endIdx; j++) {
+                    const refRel = referencesVarRelationships[j];
+                    const dependsOnId = `${this.config.codebaseId}:DEPENDS_ON:${refRel.startNodeId}->${refRel.endNodeId}`;
+                    if (!dependsOnObj[dependsOnId]) {
+                        dependsOnObj[dependsOnId] = {
+                            nodeId: dependsOnId,
+                            codebaseId: this.config.codebaseId,
+                            type: 'DEPENDS_ON',
+                            startNodeId: refRel.startNodeId,
+                            endNodeId: refRel.endNodeId,
+                            dependencyType: 'reference',
+                            isStrong: false,
+                            isWeak: true,
+                            weight: 1
+                        };
+                    }
+                    else {
+                        // Increment the weight if the relationship already exists
+                        const existingRel = dependsOnObj[dependsOnId];
+                        if (existingRel && 'weight' in existingRel) {
+                            existingRel.weight += 1;
+                        }
                     }
                 }
-            });
+                // Log progress for large relationship arrays
+                if (referencesVarRelationships.length > 10000 && i % 10000 === 0) {
+                    console.log(`Processing REFERENCES_VARIABLE relationships: ${i}/${referencesVarRelationships.length} (${Math.round(i / referencesVarRelationships.length * 100)}%)`);
+                }
+            }
             // Add the derived DependsOn relationships
-            enhancedRelationships.push(...dependsOnMap.values());
-            console.log(`Added ${dependsOnMap.size} derived DependsOn relationships from variable references`);
+            for (const id in dependsOnObj) {
+                newRelationships.push(dependsOnObj[id]);
+            }
+            // Clear the object to free memory
+            const dependsOnCount = Object.keys(dependsOnObj).length;
+            for (const key in dependsOnObj)
+                delete dependsOnObj[key];
+            console.log(`Added ${dependsOnCount} derived DependsOn relationships from variable references`);
         }
-        console.log(`Total relationships after derivation: ${enhancedRelationships.length}`);
-        return enhancedRelationships;
+        // Clear type groupings to free memory
+        for (const type in relationshipsByType) {
+            delete relationshipsByType[type];
+        }
+        // Combine original relationships with new derived relationships
+        // Use concat instead of spread operator
+        const result = relationships.concat(newRelationships);
+        console.log(`Total relationships after derivation: ${result.length}`);
+        return result;
     }
 }
 exports.GraphTransformer = GraphTransformer;

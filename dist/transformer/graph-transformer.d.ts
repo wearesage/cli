@@ -35,11 +35,17 @@ export declare class GraphTransformer {
      */
     transform(parseResults: any[]): TransformResult;
     /**
+     * Derive additional relationships in chunks to reduce memory pressure
+     */
+    private deriveAdditionalRelationshipsInChunks;
+    /**
      * Deduplicate nodes by nodeId
+     * Optimized to process in chunks to reduce memory pressure
      */
     private deduplicateNodes;
     /**
      * Deduplicate relationships by nodeId
+     * Optimized to process in chunks to reduce memory pressure
      */
     private deduplicateRelationships;
     /**

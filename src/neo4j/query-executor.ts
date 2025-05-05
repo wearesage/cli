@@ -386,43 +386,62 @@ export class QueryExecutor {
     const paramsWithCodebase = {
       ...parameters,
       codebaseId,
+      globalCodebaseId: 'global', // Add global codebase ID for finding global nodes
       nodeIdPrefix: `${codebaseId}:` // Add nodeIdPrefix for matching node IDs that start with codebaseId:
     };
+    
+    // This is a more complex transformation that requires parsing the query
+    // For simplicity, we'll add a global WHERE clause that filters all nodes by codebase
+    // This approach is not perfect but should work for most common queries
     
     // Check if the query already has a WHERE clause
     const hasWhere = /\bWHERE\b/i.test(cypher);
     
-    // Modify the query to include codebase filtering
+    // Extract all node variables from MATCH clauses
+    const nodeVarRegex = /MATCH\s*\((\w+)[:\s{]/gi;
+    const nodeVars = new Set<string>();
+    let match;
+    
+    while ((match = nodeVarRegex.exec(cypher)) !== null) {
+      nodeVars.add(match[1]);
+    }
+    
+    // Build a WHERE clause that filters all node variables by codebase
+    let codebaseFilter = '';
+    if (nodeVars.size > 0) {
+      const conditions = Array.from(nodeVars).map(
+        varName => `(${varName}.codebaseId = $codebaseId OR ${varName}.codebaseId = $globalCodebaseId)`
+      );
+      codebaseFilter = conditions.join(' AND ');
+    }
+    
+    // Add the codebase filter to the query
     let scopedCypher = cypher;
     
-    // For each MATCH clause, add codebase filtering
-    // This is a simple approach and might need refinement for complex queries
-    scopedCypher = scopedCypher.replace(
-      /MATCH\s*\(([^)]+)\)/gi,
-      (match, nodePattern) => {
-        // Check if the node pattern already has a codebaseId filter
-        if (nodePattern.includes('codebaseId') || nodePattern.includes('nodeId')) {
-          return match;
-        }
+    if (codebaseFilter) {
+      if (hasWhere) {
+        // Add to existing WHERE clause
+        scopedCypher = scopedCypher.replace(
+          /\bWHERE\b/i,
+          `WHERE ${codebaseFilter} AND `
+        );
+      } else {
+        // Find the first RETURN, WITH, or ORDER BY clause
+        const clauseMatch = /\b(RETURN|WITH|ORDER BY|SKIP|LIMIT)\b/i.exec(scopedCypher);
         
-        // Check if the node pattern has properties
-        if (nodePattern.includes('{')) {
-          // Add codebaseId to existing properties
-          return match.replace(/{([^}]*)}/g, '{$1, codebaseId: $codebaseId}');
+        if (clauseMatch) {
+          // Insert WHERE clause before the found clause
+          const position = clauseMatch.index;
+          scopedCypher =
+            scopedCypher.substring(0, position) +
+            `WHERE ${codebaseFilter} ` +
+            scopedCypher.substring(position);
         } else {
-          // Add codebaseId as a new property
-          const parts = nodePattern.split(':');
-          const varName = parts[0].trim();
-          const labels = parts.slice(1).join(':');
-          
-          if (labels) {
-            return `MATCH (${varName}:${labels} {codebaseId: $codebaseId})`;
-          } else {
-            return `MATCH (${varName} {codebaseId: $codebaseId})`;
-          }
+          // Append WHERE clause at the end
+          scopedCypher += ` WHERE ${codebaseFilter}`;
         }
       }
-    );
+    }
     
     console.log(`Executing codebase-scoped query for codebase ${codebaseId}`);
     console.log(`Original query: ${cypher}`);
